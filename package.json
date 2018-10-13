@@ -1,7 +1,6 @@
 {
   "name": "preaction-bootstrap-clips",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.1",
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.1.2",
