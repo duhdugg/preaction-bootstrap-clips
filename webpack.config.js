@@ -3,7 +3,9 @@ let path = require('path')
 module.exports = {
   mode: 'production',
   entry: {
-    Card: 'src/components/Card.js'
+    Boilerplate: './src/components/Boilerplate.js',
+    Card: './src/components/Card.js',
+    NavBar: './src/components/NavBar.js'
   },
   output: {
     path: path.resolve('dist'),
