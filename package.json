@@ -41,5 +41,11 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "author": "Doug Elkin <doug@drelyn.net> (https://drelyn.net)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/drelyn86/preaction-bootstrap-clips.git"
+  }
 }
