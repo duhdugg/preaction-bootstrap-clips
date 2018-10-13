@@ -101,6 +101,11 @@ class App extends React.Component {
               width='auto'
               column
             >And automatically grows in width.</Card>
+            <Card
+              column
+              theme='red'
+              width={{ sm: 1 / 6 }}
+            ><p>Choo choo!</p><p>Choo choo!</p></Card>
           </div>
         </Boilerplate>
       </div>
