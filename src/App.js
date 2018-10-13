@@ -46,8 +46,15 @@ class App extends React.Component {
     )
   }
 
+  getArray (length) {
+    let array = []
+    while (array.length < length) {
+      array.push(+new Date() + ':' + Math.random())
+    }
+    return array
+  }
+
   render () {
-    const cardClassName = { card: 'mt-3' }
     return (
       <div className="app">
         <Boilerplate
@@ -56,32 +63,45 @@ class App extends React.Component {
           navBar={this.navBar}
           footer='2018 &copy; Doug Elkin'
         >
-          <Card className={cardClassName}>here is a card</Card>
-          <Card className={cardClassName}
-            header='Here is a themed card with a header'
-            theme='dark'
-          ></Card>
-          <Card className={cardClassName}
-            header='This one has a red head'
-            headerTheme='red'
-          ></Card>
-          <Card className={cardClassName}
-            header='This one has a blue head'
-            headerTheme='blue'
-          ></Card>
-          <Card className={cardClassName}
-            header='This one has a green head'
-            headerTheme='green'
-          ></Card>
-          <Card className={cardClassName}
-            header='This one has a yellow head'
-            headerTheme='yellow'
-            theme='dark'
-          >And a dark body and border!</Card>
-          <Card className={cardClassName}
-            header='This one is light'
-            theme='light'
-          ></Card>
+          <div className='row'>
+            {this.getArray(11).map(id => (<Card column width='auto' style={{ container: { minWidth: '10em' } }} key={id}><blockquote className='blockquote'>"Here is my card."</blockquote></Card>))}
+          </div>
+          <div className='row'>
+            <Card
+              header='Here is a themed card with a header'
+              column
+              theme='dark'
+            ></Card>
+            <Card
+              header='This one has a red head'
+              column
+              headerTheme='red'
+            ></Card>
+            <Card
+              header='This one has a blue head'
+              headerTheme='blue'
+              column
+            ><h4 className='display-4'>Woo!</h4></Card>
+            <Card
+              header='This one has a green head'
+              headerTheme='green'
+              column
+            ></Card>
+          </div>
+          <div className='row'>
+            <Card
+              header='This one has a yellow head'
+              headerTheme='yellow'
+              theme='dark'
+              column
+            >And a dark body and border!</Card>
+            <Card
+              header='This one is light'
+              theme='light'
+              width='auto'
+              column
+            >And automatically grows in width.</Card>
+          </div>
         </Boilerplate>
       </div>
     )

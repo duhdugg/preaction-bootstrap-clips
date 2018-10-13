@@ -1,4 +1,5 @@
 import React from 'react'
+import getClassesForColumn from '../lib/getClassesForColumn.js'
 
 class Card extends React.Component {
   get className () {
@@ -11,6 +12,17 @@ class Card extends React.Component {
       Object.assign(d, this.props.className)
     }
     return d
+  }
+
+  get containerClassName () {
+    let classes = ['mb-3']
+    if (this.props.contain) {
+      classes.push('container')
+    }
+    if (this.props.column) {
+      classes.push(...getClassesForColumn(this.props.width))
+    }
+    return classes.join(' ')
   }
 
   get bodyTheme () {
@@ -62,11 +74,12 @@ class Card extends React.Component {
   get style () {
     let style = {
       card: {},
+      container: {},
       header: {},
       body: {}
     }
     if (this.props.style) {
-      Object.assign(style, this.props.style)
+      Object.assign(style, JSON.parse(JSON.stringify(this.props.style)))
     }
     if (this.props.headerBgColor) {
       style.header.backgroundColor = this.props.headerBgColor
@@ -79,12 +92,14 @@ class Card extends React.Component {
 
   render () {
     return (
-      <div className={`card ${this.cardTheme} ${this.className.card}`} style={this.style.card} >
-        {this.props.header
-          ? <div className={`card-header ${this.headerTheme} ${this.className.header}`} style={this.style.header}>{this.props.header}</div>
-          : ''}
-        <div className={`card-body ${this.bodyTheme} ${this.className.body}`} style={this.style.body}>
-          {this.props.children}
+      <div className={this.containerClassName} style={this.style.container}>
+        <div className={`card ${this.cardTheme} ${this.className.card}`} style={this.style.card} >
+          {this.props.header
+            ? <div className={`card-header ${this.headerTheme} ${this.className.header}`} style={this.style.header}>{this.props.header}</div>
+            : ''}
+          <div className={`card-body ${this.bodyTheme} ${this.className.body}`} style={this.style.body}>
+            {this.props.children}
+          </div>
         </div>
       </div>
     )
