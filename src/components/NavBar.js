@@ -3,7 +3,7 @@ import React from 'react'
 function NavItem (item) {
   return (
     <li className={`nav-item ${item.active ? 'active' : ''}`} key={item.name}>
-      <a className='nav-link' href={item.href} onClick={item.onClick}>{item.name}</a>
+      <a className={`nav-link ${item.disabled ? 'disabled' : ''}`} href={item.href || ''} onClick={item.onClick}>{item.name}</a>
     </li>
   )
 }

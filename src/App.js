@@ -8,13 +8,14 @@ class App extends React.Component {
   get navBar () {
     return (
       <NavBar
-        theme='light'
         fixedTo='top'
+        theme='dark'
         path={window.location.path}
         menu={[
           {
             name: 'Home',
-            href: '.'
+            href: '.',
+            active: true
           },
           {
             name: 'Test',
@@ -22,8 +23,15 @@ class App extends React.Component {
             onClick: event => {
               event.preventDefault()
               console.debug('Test')
+            }
+          },
+          {
+            name: 'Disabled',
+            href: '.',
+            onClick: event => {
+              event.preventDefault()
             },
-            active: true
+            disabled: true
           }
         ]}
         brand={{
@@ -43,7 +51,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <Boilerplate
-          jumbotron={<h1 className='display-1'>Preaction Boostrap Clips</h1>}
+          jumbotron={<h1 className='display-4'>Preaction Boostrap Clips</h1>}
           header={<h2 className='subtitle'>Stop Repeating Yourself</h2>}
           navBar={this.navBar}
           footer='2018 &copy; Doug Elkin'

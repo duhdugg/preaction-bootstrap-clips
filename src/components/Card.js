@@ -53,6 +53,8 @@ class Card extends React.Component {
       case 'teal':
         theme = 'bg-info text-light'
         break
+      default:
+        break
     }
     return theme
   }
