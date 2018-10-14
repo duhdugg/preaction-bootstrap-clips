@@ -6,7 +6,10 @@ module.exports = {
     Alert: './src/components/Alert.js',
     Boilerplate: './src/components/Boilerplate.js',
     Card: './src/components/Card.js',
-    NavBar: './src/components/NavBar.js'
+    getClassesForColumn: './src/lib/getClassesForColumn.js',
+    Nav: './src/components/Nav.js',
+    NavBar: './src/components/NavBar.js',
+    NavItem: './src/components/NavItem.js'
   },
   output: {
     path: path.resolve('dist'),

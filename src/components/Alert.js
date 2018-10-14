@@ -72,6 +72,10 @@ class Alert extends React.Component {
     return (
       <div className={this.containerClassName} style={this.style.container}>
         <div className={this.className} style={this.style.alert}>
+          {this.props.header ? <div>
+            <h4 className='alert-heading'>{this.props.header}</h4>
+            <hr />
+          </div> : ''}
           {this.props.children}
         </div>
       </div>

@@ -1,40 +1,57 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Boilerplate from './components/Boilerplate.js'
+import Nav from './components/Nav.js'
 import NavBar from './components/NavBar.js'
 import Card from './components/Card.js'
 import Alert from './components/Alert.js'
 
 class App extends React.Component {
+  get menu () {
+    return [
+      {
+        name: 'Home',
+        href: '.',
+        active: true
+      },
+      {
+        name: 'Test',
+        href: '.',
+        onClick: event => {
+          event.preventDefault()
+          console.debug('Test')
+        }
+      },
+      {
+        name: 'Disabled',
+        href: '.',
+        onClick: event => {
+          event.preventDefault()
+        },
+        disabled: true
+      },
+      {
+        name: 'Dropdown',
+        subMenu: [
+          { name: 'Item 1',
+            onClick: event => {
+              event.preventDefault()
+              console.debug(event)
+            }
+          },
+          { name: 'Item 2', active: true },
+          { name: 'Item 3' }
+        ]
+      }
+    ]
+  }
   get navBar () {
     return (
       <NavBar
         fixedTo='top'
         theme='dark'
         path={window.location.path}
-        menu={[
-          {
-            name: 'Home',
-            href: '.',
-            active: true
-          },
-          {
-            name: 'Test',
-            href: '.',
-            onClick: event => {
-              event.preventDefault()
-              console.debug('Test')
-            }
-          },
-          {
-            name: 'Disabled',
-            href: '.',
-            onClick: event => {
-              event.preventDefault()
-            },
-            disabled: true
-          }
-        ]}
+        menu={this.menu}
         brand={{
           name: <em>Preaction</em>,
           href: '.',
@@ -69,13 +86,47 @@ class App extends React.Component {
           navBar={this.navBar}
           footer='2018 &copy; Doug Elkin'
         >
+          <Card header='Navs'>
+            <div className='row'>
+              <Card header='Normal' column width={1}>
+                <Nav menu={this.menu}></Nav>
+              </Card>
+              <Card header='Centered' column width={1}>
+                <Nav menu={this.menu} align='center'></Nav>
+              </Card>
+              <Card header='Right' column width={1}>
+                <Nav menu={this.menu} align='right' />
+              </Card>
+              <Card header='Pills' column width={1}>
+                <Nav menu={this.menu} type='pills' />
+              </Card>
+              <Card header='Vertical' column width='auto'>
+                <Nav align='vertical' menu={this.menu} />
+              </Card>
+              <Card header='Vertical Pills' column width='auto'>
+                <Nav align='vertical'type='pills' menu={this.menu} />
+              </Card>
+              <Card header='Tabs' column width={1}>
+                <Nav type='tabs' menu={this.menu} />
+              </Card>
+              <Card header='Filled Pills' column width={1}>
+                <Nav fill menu={this.menu} />
+              </Card>
+              <Card header='Justified Pills' column width={1}>
+                <Nav justify menu={this.menu} />
+              </Card>
+              <Card header='Justified Filled Pills' column width={1}>
+                <Nav fill justify menu={this.menu} />
+              </Card>
+            </div>
+          </Card>
           <Card
             header='Cards'
             headerTheme='yellow'
             style={{ header: { fontWeight: 'bold' } }}
           >
             <div className='row'>
-              {this.getArray(11).map(id => (<Card column width='auto' theme={this.randomTheme} style={{ container: { minWidth: '10em' } }} key={id}><blockquote className='blockquote'>"Here is my card."</blockquote></Card>))}
+              {this.getArray(11).map((id, index) => (<Card key={index} column width='auto' theme={this.randomTheme} style={{ container: { minWidth: '10em' } }}><blockquote className='blockquote'>"Here is my card."</blockquote></Card>))}
             </div>
             <div className='row'>
               <Card
@@ -125,18 +176,25 @@ class App extends React.Component {
           >
             <Alert>info / default</Alert>
             <Alert theme='primary'>primary</Alert>
-            <Alert theme='success'>success</Alert>
-            <Alert theme='warning'>warning</Alert>
-            <Alert theme='danger'>danger</Alert>
+            <Alert theme='success' header='Success!'>with header</Alert>
+            <Alert theme='warning' header={(<em>Warning!</em>)}></Alert>
+            <Alert theme='danger' header='Error'>You've been doing it wrong.</Alert>
             <Alert theme='dark'>dark</Alert>
-            <Alert theme='secondary'>secondary</Alert>
             <Alert theme='light'>light</Alert>
+            <Alert theme='secondary'>secondary</Alert>
+            <Alert theme='light' header='light'>with header</Alert>
             <Card
               header='as columns...'
               headerTheme='dark'
             >
               <div className='row'>
-                {this.getArray(11).map((id, index) => (<Alert column width={{ sm: 1 / 3, md: 1 / 4, lg: 1 / 6 }} theme={this.randomTheme} key={id}>Alert</Alert>))}
+                {this.getArray(11).map((id, index) => (
+                  <Alert key={index} column width={{
+                    sm: 1 / 3,
+                    md: 1 / 4,
+                    lg: 1 / 6
+                  }} theme={this.randomTheme}>Alert</Alert>)
+                )}
               </div>
             </Card>
           </Card>

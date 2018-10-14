@@ -1,12 +1,5 @@
 import React from 'react'
-
-function NavItem (item) {
-  return (
-    <li className={`nav-item ${item.active ? 'active' : ''}`} key={item.name}>
-      <a className={`nav-link ${item.disabled ? 'disabled' : ''}`} href={item.href || ''} onClick={item.onClick}>{item.name}</a>
-    </li>
-  )
-}
+import NavItem from './NavItem.js'
 
 class NavBar extends React.Component {
   constructor (props) {
@@ -58,7 +51,14 @@ class NavBar extends React.Component {
           {this.togglerPosition === 'right' ? toggleButton() : ''}
           <div className={`navbar-collapse ${this.state.toggler ? '' : 'collapse'}`}>
             <ul className='navbar-nav mr-auto'>
-              {this.props.menu.map(item => NavItem(item))}
+              {this.props.menu.map((item, index) => (
+                <NavItem name={item.name}
+                  key={index}
+                  active={item.active}
+                  disabled={item.disabled}
+                  onClick={item.onClick}
+                  subMenu={item.subMenu}></NavItem>)
+              )}
             </ul>
           </div>
         </div>
