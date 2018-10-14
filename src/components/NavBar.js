@@ -53,6 +53,7 @@ class NavBar extends React.Component {
             <ul className='navbar-nav mr-auto'>
               {this.props.menu.map((item, index) => (
                 <NavItem name={item.name}
+                  component={item.component}
                   key={index}
                   active={item.active}
                   disabled={item.disabled}
