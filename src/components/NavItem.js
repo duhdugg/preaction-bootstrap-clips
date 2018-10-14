@@ -45,6 +45,7 @@ class NavItem extends React.Component {
         <Link
           href={href}
           className={aClassName}
+          component={this.props.component}
           onClick={onClick}
         >{this.props.name}</Link>
         {this.props.subMenu ? <div className={`dropdown-menu ${this.state.subMenuActive ? 'show' : ''}`}>
