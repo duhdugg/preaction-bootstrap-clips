@@ -37,6 +37,7 @@ class Nav extends React.Component {
       <ul className={className}>
         {this.props.menu.map((item, index) => (
           <NavItem name={item.name}
+            href={item.href}
             component={item.component}
             key={index}
             active={item.active}
