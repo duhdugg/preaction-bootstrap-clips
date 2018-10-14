@@ -49,12 +49,13 @@ class NavItem extends React.Component {
         >{this.props.name}</Link>
         {this.props.subMenu ? <div className={`dropdown-menu ${this.state.subMenuActive ? 'show' : ''}`}>
           {this.props.subMenu.map((item, index) => (
-            <DropdownItem name={item.name}
-              active={item.active}
-              href={item.href}
+            <Link
+              className={`dropdown-item ${item.active ? 'active' : ''}`}
+              component={item.component}
+              href={item.href || ''}
               onClick={item.onClick}
               key={index}
-            ></DropdownItem>
+            >{item.name}</Link>
           ))}
         </div> : ''}
       </li>
@@ -72,19 +73,6 @@ function Link (props) {
       onClick: props.onClick
     },
     props.children
-  )
-}
-
-function DropdownItem (item) {
-  return React.createElement(
-    item.component || 'a',
-    {
-      href: item.component ? undefined : item.href || '',
-      to: item.component ? item.href || '' : undefined,
-      className: `dropdown-item ${item.active ? 'active' : ''}`,
-      onClick: item.onClick
-    },
-    item.name
   )
 }
 
