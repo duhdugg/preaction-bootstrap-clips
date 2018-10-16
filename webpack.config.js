@@ -13,7 +13,7 @@ module.exports = {
   },
   output: {
     path: path.resolve('dist'),
-    filename: '[name].js',
+    filename: '[name].min.js',
     libraryTarget: 'commonjs2'
   },
   module: {
@@ -23,10 +23,7 @@ module.exports = {
         exclude: /(node_modules|\.test\.js)/,
         loader: 'babel-loader',
         options: {
-          presets: [
-            '@babel/preset-env',
-            '@babel/preset-react'
-          ]
+          presets: ['@babel/preset-env', '@babel/preset-react']
         }
       }
     ]
