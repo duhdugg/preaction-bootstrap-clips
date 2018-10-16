@@ -33,7 +33,8 @@ class App extends React.Component {
       {
         name: 'Dropdown',
         subMenu: [
-          { name: 'Item 1',
+          {
+            name: 'Item 1',
             onClick: event => {
               event.preventDefault()
               console.debug(event)
@@ -48,9 +49,8 @@ class App extends React.Component {
   get navBar () {
     return (
       <NavBar
-        fixedTo='top'
-        theme='dark'
-        path={window.location.path}
+        fixedTo="top"
+        theme="dark"
         menu={this.menu}
         brand={{
           name: <em>Preaction</em>,
@@ -81,120 +81,136 @@ class App extends React.Component {
     return (
       <div className="app">
         <Boilerplate
-          jumbotron={<h1 className='display-4'>Preaction Boostrap Clips</h1>}
-          header={<h2 className='subtitle'>Stop Repeating Yourself</h2>}
+          jumbotron={<h1 className="display-4">Preaction Boostrap Clips</h1>}
+          header={<h2 className="subtitle">Stop Repeating Yourself</h2>}
           navBar={this.navBar}
-          footer='2018 &copy; Doug Elkin'
+          footer="2018 &copy; Doug Elkin"
         >
-          <Card header='Navs'>
-            <div className='row'>
-              <Card header='Normal' column width={1}>
-                <Nav menu={this.menu}></Nav>
+          <Card header="Navs">
+            <div className="row">
+              <Card header="Normal" column width={1}>
+                <Nav menu={this.menu} />
               </Card>
-              <Card header='Centered' column width={1}>
-                <Nav menu={this.menu} align='center'></Nav>
+              <Card header="Centered" column width={1}>
+                <Nav menu={this.menu} align="center" />
               </Card>
-              <Card header='Right' column width={1}>
-                <Nav menu={this.menu} align='right' />
+              <Card header="Right" column width={1}>
+                <Nav menu={this.menu} align="right" />
               </Card>
-              <Card header='Pills' column width={1}>
-                <Nav menu={this.menu} type='pills' />
+              <Card header="Pills" column width={1}>
+                <Nav menu={this.menu} type="pills" />
               </Card>
-              <Card header='Vertical' column width='auto'>
-                <Nav align='vertical' menu={this.menu} />
+              <Card header="Vertical" column width="auto">
+                <Nav align="vertical" menu={this.menu} />
               </Card>
-              <Card header='Vertical Pills' column width='auto'>
-                <Nav align='vertical'type='pills' menu={this.menu} />
+              <Card header="Vertical Pills" column width="auto">
+                <Nav align="vertical" type="pills" menu={this.menu} />
               </Card>
-              <Card header='Tabs' column width={1}>
-                <Nav type='tabs' menu={this.menu} />
+              <Card header="Tabs" column width={1}>
+                <Nav type="tabs" menu={this.menu} />
               </Card>
-              <Card header='Filled Pills' column width={1}>
+              <Card header="Filled Pills" column width={1}>
                 <Nav fill menu={this.menu} />
               </Card>
-              <Card header='Justified Pills' column width={1}>
+              <Card header="Justified Pills" column width={1}>
                 <Nav justify menu={this.menu} />
               </Card>
-              <Card header='Justified Filled Pills' column width={1}>
+              <Card header="Justified Filled Pills" column width={1}>
                 <Nav fill justify menu={this.menu} />
               </Card>
             </div>
           </Card>
           <Card
-            header='Cards'
-            headerTheme='yellow'
+            header="Cards"
+            headerTheme="yellow"
             style={{ header: { fontWeight: 'bold' } }}
           >
-            <div className='row'>
-              {this.getArray(11).map((id, index) => (<Card key={index} column width='auto' theme={this.randomTheme} style={{ container: { minWidth: '10em' } }}><blockquote className='blockquote'>"Here is my card."</blockquote></Card>))}
+            <div className="row">
+              {this.getArray(11).map((id, index) => (
+                <Card
+                  key={index}
+                  column
+                  width="auto"
+                  theme={this.randomTheme}
+                  style={{ container: { minWidth: '10em' } }}
+                >
+                  <blockquote className="blockquote">
+                    "Here is my card."
+                  </blockquote>
+                </Card>
+              ))}
             </div>
-            <div className='row'>
+            <div className="row">
               <Card
-                header='Here is a themed card with a header'
+                header="Here is a themed card with a header"
                 column
-                theme='dark'
-              ></Card>
+                theme="dark"
+              />
+              <Card header="This one has a red head" column headerTheme="red" />
+              <Card header="This one has a blue head" headerTheme="blue" column>
+                <h4 className="display-4">Woo!</h4>
+              </Card>
               <Card
-                header='This one has a red head'
+                header="This one has a green head"
+                headerTheme="green"
                 column
-                headerTheme='red'
-              ></Card>
-              <Card
-                header='This one has a blue head'
-                headerTheme='blue'
-                column
-              ><h4 className='display-4'>Woo!</h4></Card>
-              <Card
-                header='This one has a green head'
-                headerTheme='green'
-                column
-              ></Card>
+              />
             </div>
-            <div className='row'>
+            <div className="row">
               <Card
-                header='This one has a yellow head'
-                headerTheme='yellow'
-                theme='dark'
+                header="This one has a yellow head"
+                headerTheme="yellow"
+                theme="dark"
                 column
-              >And a dark body and border!</Card>
+              >
+                And a dark body and border!
+              </Card>
               <Card
-                header='This one is light'
-                theme='light'
-                width='auto'
+                header="This one is light"
+                theme="light"
+                width="auto"
                 column
-              >And automatically grows in width.</Card>
-              <Card
-                column
-                theme='red'
-                width={{ sm: 2 / 3, md: 1 / 4 }}
-              ><p>Choo choo!</p><p>Choo choo!</p></Card>
+              >
+                And automatically grows in width.
+              </Card>
+              <Card column theme="red" width={{ sm: 2 / 3, md: 1 / 4 }}>
+                <p>Choo choo!</p>
+                <p>Choo choo!</p>
+              </Card>
             </div>
           </Card>
-          <Card
-            header='Alerts'
-            headerTheme='green'
-          >
+          <Card header="Alerts" headerTheme="green">
             <Alert>info / default</Alert>
-            <Alert theme='primary'>primary</Alert>
-            <Alert theme='success' header='Success!'>with header</Alert>
-            <Alert theme='warning' header={(<em>Warning!</em>)}></Alert>
-            <Alert theme='danger' header='Error'>You've been doing it wrong.</Alert>
-            <Alert theme='dark'>dark</Alert>
-            <Alert theme='light'>light</Alert>
-            <Alert theme='secondary'>secondary</Alert>
-            <Alert theme='light' header='light'>with header</Alert>
-            <Card
-              header='as columns...'
-              headerTheme='dark'
-            >
-              <div className='row'>
+            <Alert theme="primary">primary</Alert>
+            <Alert theme="success" header="Success!">
+              with header
+            </Alert>
+            <Alert theme="warning" header={<em>Warning!</em>} />
+            <Alert theme="danger" header="Error">
+              You've been doing it wrong.
+            </Alert>
+            <Alert theme="dark">dark</Alert>
+            <Alert theme="light">light</Alert>
+            <Alert theme="secondary">secondary</Alert>
+            <Alert theme="light" header="light">
+              with header
+            </Alert>
+            <Card header="as columns..." headerTheme="dark">
+              <div className="row">
                 {this.getArray(11).map((id, index) => (
-                  <Alert key={index} column width={{
-                    sm: 1 / 3,
-                    md: 1 / 4,
-                    lg: 1 / 6
-                  }} theme={this.randomTheme}>Alert</Alert>)
-                )}
+                  <Alert
+                    key={index}
+                    column
+                    width={{
+                      sm: 1 / 3,
+                      md: 1 / 4,
+                      lg: 1 / 6
+                    }}
+                    theme={this.randomTheme}
+                  >
+                    Alert
+                  </Alert>
+                ))}
               </div>
             </Card>
           </Card>
