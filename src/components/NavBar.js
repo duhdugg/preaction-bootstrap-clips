@@ -35,32 +35,64 @@ class NavBar extends React.Component {
   }
 
   render () {
-    let toggleButton = () => (<button className='navbar-toggler' type='button' onClick={this.toggleToggler.bind(this)}>
-      <span className='navbar-toggler-icon'></span>
-    </button>)
+    let toggleButton = () => (
+      <button
+        className="navbar-toggler"
+        type="button"
+        onClick={this.toggleToggler.bind(this)}
+      >
+        <span className="navbar-toggler-icon" />
+      </button>
+    )
     return (
-      <nav className={`navbar ${this.fixedClass} ${this.expandClass} ${this.props.theme ? `navbar-${this.props.theme} bg-${this.props.theme}` : ''}`}
-        style={this.style}>
-        <div className={this.props.noContain ? '' : 'container'}>
-          {this.togglerPosition === 'left' ? toggleButton() : ''}
-          { this.props.brand
-            ? <a className={`navbar-brand ${this.props.brand.link ? '' : 'mb-0 h1'}`} href={this.props.brand.href || ''}
-              onClick={this.props.brand.onClick}>{this.props.brand.name}</a>
+      <nav
+        className={`navbar ${this.fixedClass} ${this.expandClass} ${
+          this.props.theme
+            ? `navbar-${this.props.theme} bg-${this.props.theme}`
             : ''
+        }`}
+        style={this.style}
+      >
+        <div
+          className={
+            this.props.noContain
+              ? 'd-flex justify-content-between w-100 flex-wrap'
+              : 'container'
           }
+        >
+          {this.togglerPosition === 'left' ? toggleButton() : ''}
+          {this.props.brand ? (
+            <a
+              className={`navbar-brand ${
+                this.props.brand.link ? '' : 'mb-0 h1'
+              }`}
+              href={this.props.brand.href || ''}
+              onClick={this.props.brand.onClick}
+            >
+              {this.props.brand.name}
+            </a>
+          ) : (
+            ''
+          )}
           {this.togglerPosition === 'right' ? toggleButton() : ''}
-          <div className={`navbar-collapse ${this.state.toggler ? '' : 'collapse'}`}>
-            <ul className='navbar-nav mr-auto'>
+          <div
+            className={`navbar-collapse ${
+              this.state.toggler ? '' : 'collapse'
+            }`}
+          >
+            <ul className="navbar-nav mr-auto">
               {this.props.menu.map((item, index) => (
-                <NavItem name={item.name}
+                <NavItem
+                  name={item.name}
                   href={item.href}
                   component={item.component}
                   key={index}
                   active={item.active}
                   disabled={item.disabled}
                   onClick={item.onClick}
-                  subMenu={item.subMenu}></NavItem>)
-              )}
+                  subMenu={item.subMenu}
+                />
+              ))}
             </ul>
           </div>
         </div>
