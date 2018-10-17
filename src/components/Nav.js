@@ -19,6 +19,10 @@ class Nav extends React.Component {
       classes.push('nav-tabs')
     }
 
+    if (this.props.collapsible) {
+      classes.push('flex-column flex-md-row')
+    }
+
     if (this.props.fill) {
       classes.push('nav-fill')
     }
@@ -36,15 +40,17 @@ class Nav extends React.Component {
     return (
       <ul className={className}>
         {this.props.menu.map((item, index) => (
-          <NavItem name={item.name}
+          <NavItem
+            name={item.name}
             href={item.href}
             component={item.component}
             key={index}
             active={item.active}
             disabled={item.disabled}
             onClick={item.onClick}
-            subMenu={item.subMenu}></NavItem>)
-        )}
+            subMenu={item.subMenu}
+          />
+        ))}
       </ul>
     )
   }

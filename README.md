@@ -275,7 +275,6 @@ It is under active development and the full scope of this project is pending det
 ### // TODO:
 
 - fix navbar without containerization
-- responsive collapsible navs, enable/disable
 - modals
 - sortable, filterable tables
 - standardize and document theming props

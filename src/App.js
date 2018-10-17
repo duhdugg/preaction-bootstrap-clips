@@ -100,6 +100,9 @@ class App extends React.Component {
               <Card header="Pills" column width={1}>
                 <Nav menu={this.menu} type="pills" />
               </Card>
+              <Card header="Collapsible Pills" column width={1}>
+                <Nav collapsible type="pills" menu={this.menu} />
+              </Card>
               <Card header="Vertical" column width="auto">
                 <Nav align="vertical" menu={this.menu} />
               </Card>
