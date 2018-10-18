@@ -1,9 +1,10 @@
 import React from 'react'
+import 'animate.css/animate.min.css'
 
 class NavItem extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { submenuActive: false }
+    this.state = { showSubmenu: false }
   }
 
   render () {
@@ -34,10 +35,43 @@ class NavItem extends React.Component {
       }
       if (this.props.subMenu) {
         event.preventDefault()
-        this.setState(state => {
-          state.subMenuActive = !state.subMenuActive
-          return state
-        })
+        this.setState(
+          state => {
+            state.subMenuActive = !state.subMenuActive
+            return state
+          },
+          () => {
+            if (this.state.showSubmenu) {
+              setTimeout(() => {
+                this.setState(
+                  state => {
+                    state.showSubmenu = false
+                    return state
+                  },
+                  () => {}
+                )
+              }, 333)
+              if (this.props.resizeForSubmenu) {
+                this.props.resizeForSubmenu(this.props.index, false)
+              }
+            } else {
+              this.setState(
+                state => {
+                  state.showSubmenu = true
+                  return state
+                },
+                () => {
+                  if (this.props.resizeForSubmenu) {
+                    this.props.resizeForSubmenu(
+                      this.props.index,
+                      this.state.showSubmenu
+                    )
+                  }
+                }
+              )
+            }
+          }
+        )
       }
     }
     return (
@@ -47,18 +81,30 @@ class NavItem extends React.Component {
           className={aClassName}
           component={this.props.component}
           onClick={onClick}
-        >{this.props.name}</Link>
-        {this.props.subMenu ? <div className={`dropdown-menu ${this.state.subMenuActive ? 'show' : ''}`}>
-          {this.props.subMenu.map((item, index) => (
-            <Link
-              className={`dropdown-item ${item.active ? 'active' : ''}`}
-              component={item.component}
-              href={item.href || ''}
-              onClick={item.onClick}
-              key={index}
-            >{item.name}</Link>
-          ))}
-        </div> : ''}
+        >
+          {this.props.name}
+        </Link>
+        {this.props.subMenu ? (
+          <div
+            className={`dropdown-menu animated faster ${
+              this.state.showSubmenu ? 'show' : ''
+            } ${this.state.subMenuActive ? 'fadeIn' : 'fadeOut'}`}
+          >
+            {this.props.subMenu.map((item, index) => (
+              <Link
+                className={`dropdown-item ${item.active ? 'active' : ''}`}
+                component={item.component}
+                href={item.href || ''}
+                onClick={item.onClick}
+                key={index}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        ) : (
+          ''
+        )}
       </li>
     )
   }

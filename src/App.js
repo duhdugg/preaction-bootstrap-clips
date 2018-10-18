@@ -5,6 +5,7 @@ import Nav from './components/Nav.js'
 import NavBar from './components/NavBar.js'
 import Card from './components/Card.js'
 import Alert from './components/Alert.js'
+import BuyButton from './components/BuyButton.js'
 
 class App extends React.Component {
   get menu () {
@@ -30,8 +31,9 @@ class App extends React.Component {
         },
         disabled: true
       },
+
       {
-        name: 'Dropdown',
+        name: 'Dropdown 1',
         subMenu: [
           {
             name: 'Item 1',
@@ -43,12 +45,24 @@ class App extends React.Component {
           { name: 'Item 2', active: true },
           { name: 'Item 3' }
         ]
+      },
+      {
+        name: 'Dropdown 2',
+        subMenu: [
+          {
+            name: 'Item 1',
+            onClick: event => {
+              event.preventDefault()
+            }
+          }
+        ]
       }
     ]
   }
   get navBar () {
     return (
       <NavBar
+        noAnimation
         fixedTo="top"
         theme="dark"
         menu={this.menu}
@@ -82,7 +96,7 @@ class App extends React.Component {
       <div className="app">
         <Boilerplate
           jumbotron={<h1 className="display-4">Preaction Boostrap Clips</h1>}
-          header={<h2 className="subtitle">Stop Repeating Yourself</h2>}
+          header={<h2 className="subtitle">Examples</h2>}
           navBar={this.navBar}
           footer="2018 &copy; Doug Elkin"
         >
@@ -216,6 +230,15 @@ class App extends React.Component {
                 ))}
               </div>
             </Card>
+          </Card>
+          <Card header="Buy Button" headerTheme="dark">
+            <BuyButton
+              onClick={event => {
+                console.debug('test')
+              }}
+            >
+              Subscribe Now!
+            </BuyButton>
           </Card>
         </Boilerplate>
       </div>

@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     Alert: './src/components/Alert.js',
     Boilerplate: './src/components/Boilerplate.js',
+    BuyButton: './src/components/BuyButton.js',
     Card: './src/components/Card.js',
     getClassesForColumn: './src/lib/getClassesForColumn.js',
     Nav: './src/components/Nav.js',
@@ -25,6 +26,10 @@ module.exports = {
         options: {
           presets: ['@babel/preset-env', '@babel/preset-react']
         }
+      },
+      {
+        test: /\.css$/,
+        loader: ['style-loader', 'css-loader']
       }
     ]
   }
