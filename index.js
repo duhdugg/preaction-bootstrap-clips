@@ -1,11 +1,11 @@
-import Alert from './dist/Alert.min.js'
-import Boilerplate from './dist/Boilerplate.min.js'
-import BuyButton from './dist/BuyButton.min.js'
-import Card from './dist/Card.min.js'
-import getClassesForColumn from './dist/getClassesForColumn.min.js'
-import Nav from './dist/Nav.min.js'
-import NavBar from './dist/NavBar.min.js'
-import NavItem from './dist/NavItem.min.js'
+const Alert = require('./dist/Alert.min.js')
+const Boilerplate = require('./dist/Boilerplate.min.js')
+const BuyButton = require('./dist/BuyButton.min.js')
+const Card = require('./dist/Card.min.js')
+const getClassesForColumn = require('./dist/getClassesForColumn.min.js')
+const Nav = require('./dist/Nav.min.js')
+const NavBar = require('./dist/NavBar.min.js')
+const NavItem = require('./dist/NavItem.min.js')
 
 module.exports = {
   Alert,
