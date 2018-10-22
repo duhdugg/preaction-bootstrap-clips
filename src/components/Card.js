@@ -33,6 +33,10 @@ class Card extends React.Component {
     return this.getTheme(this.props.theme)
   }
 
+  get footerTheme () {
+    return this.getTheme(this.props.footerTheme)
+  }
+
   get headerTheme () {
     return this.getTheme(this.props.headerTheme)
   }
@@ -75,11 +79,18 @@ class Card extends React.Component {
     let style = {
       card: {},
       container: {},
+      footer: {},
       header: {},
       body: {}
     }
     if (this.props.style) {
       Object.assign(style, JSON.parse(JSON.stringify(this.props.style)))
+    }
+    if (this.props.footerBgColor) {
+      style.footer.backgroundColor = this.props.footerBgColor
+    }
+    if (this.props.footerFontColor) {
+      style.footer.color = this.props.footerFontColor
     }
     if (this.props.headerBgColor) {
       style.header.backgroundColor = this.props.headerBgColor
@@ -93,13 +104,40 @@ class Card extends React.Component {
   render () {
     return (
       <div className={this.containerClassName} style={this.style.container}>
-        <div className={`card ${this.cardTheme} ${this.className.card}`} style={this.style.card} >
-          {this.props.header
-            ? <div className={`card-header ${this.headerTheme} ${this.className.header}`} style={this.style.header}>{this.props.header}</div>
-            : ''}
-          <div className={`card-body ${this.bodyTheme} ${this.className.body}`} style={this.style.body}>
+        <div
+          className={`card ${this.cardTheme} ${this.className.card}`}
+          style={this.style.card}
+        >
+          {this.props.header ? (
+            <div
+              className={`card-header ${this.headerTheme} ${
+                this.className.header
+              }`}
+              style={this.style.header}
+            >
+              {this.props.header}
+            </div>
+          ) : (
+            ''
+          )}
+          <div
+            className={`card-body ${this.bodyTheme} ${this.className.body}`}
+            style={this.style.body}
+          >
             {this.props.children}
           </div>
+          {this.props.footer ? (
+            <div
+              className={`card-footer ${this.footerTheme} ${
+                this.className.footer
+              }`}
+              style={this.style.footer}
+            >
+              {this.props.footer}
+            </div>
+          ) : (
+            ''
+          )}
         </div>
       </div>
     )

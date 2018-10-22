@@ -190,9 +190,14 @@ class App extends React.Component {
               >
                 And automatically grows in width.
               </Card>
-              <Card column theme="red" width={{ sm: 2 / 3, md: 1 / 4 }}>
-                <p>Choo choo!</p>
-                <p>Choo choo!</p>
+              <Card
+                column
+                footerTheme="dark"
+                bodyTheme="red"
+                width={{ sm: 2 / 3, md: 1 / 4 }}
+                footer="has a footer"
+              >
+                <p>and this one</p>
               </Card>
             </div>
           </Card>
