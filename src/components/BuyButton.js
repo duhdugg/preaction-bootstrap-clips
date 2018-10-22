@@ -7,6 +7,50 @@ class BuyButton extends React.Component {
     this.state = {}
   }
 
+  get backgroundColorRgb () {
+    const def = [95, 239, 95]
+    let value = def
+    if (this.state.warm) {
+      value[1] = 255
+    } else if (this.state.flash) {
+      value = [0, 255, 0]
+    }
+    return value
+  }
+
+  get borderColorRgba () {
+    const def = [0, 0, 0, 0]
+    let value = def
+    if (this.state.warm) {
+      value[3] = 0.25
+    } else if (this.state.flash) {
+      value = [64, 255, 64, 0.5]
+    }
+    return value
+  }
+
+  get boxShadowRgba () {
+    const def = [0, 255, 0, 0]
+    let value = def
+    if (this.state.warm) {
+      value[3] = 0.5
+    } else if (this.state.flash) {
+      value[3] = 1
+    }
+    return value
+  }
+
+  get colorRgb () {
+    const def = [0, 0, 0]
+    let value = def
+    if (this.state.warm) {
+      value[1] = 128
+    } else if (this.state.flash) {
+      value[1] = 185
+    }
+    return value
+  }
+
   warm () {
     this.setState(state => {
       state.warm = true
@@ -76,18 +120,11 @@ class BuyButton extends React.Component {
           lineHeight: 1.5,
           borderRadius: '0.3rem',
           border: '0.08125em solid transparent',
-          backgroundImage: 'radial-gradient(#ffffff40, #00000048)',
-          backgroundColor: this.state.flash
-            ? '#4dd'
-            : this.state.warm
-              ? '#a28'
-              : '#0c0',
-          borderColor: this.state.flash
-            ? '#8ff'
-            : this.state.warm
-              ? '#d4d'
-              : '#4d4',
-          color: this.state.flash ? '#fef' : this.state.warm ? '#ecc' : '#fff',
+          backgroundImage: 'radial-gradient(#ffffff20, #00000030)',
+          backgroundColor: `rgb(${this.backgroundColorRgb.join(',')})`,
+          borderColor: `rgba(${this.borderColorRgba.join(',')})`,
+          color: `rgb(${this.colorRgb.join(',')})`,
+          boxShadow: `0 0 0 0.2rem rgba(${this.boxShadowRgba.join(',')})`,
           transition: 'all 400ms ease-out'
         }}
         onMouseEnter={this.onMouseEnter.bind(this)}
