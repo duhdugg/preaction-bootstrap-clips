@@ -13,7 +13,7 @@ class BuyButton extends React.Component {
     if (this.state.warm) {
       value[1] = 255
     } else if (this.state.flash) {
-      value = [0, 255, 0]
+      value = [64, 255, 64]
     }
     return value
   }
@@ -22,7 +22,8 @@ class BuyButton extends React.Component {
     const def = [0, 0, 0, 0]
     let value = def
     if (this.state.warm) {
-      value[3] = 0.25
+      value[0] = 64
+      value[3] = 0.125
     } else if (this.state.flash) {
       value = [64, 255, 64, 0.5]
     }
@@ -33,20 +34,24 @@ class BuyButton extends React.Component {
     const def = [0, 255, 0, 0]
     let value = def
     if (this.state.warm) {
+      value[0] = 64
       value[3] = 0.5
     } else if (this.state.flash) {
+      value[0] = 128
       value[3] = 1
     }
     return value
   }
 
   get colorRgb () {
-    const def = [0, 0, 0]
+    const def = [0, 0, 40]
     let value = def
     if (this.state.warm) {
-      value[1] = 128
+      value[0] = 32
+      value[1] = 64
     } else if (this.state.flash) {
-      value[1] = 185
+      value[0] = 64
+      value[1] = 128
     }
     return value
   }
@@ -120,7 +125,7 @@ class BuyButton extends React.Component {
           lineHeight: 1.5,
           borderRadius: '0.3rem',
           border: '0.08125em solid transparent',
-          backgroundImage: 'radial-gradient(#ffffff20, #00000030)',
+          backgroundImage: 'radial-gradient(#eeeeff20, #00004040)',
           backgroundColor: `rgb(${this.backgroundColorRgb.join(',')})`,
           borderColor: `rgba(${this.borderColorRgba.join(',')})`,
           color: `rgb(${this.colorRgb.join(',')})`,

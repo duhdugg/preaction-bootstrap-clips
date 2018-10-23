@@ -242,7 +242,7 @@ class App extends React.Component {
                 console.debug('test')
               }}
             >
-              Subscribe Now!
+              🛒 Checkout
             </BuyButton>
           </Card>
         </Boilerplate>
