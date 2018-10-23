@@ -22,7 +22,7 @@
     "webpack": "4.19.1",
     "webpack-cli": "^3.1.2"
   },
-  "main": "index.js",
+  "main": "dist/preaction-bootstrap-clips.min.js",
   "peerDependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2"

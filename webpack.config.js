@@ -3,18 +3,11 @@ let path = require('path')
 module.exports = {
   mode: 'production',
   entry: {
-    Alert: './src/components/Alert.js',
-    Boilerplate: './src/components/Boilerplate.js',
-    BuyButton: './src/components/BuyButton.js',
-    Card: './src/components/Card.js',
-    getClassesForColumn: './src/lib/getClassesForColumn.js',
-    Nav: './src/components/Nav.js',
-    NavBar: './src/components/NavBar.js',
-    NavItem: './src/components/NavItem.js'
+    index: './index.js'
   },
   output: {
     path: path.resolve('dist'),
-    filename: '[name].min.js',
+    filename: 'preaction-bootstrap-clips.min.js',
     libraryTarget: 'commonjs2'
   },
   module: {
