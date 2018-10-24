@@ -1,6 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Boilerplate from './components/Boilerplate.js'
+import Spinner from './components/Spinner.js'
 import Nav from './components/Nav.js'
 import NavBar from './components/NavBar.js'
 import Card from './components/Card.js'
@@ -244,6 +245,11 @@ class App extends React.Component {
             >
               🛒 Checkout
             </BuyButton>
+          </Card>
+          <Card header="Spinner">
+            <p>
+              <Spinner />
+            </p>
           </Card>
         </Boilerplate>
       </div>

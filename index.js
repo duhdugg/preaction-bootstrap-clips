@@ -6,6 +6,7 @@ const getClassesForColumn = require('./src/lib/getClassesForColumn.js').default
 const Nav = require('./src/components/Nav.js').default
 const NavBar = require('./src/components/NavBar.js').default
 const NavItem = require('./src/components/NavItem.js').default
+const Spinner = require('./src/components/Spinner.js').default
 
 module.exports = {
   Alert,
@@ -15,6 +16,7 @@ module.exports = {
   getClassesForColumn,
   Nav,
   NavBar,
-  NavItem
+  NavItem,
+  Spinner
 }
 module.exports.default = module.exports
