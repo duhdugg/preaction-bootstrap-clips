@@ -74,6 +74,7 @@ class Spinner extends React.Component {
               <img
                 src={spinner}
                 style={this.imageStyle}
+                alt="please wait"
                 width="100%"
                 height="100%"
               />
