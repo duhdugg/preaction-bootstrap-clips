@@ -23,8 +23,15 @@ module.exports = {
       {
         test: /\.css$/,
         loader: ['style-loader', 'css-loader']
-      },
-      { test: /\.svg$/, loader: 'svg-url-loader' }
+      }
     ]
+  },
+  externals: {
+    react: {
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'react',
+      root: 'React'
+    }
   }
 }
