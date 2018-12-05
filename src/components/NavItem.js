@@ -94,6 +94,7 @@ class NavItem extends React.Component {
               <Link
                 className={`dropdown-item ${item.active ? 'active' : ''}`}
                 component={item.component}
+                exact={item.exact || false}
                 href={item.href || ''}
                 onClick={item.onClick}
                 key={index}
