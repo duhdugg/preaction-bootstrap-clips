@@ -112,7 +112,7 @@ class NavBar extends React.Component {
                   key={index}
                   active={item.active}
                   disabled={item.disabled}
-                  exact={item.exact || false}
+                  exact={item.exact}
                   onClick={item.onClick}
                   subMenu={item.subMenu}
                 />
@@ -140,7 +140,7 @@ class NavBar extends React.Component {
                   index={index}
                   active={item.active}
                   disabled={item.disabled}
-                  exact={item.exact || false}
+                  exact={item.exact}
                   onClick={item.onClick}
                   subMenu={item.subMenu}
                   resizeForSubmenu={this.resizeForSubmenu.bind(this)}
