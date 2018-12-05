@@ -47,6 +47,7 @@ class Nav extends React.Component {
             key={index}
             active={item.active}
             disabled={item.disabled}
+            exact={item.exact || false}
             onClick={item.onClick}
             subMenu={item.subMenu}
           />
