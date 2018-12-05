@@ -118,7 +118,8 @@ function Link (props) {
       href: props.component ? undefined : props.href || '',
       to: props.component ? props.href || '' : undefined,
       className: props.className,
-      onClick: props.onClick
+      onClick: props.onClick,
+      exact: props.exact || false
     },
     props.children
   )
