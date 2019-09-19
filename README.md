@@ -278,4 +278,4 @@ It is under active development and the full scope of this project is pending det
 
 ### More examples
 
-See [src/App.js](https://gitlab.com/dougelkin/preaction-bootstrap-clips/blob/master/src/App.jsx)
+See [src/App.jsx](https://gitlab.com/dougelkin/preaction-bootstrap-clips/blob/master/src/App.jsx)
