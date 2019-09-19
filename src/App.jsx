@@ -1,5 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+// the syntax for these components from a parent project would be:
+// import { Boilerplate, Spinner, Nav, etc } from '@preaction/bootstrap-clips'
 import Boilerplate from './components/Boilerplate.jsx'
 import Spinner from './components/Spinner.jsx'
 import Nav from './components/Nav.jsx'
