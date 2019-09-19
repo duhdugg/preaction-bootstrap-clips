@@ -2,12 +2,12 @@ import React from 'react'
 import 'animate.css/animate.min.css'
 
 class BuyButton extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {}
   }
 
-  get backgroundColorRgb () {
+  get backgroundColorRgb() {
     const def = [95, 239, 95]
     let value = def
     if (this.state.warm) {
@@ -18,7 +18,7 @@ class BuyButton extends React.Component {
     return value
   }
 
-  get borderColorRgba () {
+  get borderColorRgba() {
     const def = [0, 0, 0, 0]
     let value = def
     if (this.state.warm) {
@@ -30,7 +30,7 @@ class BuyButton extends React.Component {
     return value
   }
 
-  get boxShadowRgba () {
+  get boxShadowRgba() {
     const def = [0, 255, 0, 0]
     let value = def
     if (this.state.warm) {
@@ -43,7 +43,7 @@ class BuyButton extends React.Component {
     return value
   }
 
-  get colorRgb () {
+  get colorRgb() {
     const def = [0, 0, 40]
     let value = def
     if (this.state.warm) {
@@ -56,7 +56,7 @@ class BuyButton extends React.Component {
     return value
   }
 
-  warm () {
+  warm() {
     this.setState(state => {
       state.warm = true
       return state
@@ -66,14 +66,14 @@ class BuyButton extends React.Component {
     }, 400)
   }
 
-  unwarm () {
+  unwarm() {
     this.setState(state => {
       state.warm = false
       return state
     })
   }
 
-  rubberBand () {
+  rubberBand() {
     this.setState({ rubberBand: true, pulse: false, flash: true })
     setTimeout(() => {
       this.setState(state => {
@@ -89,7 +89,7 @@ class BuyButton extends React.Component {
     }, 400)
   }
 
-  pulse () {
+  pulse() {
     this.setState({ pulse: true })
     this.warm()
     setTimeout(() => {
@@ -99,7 +99,7 @@ class BuyButton extends React.Component {
       })
     }, 800)
   }
-  onClick (event) {
+  onClick(event) {
     event.preventDefault()
     this.rubberBand()
     if (this.props.onClick) {
@@ -109,13 +109,13 @@ class BuyButton extends React.Component {
       }, 300)
     }
   }
-  onMouseEnter (event) {
+  onMouseEnter(event) {
     this.pulse()
   }
-  render () {
+  render() {
     return (
       <button
-        type="button"
+        type='button'
         className={`btn btn-success animated fast ${
           this.state.rubberBand ? 'rubberBand' : ''
         } ${this.state.pulse ? 'pulse' : ''}`}
@@ -133,8 +133,7 @@ class BuyButton extends React.Component {
           transition: 'all 400ms ease-out'
         }}
         onMouseEnter={this.onMouseEnter.bind(this)}
-        onClick={this.onClick.bind(this)}
-      >
+        onClick={this.onClick.bind(this)}>
         {this.props.children}
       </button>
     )

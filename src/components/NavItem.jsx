@@ -2,12 +2,12 @@ import React from 'react'
 import 'animate.css/animate.min.css'
 
 class NavItem extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = { showSubmenu: false }
   }
 
-  render () {
+  render() {
     let classes = ['nav-item']
     if (this.props.subMenu) {
       classes.push('dropdown')
@@ -80,16 +80,14 @@ class NavItem extends React.Component {
           href={href}
           className={aClassName}
           component={this.props.component}
-          onClick={onClick}
-        >
+          onClick={onClick}>
           {this.props.name}
         </Link>
         {this.props.subMenu ? (
           <div
             className={`dropdown-menu animated faster ${
               this.state.showSubmenu ? 'show' : ''
-            } ${this.state.subMenuActive ? 'fadeIn' : 'fadeOut'}`}
-          >
+            } ${this.state.subMenuActive ? 'fadeIn' : 'fadeOut'}`}>
             {this.props.subMenu.map((item, index) => (
               <Link
                 className={`dropdown-item ${item.active ? 'active' : ''}`}
@@ -97,8 +95,7 @@ class NavItem extends React.Component {
                 exact={item.exact}
                 href={item.href || ''}
                 onClick={item.onClick}
-                key={index}
-              >
+                key={index}>
                 {item.name}
               </Link>
             ))}
@@ -111,7 +108,7 @@ class NavItem extends React.Component {
   }
 }
 
-function Link (props) {
+function Link(props) {
   return React.createElement(
     props.component || 'a',
     {

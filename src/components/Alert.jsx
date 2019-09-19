@@ -2,11 +2,11 @@ import React from 'react'
 import getClassesForColumn from '../lib/getClassesForColumn.js'
 
 class Alert extends React.Component {
-  get className () {
+  get className() {
     return `alert alert-${this.theme}`
   }
 
-  get containerClassName () {
+  get containerClassName() {
     let classes = ['mb-3']
     if (this.props.contain) {
       classes.push('container')
@@ -17,7 +17,7 @@ class Alert extends React.Component {
     return classes.join(' ')
   }
 
-  get theme () {
+  get theme() {
     let theme
     switch (this.props.theme) {
       case 'blue':
@@ -57,7 +57,7 @@ class Alert extends React.Component {
     return theme
   }
 
-  get style () {
+  get style() {
     let style = {
       alert: {},
       container: {}
@@ -68,14 +68,18 @@ class Alert extends React.Component {
     return style
   }
 
-  render () {
+  render() {
     return (
       <div className={this.containerClassName} style={this.style.container}>
         <div className={this.className} style={this.style.alert}>
-          {this.props.header ? <div>
-            <h4 className='alert-heading'>{this.props.header}</h4>
-            <hr />
-          </div> : ''}
+          {this.props.header ? (
+            <div>
+              <h4 className='alert-heading'>{this.props.header}</h4>
+              <hr />
+            </div>
+          ) : (
+            ''
+          )}
           {this.props.children}
         </div>
       </div>

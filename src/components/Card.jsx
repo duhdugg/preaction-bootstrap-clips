@@ -2,7 +2,7 @@ import React from 'react'
 import getClassesForColumn from '../lib/getClassesForColumn.js'
 
 class Card extends React.Component {
-  get className () {
+  get className() {
     let d = {
       card: '',
       header: '',
@@ -14,7 +14,7 @@ class Card extends React.Component {
     return d
   }
 
-  get containerClassName () {
+  get containerClassName() {
     let classes = ['mb-3']
     if (this.props.contain) {
       classes.push('container')
@@ -25,23 +25,23 @@ class Card extends React.Component {
     return classes.join(' ')
   }
 
-  get bodyTheme () {
+  get bodyTheme() {
     return this.getTheme(this.props.bodyTheme)
   }
 
-  get cardTheme () {
+  get cardTheme() {
     return this.getTheme(this.props.theme)
   }
 
-  get footerTheme () {
+  get footerTheme() {
     return this.getTheme(this.props.footerTheme)
   }
 
-  get headerTheme () {
+  get headerTheme() {
     return this.getTheme(this.props.headerTheme)
   }
 
-  getTheme (name) {
+  getTheme(name) {
     let theme = ''
     switch (name) {
       case 'blue':
@@ -75,7 +75,7 @@ class Card extends React.Component {
     return theme
   }
 
-  get style () {
+  get style() {
     let style = {
       card: {},
       container: {},
@@ -101,20 +101,16 @@ class Card extends React.Component {
     return style
   }
 
-  render () {
+  render() {
     return (
       <div className={this.containerClassName} style={this.style.container}>
         <div
           className={`card ${this.cardTheme} ${this.className.card}`}
-          style={this.style.card}
-        >
+          style={this.style.card}>
           {this.props.header ? (
             <div
-              className={`card-header ${this.headerTheme} ${
-                this.className.header
-              }`}
-              style={this.style.header}
-            >
+              className={`card-header ${this.headerTheme} ${this.className.header}`}
+              style={this.style.header}>
               {this.props.header}
             </div>
           ) : (
@@ -122,17 +118,13 @@ class Card extends React.Component {
           )}
           <div
             className={`card-body ${this.bodyTheme} ${this.className.body}`}
-            style={this.style.body}
-          >
+            style={this.style.body}>
             {this.props.children}
           </div>
           {this.props.footer ? (
             <div
-              className={`card-footer ${this.footerTheme} ${
-                this.className.footer
-              }`}
-              style={this.style.footer}
-            >
+              className={`card-footer ${this.footerTheme} ${this.className.footer}`}
+              style={this.style.footer}>
               {this.props.footer}
             </div>
           ) : (

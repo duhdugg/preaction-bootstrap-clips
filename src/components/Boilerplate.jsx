@@ -1,11 +1,11 @@
 import React from 'react'
 
 class BasicBoilerplate extends React.Component {
-  get containerClassName () {
+  get containerClassName() {
     return this.props.noContain ? '' : 'container'
   }
 
-  get style () {
+  get style() {
     let style = {
       jumbotron: {},
       header: {},
@@ -26,29 +26,29 @@ class BasicBoilerplate extends React.Component {
     return style
   }
 
-  render () {
+  render() {
     return (
       <div>
         <div>{this.props.navBar}</div>
         <header style={this.style.header}>
-          {this.props.jumbotron ? <div className='jumbotron' style={this.style.jumbotron}>
-            <div className={this.containerClassName}>
-              {this.props.jumbotron}
+          {this.props.jumbotron ? (
+            <div className='jumbotron' style={this.style.jumbotron}>
+              <div className={this.containerClassName}>
+                {this.props.jumbotron}
+              </div>
             </div>
-          </div> : ''}
+          ) : (
+            ''
+          )}
           <div className={this.containerClassName}>
             <div>{this.props.header}</div>
           </div>
         </header>
         <main style={this.style.main}>
-          <div className={this.containerClassName}>
-            {this.props.children}
-          </div>
+          <div className={this.containerClassName}>{this.props.children}</div>
         </main>
         <footer style={this.style.footer}>
-          <div className={this.containerClassName}>
-            {this.props.footer}
-          </div>
+          <div className={this.containerClassName}>{this.props.footer}</div>
         </footer>
       </div>
     )

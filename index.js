@@ -1,22 +1,21 @@
-const Alert = require('./src/components/Alert.js').default
-const Boilerplate = require('./src/components/Boilerplate.js').default
-const BuyButton = require('./src/components/BuyButton.js').default
-const Card = require('./src/components/Card.js').default
-const getClassesForColumn = require('./src/lib/getClassesForColumn.js').default
-const Nav = require('./src/components/Nav.js').default
-const NavBar = require('./src/components/NavBar.js').default
-const NavItem = require('./src/components/NavItem.js').default
-const Spinner = require('./src/components/Spinner.js').default
+import Alert from './src/components/Alert.jsx'
+import Boilerplate from './src/components/Boilerplate.jsx'
+import BuyButton from './src/components/BuyButton.jsx'
+import Card from './src/components/Card.jsx'
+import Nav from './src/components/Nav.jsx'
+import NavBar from './src/components/NavBar.jsx'
+import NavItem from './src/components/NavItem.jsx'
+import Spinner from './src/components/Spinner.jsx'
+import getClassesForColumn from './src/lib/getClassesForColumn.js'
 
-module.exports = {
+export {
   Alert,
   Boilerplate,
   BuyButton,
   Card,
-  getClassesForColumn,
   Nav,
   NavBar,
   NavItem,
-  Spinner
+  Spinner,
+  getClassesForColumn
 }
-module.exports.default = module.exports

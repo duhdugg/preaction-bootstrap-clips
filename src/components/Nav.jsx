@@ -1,8 +1,8 @@
 import React from 'react'
-import NavItem from './NavItem.js'
+import NavItem from './NavItem.jsx'
 
 class Nav extends React.Component {
-  render () {
+  render() {
     let classes = ['nav']
 
     if (this.props.align === 'center') {

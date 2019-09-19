@@ -1,9 +1,9 @@
 import React from 'react'
-import NavItem from './NavItem.js'
+import NavItem from './NavItem.jsx'
 import 'animate.css/animate.min.css'
 
 class NavBar extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       shownSubmenuItems: [],
@@ -12,7 +12,7 @@ class NavBar extends React.Component {
     }
   }
 
-  get fixedClass () {
+  get fixedClass() {
     let value = ''
     if (this.props.fixedTo) {
       value = `fixed-${this.props.fixedTo}`
@@ -20,11 +20,11 @@ class NavBar extends React.Component {
     return value
   }
 
-  get togglerPosition () {
+  get togglerPosition() {
     return this.props.togglerPosition || 'right'
   }
 
-  setSize () {
+  setSize() {
     let height =
       this.state.toggler && this.props.menu ? this.props.menu.length * 2.5 : 0
     let hasActiveSubmenu = false
@@ -45,28 +45,27 @@ class NavBar extends React.Component {
     })
   }
 
-  resizeForSubmenu (index = 0, showSubmenu = false) {
+  resizeForSubmenu(index = 0, showSubmenu = false) {
     this.setState(state => {
       state.shownSubmenuItems[index] = showSubmenu
       return state
     }, this.setSize)
   }
 
-  toggleToggler () {
+  toggleToggler() {
     this.setState(state => {
       state.toggler = !state.toggler
       return state
     }, this.setSize)
   }
 
-  render () {
+  render() {
     let toggleButton = () => (
       <button
-        className="navbar-toggler"
-        type="button"
-        onClick={this.toggleToggler.bind(this)}
-      >
-        <span className="navbar-toggler-icon" />
+        className='navbar-toggler'
+        type='button'
+        onClick={this.toggleToggler.bind(this)}>
+        <span className='navbar-toggler-icon' />
       </button>
     )
     return (
@@ -76,15 +75,13 @@ class NavBar extends React.Component {
             ? `navbar-${this.props.theme} bg-${this.props.theme}`
             : ''
         }`}
-        style={this.style}
-      >
+        style={this.style}>
         <div
           className={
             this.props.noContain
               ? 'd-flex justify-content-between w-100 flex-wrap'
               : 'container'
-          }
-        >
+          }>
           {this.togglerPosition === 'left' ? toggleButton() : ''}
           <div>
             {this.props.brand ? (
@@ -93,8 +90,7 @@ class NavBar extends React.Component {
                   this.props.brand.link ? '' : 'mb-0 h1'
                 }`}
                 href={this.props.brand.href || ''}
-                onClick={this.props.brand.onClick}
-              >
+                onClick={this.props.brand.onClick}>
                 {this.props.brand.name}
               </a>
             ) : (
@@ -102,8 +98,8 @@ class NavBar extends React.Component {
             )}
           </div>
           {this.togglerPosition === 'right' ? toggleButton() : ''}
-          <div className="navbar-collapse d-none d-md-flex">
-            <ul className="navbar-nav">
+          <div className='navbar-collapse d-none d-md-flex'>
+            <ul className='navbar-nav'>
               {this.props.menu.map((item, index) => (
                 <NavItem
                   name={item.name}
@@ -119,7 +115,7 @@ class NavBar extends React.Component {
               ))}
             </ul>
           </div>
-          <div className="navbar-collapse d-md-none d-md-none">
+          <div className='navbar-collapse d-md-none d-md-none'>
             <ul
               className={`navbar-nav d-md-none animated faster ${
                 this.state.toggler ? 'bounceInDown' : 'bounceOutUp'
@@ -129,8 +125,7 @@ class NavBar extends React.Component {
                 transition: `height 500ms ${
                   this.state.toggler ? 'ease-out' : 'ease-in'
                 }`
-              }}
-            >
+              }}>
               {this.props.menu.map((item, index) => (
                 <NavItem
                   name={item.name}

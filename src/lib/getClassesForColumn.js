@@ -6,7 +6,7 @@ export default width => {
     const columns = 12
     return Math.floor(Number(value) * columns)
   }
-  if (typeof (width) === 'object') {
+  if (typeof width === 'object') {
     const handleColumnSizeObjects = key => {
       let value = width[key]
       let classPrefix = 'col'
