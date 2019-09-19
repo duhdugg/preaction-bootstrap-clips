@@ -13,22 +13,21 @@ It is under active development and the full scope of this project is pending det
 
   ```javascript
   import React from 'react'
-  import { Boilerplate, NavBar } from 'preaction-bootstrap-clips'
+  import { Boilerplate, NavBar } from '@preaction/bootstrap-clips'
 
   class App extends React.Component {
     render() {
       return (
         <Boilerplate
-          jumbotron={<h1 className="display-4">Hello World!</h1>}
-          header="wazzup"
+          jumbotron={<h1 className='display-4'>Hello World!</h1>}
+          header='wazzup'
           footer={<p>Copyright &copy; Acme, Inc. All rights reserved.</p>}
           style={{
             header: { marginBottom: '2em' },
             jumbotron: { backgroundColor: '#446', color: '#ddf' },
             footer: { marginTop: '2em', color: '#999' }
-          }}
-        >
-          <p className="lead">This is where your main contents go.</p>
+          }}>
+          <p className='lead'>This is where your main contents go.</p>
         </Boilerplate>
       )
     }
@@ -44,7 +43,7 @@ It is under active development and the full scope of this project is pending det
 
   ```javascript
   import React from 'react'
-  import { Boilerplate, NavBar } from 'preaction-bootstrap-clips'
+  import { Boilerplate, NavBar } from '@preaction/bootstrap-clips'
   import 'bootstrap/dist/css/bootstrap.min.css'
   // import { NavLink as Link } from 'react-router-dom' // see below
 
@@ -52,7 +51,7 @@ It is under active development and the full scope of this project is pending det
     get navBar() {
       return (
         <NavBar
-          theme="dark"
+          theme='dark'
           menu={[
             {
               name: 'Home',
@@ -94,7 +93,7 @@ It is under active development and the full scope of this project is pending det
     render() {
       return (
         <Boilerplate navBar={this.navBar}>
-          <h1 className="display-4 mt-3">Hello World</h1>
+          <h1 className='display-4 mt-3'>Hello World</h1>
         </Boilerplate>
       )
     }
@@ -109,7 +108,7 @@ It is under active development and the full scope of this project is pending det
 
   ```javascript
   import React from 'react'
-  import { Card, Boilerplate, Alert } from 'preaction-boostrap-clips'
+  import { Card, Boilerplate, Alert } from '@preaction/boostrap-clips'
   import 'bootstrap/dist/css/bootstrap.min.css'
 
   /*
@@ -149,13 +148,13 @@ It is under active development and the full scope of this project is pending det
 
     ```javascript
     import React from 'react'
-    import { Boilerplate } from 'preaction-bootstrap-clips'
+    import { Boilerplate } from '@preaction/bootstrap-clips'
     import 'bootstrap/dist/css/bootstrap.min.css'
 
     // automatic sizing columns
     // collapse by default at xs breakpoint
     const example1 = () => (
-      <div className="row">
+      <div className='row'>
         <Card column>contents</Card>
         <Card column>contents</Card>
         <Card column>contents</Card>
@@ -163,14 +162,14 @@ It is under active development and the full scope of this project is pending det
     )
     const example2 = () => (
       // automatic equally-spaced per row columns
-      <div className="row">
-        <Card column width="auto">
+      <div className='row'>
+        <Card column width='auto'>
           contents
         </Card>
-        <Card column width="auto">
+        <Card column width='auto'>
           contents
         </Card>
-        <Card column width="auto">
+        <Card column width='auto'>
           contents
         </Card>
       </div>
@@ -186,7 +185,7 @@ It is under active development and the full scope of this project is pending det
         // rounded down to the nearest integer
         / The following should result in 3 rows
         */
-      <div className="row">
+      <div className='row'>
         <Card column width={1}>
           contents
         </Card>
@@ -210,7 +209,7 @@ It is under active development and the full scope of this project is pending det
 
     // here is the same but where they all collapse on smaller than sm viewports
     const example4 = () => (
-      <div className="row">
+      <div className='row'>
         <Card column width={{ sm: 1 }}>
           contents
         </Card>
@@ -255,14 +254,13 @@ It is under active development and the full scope of this project is pending det
       return a
     }
     const example5 = () => (
-      <div className="row">
+      <div className='row'>
         {getArrayOfLength(13).map((contents, index) => (
           <Card
             column
             width={example5Width}
             key={index}
-            header={`#${index + 1}`}
-          >
+            header={`#${index + 1}`}>
             {contents}
           </Card>
         ))}
@@ -280,4 +278,4 @@ It is under active development and the full scope of this project is pending det
 
 ### More examples
 
-See [src/App.js](https://gitlab.com/drelyn86/preaction-bootstrap-clips/blob/master/src/App.js)
+See [src/App.js](https://gitlab.com/dougelkin/preaction-bootstrap-clips/blob/master/src/App.jsx)
