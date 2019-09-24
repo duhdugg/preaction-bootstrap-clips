@@ -11,7 +11,7 @@ It is under active development and the full scope of this project is pending det
 
   - example:
 
-  ```javascript
+  ```jsx
   import React from 'react'
   import { Boilerplate, NavBar } from '@preaction/bootstrap-clips'
 
@@ -41,7 +41,7 @@ It is under active development and the full scope of this project is pending det
 
   - example:
 
-  ```javascript
+  ```jsx
   import React from 'react'
   import { Boilerplate, NavBar } from '@preaction/bootstrap-clips'
   import 'bootstrap/dist/css/bootstrap.min.css'
@@ -106,7 +106,7 @@ It is under active development and the full scope of this project is pending det
 
   - examples:
 
-  ```javascript
+  ```jsx
   import React from 'react'
   import { Card, Boilerplate, Alert } from '@preaction/boostrap-clips'
   import 'bootstrap/dist/css/bootstrap.min.css'
@@ -146,7 +146,7 @@ It is under active development and the full scope of this project is pending det
 
   - examples:
 
-    ```javascript
+    ```jsx
     import React from 'react'
     import { Boilerplate } from '@preaction/bootstrap-clips'
     import 'bootstrap/dist/css/bootstrap.min.css'
