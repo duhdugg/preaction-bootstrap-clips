@@ -28,6 +28,46 @@ class NavItem extends React.Component {
 
     let href = this.props.href || ''
 
+    let toggleSubMenu = () => {
+      this.setState(
+        state => {
+          state.subMenuActive = !state.subMenuActive
+          return state
+        },
+        () => {
+          if (this.state.showSubmenu) {
+            setTimeout(() => {
+              this.setState(
+                state => {
+                  state.showSubmenu = false
+                  return state
+                },
+                () => {}
+              )
+            }, 333)
+            if (this.props.resizeForSubmenu) {
+              this.props.resizeForSubmenu(this.props.index, false)
+            }
+          } else {
+            this.setState(
+              state => {
+                state.showSubmenu = true
+                return state
+              },
+              () => {
+                if (this.props.resizeForSubmenu) {
+                  this.props.resizeForSubmenu(
+                    this.props.index,
+                    this.state.showSubmenu
+                  )
+                }
+              }
+            )
+          }
+        }
+      )
+    }
+
     let onClick = event => {
       if (this.props.onClick) {
         event.persist()
@@ -35,45 +75,19 @@ class NavItem extends React.Component {
       }
       if (this.props.subMenu) {
         event.preventDefault()
-        this.setState(
-          state => {
-            state.subMenuActive = !state.subMenuActive
-            return state
-          },
-          () => {
-            if (this.state.showSubmenu) {
-              setTimeout(() => {
-                this.setState(
-                  state => {
-                    state.showSubmenu = false
-                    return state
-                  },
-                  () => {}
-                )
-              }, 333)
-              if (this.props.resizeForSubmenu) {
-                this.props.resizeForSubmenu(this.props.index, false)
-              }
-            } else {
-              this.setState(
-                state => {
-                  state.showSubmenu = true
-                  return state
-                },
-                () => {
-                  if (this.props.resizeForSubmenu) {
-                    this.props.resizeForSubmenu(
-                      this.props.index,
-                      this.state.showSubmenu
-                    )
-                  }
-                }
-              )
-            }
-          }
-        )
+        toggleSubMenu()
       }
     }
+
+    let itemOnClick = item => {
+      return event => {
+        item.onClick(event)
+        if (item.toggleParent !== false) {
+          toggleSubMenu()
+        }
+      }
+    }
+
     return (
       <li className={className}>
         <Link
@@ -94,7 +108,7 @@ class NavItem extends React.Component {
                 component={item.component}
                 exact={item.exact}
                 href={item.href || ''}
-                onClick={item.onClick}
+                onClick={itemOnClick(item)}
                 key={index}>
                 {item.name}
               </Link>
