@@ -1,5 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'ionicons/dist/css/ionicons.min.css'
 // the syntax for these components from a parent project would be:
 // import { Boilerplate, Spinner, Nav, etc } from '@preaction/bootstrap-clips'
 import Boilerplate from './components/Boilerplate.jsx'
@@ -11,6 +12,13 @@ import Alert from './components/Alert.jsx'
 import BuyButton from './components/BuyButton.jsx'
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      toggler: false
+    }
+  }
+
   get menu() {
     return [
       {
@@ -59,6 +67,25 @@ class App extends React.Component {
             }
           }
         ]
+      },
+      {
+        name: 'Dropdown 3',
+        subMenu: [
+          {
+            name: (
+              <span>
+                <i
+                  className={`ion ion-md-${
+                    this.state.toggler ? 'checkbox' : 'square'
+                  }-outline`}
+                />{' '}
+                Toggler
+              </span>
+            ),
+            onClick: this.toggleToggler.bind(this),
+            toggleParent: false
+          }
+        ]
       }
     ]
   }
@@ -92,6 +119,14 @@ class App extends React.Component {
   get randomTheme() {
     let themes = ['blue', 'green', 'yellow', 'red', 'dark', 'light']
     return themes[Math.floor(Math.random() * themes.length)]
+  }
+
+  toggleToggler(event) {
+    event.preventDefault()
+    this.setState(state => {
+      state.toggler = !state.toggler
+      return state
+    })
   }
 
   render() {
