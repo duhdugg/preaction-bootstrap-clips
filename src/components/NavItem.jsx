@@ -4,7 +4,7 @@ import 'animate.css/animate.min.css'
 class NavItem extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { showSubmenu: false }
+    this.state = { showSubmenu: false, subMenuActive: false }
   }
 
   render() {
@@ -37,13 +37,11 @@ class NavItem extends React.Component {
         () => {
           if (this.state.showSubmenu) {
             setTimeout(() => {
-              this.setState(
-                state => {
-                  state.showSubmenu = false
-                  return state
-                },
-                () => {}
-              )
+              this.setState(state => {
+                state.showSubmenu = false
+                state.subMenuActive = false
+                return state
+              })
             }, 333)
             if (this.props.resizeForSubmenu) {
               this.props.resizeForSubmenu(this.props.index, false)
@@ -52,6 +50,7 @@ class NavItem extends React.Component {
             this.setState(
               state => {
                 state.showSubmenu = true
+                state.subMenuActive = true
                 return state
               },
               () => {
