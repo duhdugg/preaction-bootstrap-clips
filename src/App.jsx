@@ -273,7 +273,7 @@ class App extends React.Component {
                 console.debug('test')
               }}>
               <span role='img' aria-label='shopping cart'>
-                >🛒
+                🛒
               </span>{' '}
               Checkout
             </BuyButton>
