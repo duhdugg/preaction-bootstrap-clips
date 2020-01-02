@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import getClassesForColumn from '../lib/getClassesForColumn.js'
 
@@ -86,4 +87,19 @@ class Alert extends React.Component {
     )
   }
 }
+
+Alert.propTypes = {
+  children: PropTypes.node,
+  column: PropTypes.bool,
+  contain: PropTypes.bool,
+  header: PropTypes.node,
+  style: PropTypes.object,
+  theme: PropTypes.string,
+  width: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+    PropTypes.number
+  ])
+}
+
 export default Alert

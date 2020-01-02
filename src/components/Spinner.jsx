@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import '../stylesheets/spin.css'
 
@@ -87,6 +88,13 @@ class Spinner extends React.Component {
       </span>
     )
   }
+}
+
+Spinner.propTypes = {
+  fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  overlay: PropTypes.bool,
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  text: PropTypes.node
 }
 
 export default Spinner

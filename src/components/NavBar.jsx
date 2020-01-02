@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import NavItem from './NavItem.jsx'
 import 'animate.css/animate.min.css'
@@ -147,6 +148,15 @@ class NavBar extends React.Component {
       </nav>
     )
   }
+}
+
+NavBar.propTypes = {
+  brand: PropTypes.object,
+  fixedTo: PropTypes.oneOf(['top', 'bottom']),
+  menu: PropTypes.array.isRequired,
+  noContain: PropTypes.bool,
+  theme: PropTypes.oneOf(['dark', 'light']),
+  togglerPosition: PropTypes.oneOf(['left', 'right'])
 }
 
 export default NavBar

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import getClassesForColumn from '../lib/getClassesForColumn.js'
 
@@ -135,4 +136,38 @@ class Card extends React.Component {
     )
   }
 }
+
+Card.propTypes = {
+  bodyTheme: PropTypes.string,
+  children: PropTypes.node,
+  className: PropTypes.object,
+  column: PropTypes.bool,
+  contain: PropTypes.bool,
+  footer: PropTypes.node,
+  footerBgColor: PropTypes.string,
+  footerFontColor: PropTypes.string,
+  footerTheme: PropTypes.string,
+  header: PropTypes.node,
+  headerBgColor: PropTypes.string,
+  headerFontColor: PropTypes.string,
+  headerTheme: PropTypes.string,
+  style: PropTypes.object,
+  theme: PropTypes.oneOf([
+    'blue',
+    'dark',
+    'gray',
+    'grey',
+    'green',
+    'light',
+    'yellow',
+    'red',
+    'teal'
+  ]),
+  width: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+    PropTypes.number
+  ])
+}
+
 export default Card

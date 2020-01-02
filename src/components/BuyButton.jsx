@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import 'animate.css/animate.min.css'
 
@@ -138,6 +139,11 @@ class BuyButton extends React.Component {
       </button>
     )
   }
+}
+
+BuyButton.propTypes = {
+  children: PropTypes.node,
+  onClick: PropTypes.func
 }
 
 export default BuyButton

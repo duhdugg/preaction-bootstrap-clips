@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import NavItem from './NavItem.jsx'
 
@@ -55,6 +56,16 @@ class Nav extends React.Component {
       </ul>
     )
   }
+}
+
+Nav.propTypes = {
+  align: PropTypes.string,
+  className: PropTypes.string,
+  collapsible: PropTypes.bool,
+  fill: PropTypes.bool,
+  justify: PropTypes.bool,
+  menu: PropTypes.array.isRequired,
+  type: PropTypes.oneOf(['pills', 'tabs'])
 }
 
 export default Nav

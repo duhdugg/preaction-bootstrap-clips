@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 
 class BasicBoilerplate extends React.Component {
@@ -53,6 +54,16 @@ class BasicBoilerplate extends React.Component {
       </div>
     )
   }
+}
+
+BasicBoilerplate.propTypes = {
+  children: PropTypes.node,
+  footer: PropTypes.node,
+  header: PropTypes.node,
+  jumbotron: PropTypes.node,
+  navBar: PropTypes.element,
+  noContain: PropTypes.bool,
+  style: PropTypes.object
 }
 
 export default BasicBoilerplate

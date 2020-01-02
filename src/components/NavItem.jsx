@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import 'animate.css/animate.min.css'
 
@@ -133,6 +134,27 @@ function Link(props) {
     },
     props.children
   )
+}
+
+Link.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  component: PropTypes.element,
+  exact: PropTypes.bool,
+  href: PropTypes.string,
+  onClick: PropTypes.func
+}
+
+NavItem.propTypes = {
+  active: PropTypes.bool,
+  component: PropTypes.element,
+  disabled: PropTypes.bool,
+  href: PropTypes.string,
+  index: PropTypes.number,
+  name: PropTypes.node,
+  onClick: PropTypes.func,
+  resizeForSubmenu: PropTypes.func,
+  subMenu: PropTypes.array
 }
 
 export default NavItem
