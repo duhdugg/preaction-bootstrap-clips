@@ -187,7 +187,7 @@ class App extends React.Component {
                   theme={this.randomTheme}
                   style={{ container: { minWidth: '10em' } }}>
                   <blockquote className='blockquote'>
-                    "Here is my card."
+                    &quot;Here is my card.&quot;
                   </blockquote>
                 </Card>
               ))}
@@ -241,7 +241,7 @@ class App extends React.Component {
             </Alert>
             <Alert theme='warning' header={<em>Warning!</em>} />
             <Alert theme='danger' header='Error'>
-              You've been doing it wrong.
+              You&apos;ve been doing it wrong.
             </Alert>
             <Alert theme='dark'>dark</Alert>
             <Alert theme='light'>light</Alert>
