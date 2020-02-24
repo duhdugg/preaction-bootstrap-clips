@@ -10,11 +10,13 @@ import NavBar from './components/NavBar.jsx'
 import Card from './components/Card.jsx'
 import Alert from './components/Alert.jsx'
 import BuyButton from './components/BuyButton.jsx'
+import Modal from './components/Modal.jsx'
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      modal: false,
       toggler: false
     }
   }
@@ -283,6 +285,35 @@ class App extends React.Component {
               <Spinner />
             </p>
           </Card>
+          <Card header='Modal'>
+            <button
+              className='btn btn-primary'
+              onClick={() => {
+                this.setState({ modal: true })
+              }}>
+              Show Modal
+            </button>
+          </Card>
+          {this.state.modal ? (
+            <Modal show={this.state.modal}>
+              <Card
+                header='Test Modal'
+                footer={
+                  <button
+                    className='btn btn-danger'
+                    onClick={() => {
+                      this.setState({ modal: false })
+                    }}>
+                    Close
+                  </button>
+                }
+                noMargin={true}>
+                Modal content goes here
+              </Card>
+            </Modal>
+          ) : (
+            ''
+          )}
         </Boilerplate>
       </div>
     )
