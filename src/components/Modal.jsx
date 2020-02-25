@@ -8,7 +8,8 @@ class Modal extends React.Component {
       <div
         className='modal'
         style={{
-          display: 'block'
+          display: 'block',
+          overflowY: 'auto'
         }}>
         <div className='modal-dialog modal-lg'>
           <div className='modal-content'>{this.props.children}</div>
