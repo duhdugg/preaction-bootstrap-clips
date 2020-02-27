@@ -120,6 +120,13 @@ class App extends React.Component {
     return themes[Math.floor(Math.random() * themes.length)]
   }
 
+  toggleModal() {
+    this.setState(state => {
+      state.modal = !state.modal
+      return state
+    })
+  }
+
   toggleToggler(event) {
     event.preventDefault()
     this.setState(state => {
@@ -290,21 +297,12 @@ class App extends React.Component {
             </button>
           </Card>
           {this.state.modal ? (
-            <Modal show={this.state.modal}>
-              <Card
-                header='Test Modal'
-                footer={
-                  <button
-                    className='btn btn-danger'
-                    onClick={() => {
-                      this.setState({ modal: false })
-                    }}>
-                    Close
-                  </button>
-                }
-                noMargin={true}>
-                Modal content goes here
-              </Card>
+            <Modal
+              show={this.state.modal}
+              title='Modal Title'
+              closeHandler={this.toggleModal.bind(this)}
+              closeButtonText='Cancel'>
+              Modal content goes here
             </Modal>
           ) : (
             ''

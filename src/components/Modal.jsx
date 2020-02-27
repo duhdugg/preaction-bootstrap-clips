@@ -1,18 +1,65 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import '../stylesheets/modal.css'
+import { MdClose } from 'react-icons/md'
 
 class Modal extends React.Component {
+  close() {
+    if (this.props.closeHandler) {
+      this.props.closeHandler()
+    }
+  }
+
+  get closeButtonText() {
+    return this.props.closeButtonText ? this.props.closeButtonText : 'Close'
+  }
+
+  get show() {
+    return {
+      closeButton: !this.props.hideCloseButton
+    }
+  }
+
   render() {
     return (
       <div
         className='modal'
+        role='dialog'
+        tabIndex='-1'
         style={{
           display: 'block',
           overflowY: 'auto'
         }}>
-        <div className='modal-dialog modal-lg'>
-          <div className='modal-content'>{this.props.children}</div>
+        <div className='modal-dialog modal-lg' role='document'>
+          <div className='modal-content'>
+            <div className='modal-header'>
+              <h5 className='modal-title'>{this.props.title}</h5>
+              {this.show.closeButton ? (
+                <button
+                  type='button'
+                  className='close'
+                  onClick={this.close.bind(this)}
+                  title={this.closeButtonText}>
+                  <MdClose />
+                </button>
+              ) : (
+                ''
+              )}
+            </div>
+            <div className='modal-body'>{this.props.children}</div>
+            <div className='modal-footer'>
+              {this.show.closeButton ? (
+                <button
+                  type='button'
+                  className='btn btn-secondary'
+                  onClick={this.close.bind(this)}>
+                  {this.closeButtonText}
+                </button>
+              ) : (
+                ''
+              )}
+            </div>
+          </div>
         </div>
       </div>
     )
@@ -36,7 +83,11 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = {
-  children: PropTypes.node
+  closeButtonText: PropTypes.string,
+  closeHandler: PropTypes.func,
+  children: PropTypes.node,
+  hideCloseButton: PropTypes.bool,
+  title: PropTypes.node
 }
 
 export default Modal
