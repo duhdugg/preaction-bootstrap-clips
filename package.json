@@ -1,6 +1,6 @@
 {
   "name": "@preaction/bootstrap-clips",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "dependencies": {
     "prop-types": "^15.7.2"
   },
