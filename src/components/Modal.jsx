@@ -47,18 +47,7 @@ class Modal extends React.Component {
               )}
             </div>
             <div className='modal-body'>{this.props.children}</div>
-            <div className='modal-footer'>
-              {this.show.closeButton ? (
-                <button
-                  type='button'
-                  className='btn btn-secondary'
-                  onClick={this.close.bind(this)}>
-                  {this.closeButtonText}
-                </button>
-              ) : (
-                ''
-              )}
-            </div>
+            <div className='modal-footer'>{this.props.footer || ''}</div>
           </div>
         </div>
       </div>
@@ -86,6 +75,7 @@ Modal.propTypes = {
   closeButtonText: PropTypes.string,
   closeHandler: PropTypes.func,
   children: PropTypes.node,
+  footer: PropTypes.node,
   hideCloseButton: PropTypes.bool,
   title: PropTypes.node
 }

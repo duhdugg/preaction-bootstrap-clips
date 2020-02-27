@@ -301,7 +301,23 @@ class App extends React.Component {
               show={this.state.modal}
               title='Modal Title'
               closeHandler={this.toggleModal.bind(this)}
-              closeButtonText='Cancel'>
+              closeButtonText='Cancel'
+              footer={
+                <div>
+                  <button
+                    type='button'
+                    className='btn btn-primary'
+                    onClick={this.toggleModal.bind(this)}>
+                    Save
+                  </button>{' '}
+                  <button
+                    type='button'
+                    className='btn btn-secondary'
+                    onClick={this.toggleModal.bind(this)}>
+                    Cancel
+                  </button>
+                </div>
+              }>
               Modal content goes here
             </Modal>
           ) : (
