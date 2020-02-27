@@ -1,6 +1,5 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import 'ionicons/dist/css/ionicons.min.css'
 // the syntax for these components from a parent project would be:
 // import { Boilerplate, Spinner, Nav, etc } from '@preaction/bootstrap-clips'
 import Boilerplate from './components/Boilerplate.jsx'
@@ -11,6 +10,8 @@ import Card from './components/Card.jsx'
 import Alert from './components/Alert.jsx'
 import BuyButton from './components/BuyButton.jsx'
 import Modal from './components/Modal.jsx'
+import { MdShoppingCart } from 'react-icons/md'
+import { FaToggleOn, FaToggleOff } from 'react-icons/fa'
 
 class App extends React.Component {
   constructor(props) {
@@ -76,12 +77,8 @@ class App extends React.Component {
           {
             name: (
               <span>
-                <i
-                  className={`ion ion-md-${
-                    this.state.toggler ? 'checkbox' : 'square'
-                  }-outline`}
-                />{' '}
-                Toggler
+                {this.state.toggler ? <FaToggleOn /> : <FaToggleOff />}
+                <span style={{ marginLeft: '0.3333em' }}>Toggler</span>
               </span>
             ),
             onClick: this.toggleToggler.bind(this),
@@ -274,15 +271,13 @@ class App extends React.Component {
               onClick={event => {
                 console.debug('test')
               }}>
-              <span role='img' aria-label='shopping cart'>
-                🛒
-              </span>{' '}
+              <MdShoppingCart />
               Checkout
             </BuyButton>
           </Card>
           <Card header='Spinner'>
             <p>
-              <Spinner />
+              <Spinner size='3' />
             </p>
           </Card>
           <Card header='Modal'>
