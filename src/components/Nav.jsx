@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import NavItem from './NavItem.jsx'
+import '../stylesheets/nav.css'
 
 class Nav extends React.Component {
   render() {

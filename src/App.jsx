@@ -26,8 +26,7 @@ class App extends React.Component {
     return [
       {
         name: 'Home',
-        href: '.',
-        active: true
+        href: '.'
       },
       {
         name: 'Test',
@@ -48,12 +47,17 @@ class App extends React.Component {
 
       {
         name: 'Dropdown 1',
+        active: true,
+        onClick: event => {
+          event.preventDefault()
+          console.debug('dropdown 1', event)
+        },
         subMenu: [
           {
             name: 'Item 1',
             onClick: event => {
               event.preventDefault()
-              console.debug(event)
+              console.debug('dropdown 1 > item 1', event)
             }
           },
           { name: 'Item 2', active: true },

@@ -3,11 +3,6 @@ import React from 'react'
 import 'animate.css/animate.min.css'
 
 class NavItem extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { showSubmenu: false, subMenuActive: false }
-  }
-
   render() {
     let classes = ['nav-item']
     if (this.props.subMenu) {
@@ -29,61 +24,21 @@ class NavItem extends React.Component {
 
     let href = this.props.href || ''
 
-    let toggleSubMenu = () => {
-      this.setState(
-        state => {
-          state.subMenuActive = !state.subMenuActive
-          return state
-        },
-        () => {
-          if (this.state.showSubmenu) {
-            setTimeout(() => {
-              this.setState(state => {
-                state.showSubmenu = false
-                state.subMenuActive = false
-                return state
-              })
-            }, 333)
-            if (this.props.resizeForSubmenu) {
-              this.props.resizeForSubmenu(this.props.index, false)
-            }
-          } else {
-            this.setState(
-              state => {
-                state.showSubmenu = true
-                state.subMenuActive = true
-                return state
-              },
-              () => {
-                if (this.props.resizeForSubmenu) {
-                  this.props.resizeForSubmenu(
-                    this.props.index,
-                    this.state.showSubmenu
-                  )
-                }
-              }
-            )
-          }
-        }
-      )
-    }
-
     let onClick = event => {
       if (this.props.onClick) {
         event.persist()
         this.props.onClick(event)
-      }
-      if (this.props.subMenu) {
+      } else if (this.props.href === undefined) {
         event.preventDefault()
-        toggleSubMenu()
       }
     }
 
     let itemOnClick = item => {
       return event => {
-        item.onClick(event)
-        if (item.toggleParent !== false) {
-          toggleSubMenu()
+        if (item.onClick) {
+          item.onClick(event)
+        } else if (item.href === undefined) {
+          event.preventDefault()
         }
       }
     }
@@ -98,10 +53,7 @@ class NavItem extends React.Component {
           {this.props.name}
         </Link>
         {this.props.subMenu ? (
-          <div
-            className={`dropdown-menu animated faster ${
-              this.state.showSubmenu ? 'show' : ''
-            } ${this.state.subMenuActive ? 'fadeIn' : 'fadeOut'}`}>
+          <div className='dropdown-menu animated faster fadeIn'>
             {this.props.subMenu.map((item, index) => (
               <Link
                 className={`dropdown-item ${item.active ? 'active' : ''}`}

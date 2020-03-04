@@ -26,22 +26,8 @@ class NavBar extends React.Component {
   }
 
   setSize() {
-    let height =
-      this.state.toggler && this.props.menu ? this.props.menu.length * 2.5 : 0
-    let hasActiveSubmenu = false
-    let x = 0
-    while (x < (this.props.menu || []).length) {
-      let item = this.props.menu[x]
-      if (this.state.shownSubmenuItems[x] && this.state.toggler) {
-        height += (item.subMenu || []).length * 2.5
-        hasActiveSubmenu = true
-      }
-      x++
-    }
-    height += hasActiveSubmenu ? 1 : 0
-    height = `${height}em`
     this.setState(state => {
-      state.height = height
+      state.height = state.toggler && this.props.menu ? '100vh' : 0
       return state
     })
   }
@@ -116,7 +102,7 @@ class NavBar extends React.Component {
               ))}
             </ul>
           </div>
-          <div className='navbar-collapse d-md-none d-md-none'>
+          <div className='navbar-collapse d-md-none'>
             <ul
               className={`navbar-nav d-md-none animated faster ${
                 this.state.toggler ? 'bounceInDown' : 'bounceOutUp'
