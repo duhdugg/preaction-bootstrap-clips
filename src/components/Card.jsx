@@ -56,7 +56,7 @@ class Card extends React.Component {
         break
       case 'gray':
       case 'grey':
-        theme = 'bg-secondary text-dark'
+        theme = 'bg-secondary text-light'
         break
       case 'green':
         theme = 'bg-success text-light'
