@@ -66,7 +66,7 @@ Nav.propTypes = {
   fill: PropTypes.bool,
   justify: PropTypes.bool,
   menu: PropTypes.array.isRequired,
-  type: PropTypes.oneOf(['pills', 'tabs'])
+  type: PropTypes.oneOf(['basic', 'pills', 'tabs'])
 }
 
 export default Nav
