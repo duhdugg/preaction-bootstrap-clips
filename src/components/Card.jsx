@@ -17,9 +17,6 @@ class Card extends React.Component {
 
   get containerClassName() {
     let classes = []
-    if (!this.props.noMargin) {
-      classes.push('mb-3')
-    }
     if (this.props.contain) {
       classes.push('container')
     }
@@ -154,7 +151,6 @@ Card.propTypes = {
   headerBgColor: PropTypes.string,
   headerFontColor: PropTypes.string,
   headerTheme: PropTypes.string,
-  noMargin: PropTypes.bool,
   style: PropTypes.object,
   theme: PropTypes.oneOf([
     'blue',
