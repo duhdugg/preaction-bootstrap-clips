@@ -17,6 +17,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      maxWidthLayout: false,
       modal: false,
       toggler: false
     }
@@ -143,6 +144,7 @@ class App extends React.Component {
     return (
       <div className='app'>
         <Boilerplate
+          noContain={this.state.maxWidthLayout}
           jumbotron={<h1 className='display-4'>Preaction Boostrap Clips</h1>}
           header={<h2 className='subtitle'>Examples</h2>}
           navBar={this.navBar}
@@ -327,6 +329,21 @@ class App extends React.Component {
           ) : (
             ''
           )}
+          <Card header='Layout'>
+            <label>
+              <input
+                type='checkbox'
+                checked={this.state.maxWidthLayout}
+                onChange={e => {
+                  let value = e.target.checked
+                  this.setState(state =>
+                    Object.assign(state, { maxWidthLayout: value })
+                  )
+                }}
+              />{' '}
+              Max Width Layout
+            </label>
+          </Card>
         </Boilerplate>
       </div>
     )
