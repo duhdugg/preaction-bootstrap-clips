@@ -51,6 +51,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/dougelkin/preaction-bootstrap-clips.git"
+    "url": "git+ssh://git@github.com:duhdugg/preaction-bootstrap-clips.git"
   }
 }
