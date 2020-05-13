@@ -104,8 +104,10 @@ class NavBar extends React.Component {
           </div>
           <div className='navbar-collapse d-md-none'>
             <ul
-              className={`navbar-nav d-md-none animated faster ${
-                this.state.toggler ? 'bounceInDown' : 'bounceOutUp'
+              className={`navbar-nav d-md-none animate__animated animate__faster ${
+                this.state.toggler
+                  ? 'animate__bounceInDown'
+                  : 'animate__bounceOutUp'
               }`}
               style={{
                 height: this.state.height,

@@ -117,9 +117,9 @@ class BuyButton extends React.Component {
     return (
       <button
         type='button'
-        className={`btn btn-success animated fast ${
-          this.state.rubberBand ? 'rubberBand' : ''
-        } ${this.state.pulse ? 'pulse' : ''}`}
+        className={`btn btn-success animate__animated animate__fast ${
+          this.state.rubberBand ? 'animate__rubberBand' : ''
+        } ${this.state.pulse ? 'animate__pulse' : ''}`}
         style={{
           padding: '0.75rem 1.25rem',
           fontSize: '2.3rem',

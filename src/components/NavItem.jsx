@@ -53,7 +53,7 @@ class NavItem extends React.Component {
           {this.props.name}
         </Link>
         {this.props.subMenu ? (
-          <div className='dropdown-menu animated faster fadeIn'>
+          <div className='dropdown-menu animate__animated animate__faster animate__fadeIn'>
             {this.props.subMenu.map((item, index) => (
               <Link
                 className={`dropdown-item ${item.active ? 'active' : ''}`}
