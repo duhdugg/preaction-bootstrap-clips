@@ -270,12 +270,6 @@ It is under active development and the full scope of this project is pending det
     export { example1, example2, example3, example4, example5 }
     ```
 
-### // TODO:
-
-- modals
-- sortable, filterable tables
-- standardize and document theming props
-
 ### More examples
 
 See [src/App.jsx](https://github.com/duhdugg/preaction-bootstrap-clips/blob/master/src/App.jsx)
