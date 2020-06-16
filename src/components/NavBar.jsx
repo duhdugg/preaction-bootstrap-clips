@@ -13,6 +13,10 @@ class NavBar extends React.Component {
     }
   }
 
+  disableToggler() {
+    this.setState({ toggler: false }, this.setSize)
+  }
+
   get fixedClass() {
     let value = ''
     if (this.props.fixedTo) {
@@ -77,7 +81,11 @@ class NavBar extends React.Component {
                   this.props.brand.link ? '' : 'mb-0 h1'
                 }`}
                 href={this.props.brand.href || ''}
-                onClick={this.props.brand.onClick}>
+                onClick={event => {
+                  this.disableToggler()
+                  event.persist()
+                  this.props.brand.onClick(event)
+                }}>
                 {this.props.brand.name}
               </a>
             ) : (
@@ -98,6 +106,12 @@ class NavBar extends React.Component {
                   exact={item.exact}
                   onClick={item.onClick}
                   subMenu={item.subMenu}
+                  disableToggler={
+                    item.toggleParent === false
+                      ? undefined
+                      : this.disableToggler.bind(this)
+                  }
+                  toggleParent={item.toggleParent}
                 />
               ))}
             </ul>
@@ -128,6 +142,12 @@ class NavBar extends React.Component {
                   onClick={item.onClick}
                   subMenu={item.subMenu}
                   resizeForSubmenu={this.resizeForSubmenu.bind(this)}
+                  disableToggler={
+                    item.toggleParent === false
+                      ? undefined
+                      : this.disableToggler.bind(this)
+                  }
+                  toggleParent={item.toggleParent}
                 />
               ))}
             </ul>

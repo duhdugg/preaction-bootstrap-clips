@@ -3,6 +3,13 @@ import React from 'react'
 import 'animate.css/animate.min.css'
 
 class NavItem extends React.Component {
+  disableParentToggler() {
+    if (this.props.disableToggler) {
+      console.debug(this.props.toggleParent)
+      this.props.disableToggler()
+    }
+  }
+
   render() {
     let classes = ['nav-item']
     if (this.props.subMenu) {
@@ -31,6 +38,9 @@ class NavItem extends React.Component {
       } else if (this.props.href === undefined) {
         event.preventDefault()
       }
+      if (!this.props.subMenu && this.props.toggleParent !== false) {
+        this.disableParentToggler()
+      }
     }
 
     let itemOnClick = item => {
@@ -39,6 +49,9 @@ class NavItem extends React.Component {
           item.onClick(event)
         } else if (item.href === undefined) {
           event.preventDefault()
+        }
+        if (item.toggleParent !== false) {
+          this.disableParentToggler()
         }
       }
     }
@@ -101,12 +114,14 @@ NavItem.propTypes = {
   active: PropTypes.bool,
   component: PropTypes.element,
   disabled: PropTypes.bool,
+  disableToggler: PropTypes.func,
   href: PropTypes.string,
   index: PropTypes.number,
   name: PropTypes.node,
   onClick: PropTypes.func,
   resizeForSubmenu: PropTypes.func,
-  subMenu: PropTypes.array
+  subMenu: PropTypes.array,
+  toggleParent: PropTypes.bool
 }
 
 export default NavItem
