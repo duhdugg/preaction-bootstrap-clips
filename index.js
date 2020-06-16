@@ -1,6 +1,6 @@
 import Alert from './src/components/Alert.jsx'
+import AnimatedButton from './src/components/AnimatedButton.jsx'
 import Boilerplate from './src/components/Boilerplate.jsx'
-import BuyButton from './src/components/BuyButton.jsx'
 import Card from './src/components/Card.jsx'
 import Modal from './src/components/Modal.jsx'
 import Nav from './src/components/Nav.jsx'
@@ -11,8 +11,20 @@ import getClassesForColumn from './src/lib/getClassesForColumn.js'
 
 export {
   Alert,
+  AnimatedButton,
   Boilerplate,
-  BuyButton,
+  Card,
+  Modal,
+  Nav,
+  NavBar,
+  NavItem,
+  Spinner,
+  getClassesForColumn
+}
+export default {
+  Alert,
+  AnimatedButton,
+  Boilerplate,
   Card,
   Modal,
   Nav,

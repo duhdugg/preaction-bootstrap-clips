@@ -8,7 +8,7 @@ import Nav from './components/Nav.jsx'
 import NavBar from './components/NavBar.jsx'
 import Card from './components/Card.jsx'
 import Alert from './components/Alert.jsx'
-import BuyButton from './components/BuyButton.jsx'
+import AnimatedButton from './components/AnimatedButton.jsx'
 import Modal from './components/Modal.jsx'
 import { MdShoppingCart } from 'react-icons/md'
 import { FaToggleOn, FaToggleOff } from 'react-icons/fa'
@@ -279,14 +279,14 @@ class App extends React.Component {
               </div>
             </Card>
           </Card>
-          <Card header='Buy Button' headerTheme='dark'>
-            <BuyButton
+          <Card header='Animated Button' headerTheme='dark'>
+            <AnimatedButton
               onClick={event => {
                 console.debug('test')
               }}>
               <MdShoppingCart />
               Checkout
-            </BuyButton>
+            </AnimatedButton>
           </Card>
           <Card header='Spinner'>
             <p>
