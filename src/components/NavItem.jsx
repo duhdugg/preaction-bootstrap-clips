@@ -5,7 +5,6 @@ import 'animate.css/animate.min.css'
 class NavItem extends React.Component {
   disableParentToggler() {
     if (this.props.disableToggler) {
-      console.debug(this.props.toggleParent)
       this.props.disableToggler()
     }
   }
