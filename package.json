@@ -1,33 +1,39 @@
 {
   "name": "@preaction/bootstrap-clips",
   "version": "1.4.17",
-  "dependencies": {
-    "prop-types": "^15.7.2"
-  },
+  "main": "dist/preaction-bootstrap-clips.cjs.js",
+  "module": "dist/preaction-bootstrap-clips.esm.js",
+  "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
-    "@babel/preset-react": "^7.10.4",
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@rollup/plugin-babel": "^5.1.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "@rollup/plugin-sucrase": "^3.1.0",
     "animate.css": "^4.1.0",
-    "babel-loader": "^8.1.0",
     "bootstrap": "^4.5.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "^2.0.5",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
     "react-scripts": "^3.4.1",
-    "webpack-cli": "^3.3.12"
+    "rollup": "^2.23.0",
+    "rollup-plugin-peer-deps-external": "^2.2.3",
+    "rollup-plugin-postcss": "^3.1.3",
+    "rollup-plugin-terser": "^6.1.0"
   },
-  "main": "dist/preaction-bootstrap-clips.min.js",
   "peerDependencies": {
+    "bootstrap": "^4.5.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "webpack",
+    "build": "rollup -c",
     "test": "prettier -c *.js src/*.* src/components/* src/lib/* && eslint *.js src/*.j* src/components/* src/lib/* && react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -41,12 +47,10 @@
       "ecmaVersion": 2020
     }
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "browserslist": {
+    "development": "defaults and supports es6-module",
+    "production": "defaults"
+  },
   "author": "Doug Elkin <doug@dougelkin.com> (https://dougelkin.com)",
   "license": "MIT",
   "repository": {
