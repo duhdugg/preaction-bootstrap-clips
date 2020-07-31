@@ -89,4 +89,4 @@ Spinner.propTypes = {
   text: PropTypes.node
 }
 
-export default Spinner
+export { Spinner }

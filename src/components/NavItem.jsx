@@ -123,4 +123,4 @@ NavItem.propTypes = {
   toggleParent: PropTypes.bool
 }
 
-export default NavItem
+export { NavItem }

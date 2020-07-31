@@ -1,35 +1,10 @@
-import Alert from './src/components/Alert.jsx'
-import AnimatedButton from './src/components/AnimatedButton.jsx'
-import Boilerplate from './src/components/Boilerplate.jsx'
-import Card from './src/components/Card.jsx'
-import Modal from './src/components/Modal.jsx'
-import Nav from './src/components/Nav.jsx'
-import NavBar from './src/components/NavBar.jsx'
-import NavItem from './src/components/NavItem.jsx'
-import Spinner from './src/components/Spinner.jsx'
-import getClassesForColumn from './src/lib/getClassesForColumn.js'
-
-export {
-  Alert,
-  AnimatedButton,
-  Boilerplate,
-  Card,
-  Modal,
-  Nav,
-  NavBar,
-  NavItem,
-  Spinner,
-  getClassesForColumn
-}
-export default {
-  Alert,
-  AnimatedButton,
-  Boilerplate,
-  Card,
-  Modal,
-  Nav,
-  NavBar,
-  NavItem,
-  Spinner,
-  getClassesForColumn
-}
+export { Alert } from './src/components/Alert.jsx'
+export { AnimatedButton } from './src/components/AnimatedButton.jsx'
+export { Boilerplate } from './src/components/Boilerplate.jsx'
+export { Card } from './src/components/Card.jsx'
+export { Modal } from './src/components/Modal.jsx'
+export { Nav } from './src/components/Nav.jsx'
+export { NavBar } from './src/components/NavBar.jsx'
+export { NavItem } from './src/components/NavItem.jsx'
+export { Spinner } from './src/components/Spinner.jsx'
+export { getClassesForColumn } from './src/lib/getClassesForColumn.js'

@@ -80,4 +80,4 @@ Modal.propTypes = {
   title: PropTypes.node
 }
 
-export default Modal
+export { Modal }

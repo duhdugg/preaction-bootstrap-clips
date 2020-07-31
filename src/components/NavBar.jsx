@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import NavItem from './NavItem.jsx'
+import { NavItem } from './NavItem.jsx'
 import 'animate.css/animate.min.css'
 
 class NavBar extends React.Component {
@@ -167,4 +167,4 @@ NavBar.propTypes = {
   togglerPosition: PropTypes.oneOf(['left', 'right'])
 }
 
-export default NavBar
+export { NavBar }

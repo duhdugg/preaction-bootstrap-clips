@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import getClassesForColumn from '../lib/getClassesForColumn.js'
+import { getClassesForColumn } from '../lib/getClassesForColumn.js'
 
 class Alert extends React.Component {
   get className() {
@@ -102,4 +102,4 @@ Alert.propTypes = {
   ])
 }
 
-export default Alert
+export { Alert }

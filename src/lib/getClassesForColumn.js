@@ -1,4 +1,4 @@
-export default width => {
+const getClassesForColumn = width => {
   width = width || { sm: 'auto' }
   let classes = []
   const getSizeNum = value => {
@@ -54,3 +54,5 @@ export default width => {
   }
   return classes
 }
+
+export { getClassesForColumn }

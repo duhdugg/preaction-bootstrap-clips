@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import getClassesForColumn from '../lib/getClassesForColumn.js'
+import { getClassesForColumn } from '../lib/getClassesForColumn.js'
 
 class Card extends React.Component {
   get className() {
@@ -170,4 +170,4 @@ Card.propTypes = {
   ])
 }
 
-export default Card
+export { Card }
