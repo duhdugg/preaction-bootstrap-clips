@@ -27,6 +27,7 @@
     "rollup-plugin-terser": "^6.1.0"
   },
   "peerDependencies": {
+    "animate.css": "^4.1.0",
     "bootstrap": "^4.5.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"

@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import 'animate.css/animate.min.css'
 
 class NavItem extends React.Component {
   disableParentToggler() {

@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { NavItem } from './NavItem.jsx'
-import 'animate.css/animate.min.css'
 
 class NavBar extends React.Component {
   constructor(props) {
