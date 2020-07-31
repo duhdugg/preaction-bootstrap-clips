@@ -70,7 +70,6 @@ const umdConfig = {
       globals: {
         react: 'React',
         'react-dom': 'ReactDOM',
-        // 'react-dom/server': 'ReactDOMServer',
         'prop-types': 'PropTypes'
       },
       sourcemap: true,
