@@ -115,7 +115,8 @@ class AnimatedButton extends React.Component {
   render() {
     return (
       <button
-        type='button'
+        type={this.props.type || 'button'}
+        disabled={this.props.disabled || false}
         className={`btn btn-success animate__animated animate__fast ${
           this.state.rubberBand ? 'animate__rubberBand' : ''
         } ${this.state.pulse ? 'animate__pulse' : ''}`}
@@ -142,7 +143,9 @@ class AnimatedButton extends React.Component {
 
 AnimatedButton.propTypes = {
   children: PropTypes.node,
-  onClick: PropTypes.func
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
+  type: PropTypes.string
 }
 
 export { AnimatedButton }
