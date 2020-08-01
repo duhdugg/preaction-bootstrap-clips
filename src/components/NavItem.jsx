@@ -102,7 +102,7 @@ function Link(props) {
 Link.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  component: PropTypes.element,
+  component: PropTypes.node,
   exact: PropTypes.bool,
   href: PropTypes.string,
   onClick: PropTypes.func
@@ -110,7 +110,7 @@ Link.propTypes = {
 
 NavItem.propTypes = {
   active: PropTypes.bool,
-  component: PropTypes.element,
+  component: PropTypes.node,
   disabled: PropTypes.bool,
   disableToggler: PropTypes.func,
   href: PropTypes.string,
