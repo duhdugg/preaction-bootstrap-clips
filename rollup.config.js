@@ -26,6 +26,7 @@ const plugins = [
 
 const cjsConfig = {
   input: 'index.js',
+  external: ['prop-types'],
   output: [
     {
       file: pkg.main,
@@ -52,6 +53,7 @@ const cjsConfig = {
 
 const esmConfig = {
   input: 'index.js',
+  external: ['prop-types'],
   output: [
     {
       file: pkg.module,
@@ -64,6 +66,7 @@ const esmConfig = {
 
 const umdConfig = {
   input: 'index.js',
+  external: ['prop-types'],
   output: [
     {
       file: 'dist/preaction-bootstrap-clips.umd.js',
