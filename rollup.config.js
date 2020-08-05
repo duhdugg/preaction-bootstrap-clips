@@ -6,6 +6,7 @@ import sucrase from '@rollup/plugin-sucrase'
 import external from 'rollup-plugin-peer-deps-external'
 import { terser } from 'rollup-plugin-terser'
 import pkg from './package.json'
+import visualizer from 'rollup-plugin-visualizer'
 
 const plugins = [
   external(),
@@ -46,7 +47,7 @@ const cjsConfig = {
       ]
     }
   ],
-  plugins
+  plugins: plugins.concat(visualizer({ filename: 'rollup-stats/cjs.html' }))
 }
 
 const esmConfig = {
@@ -58,7 +59,7 @@ const esmConfig = {
       sourcemap: true
     }
   ],
-  plugins
+  plugins: plugins.concat(visualizer({ filename: 'rollup-stats/esm.html' }))
 }
 
 const umdConfig = {
@@ -91,7 +92,7 @@ const umdConfig = {
       ]
     }
   ],
-  plugins
+  plugins: plugins.concat(visualizer({ filename: 'rollup-stats/umd.html' }))
 }
 
 export default [esmConfig, cjsConfig, umdConfig]

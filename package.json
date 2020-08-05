@@ -29,7 +29,8 @@
     "rollup": "^2.23.0",
     "rollup-plugin-peer-deps-external": "^2.2.3",
     "rollup-plugin-postcss": "^3.1.3",
-    "rollup-plugin-terser": "^6.1.0"
+    "rollup-plugin-terser": "^6.1.0",
+    "rollup-plugin-visualizer": "^4.0.4"
   },
   "peerDependencies": {
     "animate.css": "^4.1.0",
