@@ -73,7 +73,7 @@ const umdConfig = {
         'prop-types': 'PropTypes'
       },
       sourcemap: true,
-      name: '@preaction/preaction-bootstrap-clips',
+      name: '@preaction/bootstrap-clips',
       plugins: [
         getBabelOutputPlugin({
           allowAllFormats: true,
