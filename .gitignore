@@ -9,7 +9,7 @@
 # production
 /build
 /dist
-/rollup-stats
+/stats
 
 # misc
 .DS_Store

@@ -48,7 +48,7 @@ const cjsConfig = {
       ]
     }
   ],
-  plugins: plugins.concat(visualizer({ filename: 'rollup-stats/cjs.html' }))
+  plugins: plugins.concat(visualizer({ filename: 'stats/cjs.html' }))
 }
 
 const esmConfig = {
@@ -61,7 +61,7 @@ const esmConfig = {
       sourcemap: true
     }
   ],
-  plugins: plugins.concat(visualizer({ filename: 'rollup-stats/esm.html' }))
+  plugins: plugins.concat(visualizer({ filename: 'stats/esm.html' }))
 }
 
 const umdConfig = {
@@ -95,7 +95,7 @@ const umdConfig = {
       ]
     }
   ],
-  plugins: plugins.concat(visualizer({ filename: 'rollup-stats/umd.html' }))
+  plugins: plugins.concat(visualizer({ filename: 'stats/umd.html' }))
 }
 
 export default [esmConfig, cjsConfig, umdConfig]
