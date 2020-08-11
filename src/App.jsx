@@ -149,7 +149,8 @@ class App extends React.Component {
           jumbotron={<h1 className='display-4'>Preaction Boostrap Clips</h1>}
           header={<h2 className='subtitle'>Examples</h2>}
           navBar={this.navBar}
-          footer='2018 &copy; Doug Elkin'>
+          footer='2018 &copy; Doug Elkin'
+          style={{ footer: { marginTop: '1em' } }}>
           <Card header='Navs'>
             <div className='row'>
               <Card header='Normal' column width={1}>

@@ -11,9 +11,7 @@ class Boilerplate extends React.Component {
       jumbotron: {},
       header: {},
       main: {},
-      footer: {
-        marginTop: '1em'
-      }
+      footer: {}
     }
     if (this.props.style) {
       Object.assign(style, this.props.style)
