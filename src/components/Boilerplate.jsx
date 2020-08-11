@@ -19,7 +19,9 @@ class Boilerplate extends React.Component {
     if (this.props.navBar) {
       // the header will need extra space if the navBar is fixed to the top
       if (this.props.navBar.props.fixedTo === 'top') {
-        style.header.marginTop = '3.5em'
+        if (style.header.marginTop === undefined) {
+          style.header.marginTop = '3.5em'
+        }
       }
     }
     return style
