@@ -8,7 +8,7 @@
 
 `npm install --save-dev @preaction/bootstrap-clips`
 
-### Usage
+### Import
 
 This library uses named exports only.
 

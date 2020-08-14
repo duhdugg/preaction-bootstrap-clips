@@ -1,7 +1,8 @@
 module.exports = {
   sections: [
     { name: 'Install and Import', content: 'docs/usage.md' },
-    { name: 'Components', components: 'src/components/*.jsx' }
+    { name: 'Components', components: 'src/components/*.jsx' },
+    { name: 'Functions', content: 'docs/functions.md' }
   ],
   template: {
     head: {

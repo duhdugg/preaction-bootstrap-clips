@@ -1,3 +1,9 @@
+/**
+ * @function
+ *
+ * @param width can be a string, number, or object with properties representing bootstrap breakpoints: xs, sm, md, lg, xl
+ * @returns {array} an array of className strings
+ */
 const getClassesForColumn = width => {
   width = width || { sm: 'auto' }
   let classes = []
