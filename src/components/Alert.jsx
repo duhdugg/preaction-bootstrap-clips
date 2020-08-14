@@ -2,6 +2,10 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { getClassesForColumn } from '../lib/getClassesForColumn.js'
 
+/**
+ * > _Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages._
+ * > https://getbootstrap.com/docs/4.5/components/alerts/
+ */
 class Alert extends React.Component {
   get className() {
     return `alert alert-${this.theme}`
@@ -90,16 +94,48 @@ class Alert extends React.Component {
 
 Alert.propTypes = {
   children: PropTypes.node,
+  /** set to true if the alert is a child of a `.row` element */
   column: PropTypes.bool,
+  /** setting to true will include the `.container` class to the outer `<div>`
+   * [See: Bootstrap Docs > Layout > Overview > Containers](https://getbootstrap.com/docs/4.5/layout/overview/#containers)
+   * */
   contain: PropTypes.bool,
+  /** will render an an alert heading with this prop as its contents **/
   header: PropTypes.node,
+  /** set the style of the inner container and alert `<div>` elements separately */
   style: PropTypes.object,
-  theme: PropTypes.string,
+  theme: PropTypes.oneOf([
+    'blue',
+    'primary',
+    'green',
+    'success',
+    'red',
+    'error',
+    'danger',
+    'yellow',
+    'orange',
+    'warning',
+    'dark',
+    'secondary',
+    'gray',
+    'grey',
+    'light',
+    'info'
+  ]),
+  /** @see width props */
   width: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.string,
     PropTypes.number
   ])
+}
+
+Alert.defaultProps = {
+  column: false,
+  contain: false,
+  style: { alert: {}, container: {} },
+  theme: 'info',
+  width: { sm: 'auto' }
 }
 
 export { Alert }

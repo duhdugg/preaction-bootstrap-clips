@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
+/**
+ * These are used as children of both [`<Nav>`](#nav) and [`<NavBar>`](#navbar) components
+ */
 class NavItem extends React.Component {
   disableParentToggler() {
     if (this.props.disableToggler) {
@@ -109,17 +112,27 @@ Link.propTypes = {
 }
 
 NavItem.propTypes = {
+  /** controls whether the `active` className should be added to the link */
   active: PropTypes.bool,
+  /** you can pass the `Link` component imported from [react-router-dom](https://www.npmjs.com/package/react-router-dom) here */
   component: PropTypes.elementType,
   disabled: PropTypes.bool,
+  /** in submenu item, this callback should handle toggling the parent menu. Typically, this is only used by `NavBar`. */
   disableToggler: PropTypes.func,
   href: PropTypes.string,
-  index: PropTypes.number,
+  /** this is whatever you want rendered within the link */
   name: PropTypes.node,
+  /** callback function which accepts `event` argument */
   onClick: PropTypes.func,
-  resizeForSubmenu: PropTypes.func,
+  /** an array of objects representing `NavItem` props */
   subMenu: PropTypes.array,
+  /** in submenu items, this can be set explicitly to false to disable toggling the parent item. Typically, this is only used by `NavBar`. */
   toggleParent: PropTypes.bool
+}
+
+NavItem.defaultProps = {
+  active: false,
+  disabled: false
 }
 
 export { NavItem }

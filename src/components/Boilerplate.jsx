@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
+/**
+ * This provides a quick and easy page layout for your React app.
+ * You will need to import Bootstrap CSS separately.
+ */
 class Boilerplate extends React.Component {
   get containerClassName() {
     return this.props.noContain ? '' : 'container'
@@ -9,20 +13,19 @@ class Boilerplate extends React.Component {
   get style() {
     let style = {
       jumbotron: {},
-      header: {},
+      header: {
+        marginTop:
+          this.props.navBar &&
+          this.props.navBar.props.fixedTo === 'top' &&
+          this.props.style.marginTop === undefined
+            ? '3.5em'
+            : undefined
+      },
       main: {},
       footer: {}
     }
     if (this.props.style) {
       Object.assign(style, this.props.style)
-    }
-    if (this.props.navBar) {
-      // the header will need extra space if the navBar is fixed to the top
-      if (this.props.navBar.props.fixedTo === 'top') {
-        if (style.header.marginTop === undefined) {
-          style.header.marginTop = '3.5em'
-        }
-      }
     }
     return style
   }
@@ -57,13 +60,33 @@ class Boilerplate extends React.Component {
 }
 
 Boilerplate.propTypes = {
+  /** children will go inside the `<main>` element */
   children: PropTypes.node,
+  /** will be rendered inside `<footer>` element */
   footer: PropTypes.node,
+  /** will be rendered inside `<header>` element */
   header: PropTypes.node,
+  /** > Lightweight, flexible component for showcasing hero unit style content.
+   * https://getbootstrap.com/docs/4.5/components/jumbotron/
+   */
   jumbotron: PropTypes.node,
+  /** this should be an instance of [`<NavBar>`](#navbar) */
   navBar: PropTypes.element,
+  /** do not use the `container` className within the child `<div>` elements of `<main>`, `<header>`, and `<footer>` */
   noContain: PropTypes.bool,
+  /** set the style of jumbotron, header, main, and footer elements separately */
   style: PropTypes.object
+}
+
+Boilerplate.defaultProps = {
+  noContain: false,
+  /** set the styles of jumbotron, header, main, and footer separately */
+  style: {
+    jumbotron: {},
+    header: {},
+    main: {},
+    footer: {}
+  }
 }
 
 export { Boilerplate }

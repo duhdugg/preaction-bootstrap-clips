@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
+/**
+ * Self-explanatory.
+ */
 class AnimatedButton extends React.Component {
   constructor(props) {
     super(props)
@@ -141,10 +144,17 @@ class AnimatedButton extends React.Component {
   }
 }
 
+AnimatedButton.defaultProps = {
+  disabled: false,
+  type: 'button'
+}
+
 AnimatedButton.propTypes = {
   children: PropTypes.node,
   disabled: PropTypes.bool,
+  /** callback which accepts an `event` argument */
   onClick: PropTypes.func,
+  /** button or submit */
   type: PropTypes.string
 }
 

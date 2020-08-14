@@ -3,6 +3,10 @@ import React from 'react'
 import '../stylesheets/spin.css'
 import { FaSpinner } from 'react-icons/fa'
 
+/**
+ * > _Indicate the loading state of a component or page..._
+ * > https://getbootstrap.com/docs/4.5/components/spinners/
+ */
 class Spinner extends React.Component {
   get containerStyle() {
     return {
@@ -84,9 +88,16 @@ class Spinner extends React.Component {
 
 Spinner.propTypes = {
   fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /** overlays the entire page */
   overlay: PropTypes.bool,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   text: PropTypes.node
+}
+
+Spinner.defaultProps = {
+  fontSize: 0.8,
+  overlay: false,
+  size: 1
 }
 
 export { Spinner }

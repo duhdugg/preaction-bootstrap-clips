@@ -3,6 +3,10 @@ import React from 'react'
 import '../stylesheets/modal.css'
 import { MdClose } from 'react-icons/md'
 
+/**
+ * > ...add dialogs to your site for lightboxes, user notifications, or completely custom content.
+ * > https://getbootstrap.com/docs/4.5/components/modal/
+ */
 class Modal extends React.Component {
   close() {
     if (this.props.closeHandler) {
@@ -72,12 +76,20 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = {
+  /** sets the close button's `title` attribute */
   closeButtonText: PropTypes.string,
+  /** callback that handles the close button being clicked */
   closeHandler: PropTypes.func,
   children: PropTypes.node,
   footer: PropTypes.node,
+  /** set this to true if you want to hide the close button (at the top-right corner) */
   hideCloseButton: PropTypes.bool,
   title: PropTypes.node
+}
+
+Modal.defaultProps = {
+  closeButtonText: 'Close',
+  hideCloseButton: false
 }
 
 export { Modal }

@@ -2,6 +2,10 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { getClassesForColumn } from '../lib/getClassesForColumn.js'
 
+/**
+ * > _Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options._
+ * > https://getbootstrap.com/docs/4.5/components/card/
+ */
 class Card extends React.Component {
   get className() {
     let d = {
@@ -138,10 +142,15 @@ class Card extends React.Component {
 }
 
 Card.propTypes = {
+  /** @see theme props */
   bodyTheme: PropTypes.string,
   children: PropTypes.node,
+  /** this adds to the className of the inner card div */
   className: PropTypes.object,
   column: PropTypes.bool,
+  /** setting to true will include the `.container` class to the outer `<div>`
+   * [See: Bootstrap Docs > Layout > Overview > Containers](https://getbootstrap.com/docs/4.5/layout/overview/#containers)
+   * */
   contain: PropTypes.bool,
   footer: PropTypes.node,
   footerBgColor: PropTypes.string,
@@ -151,6 +160,7 @@ Card.propTypes = {
   headerBgColor: PropTypes.string,
   headerFontColor: PropTypes.string,
   headerTheme: PropTypes.string,
+  /** set the style of the card, container, footer, header, and body separately */
   style: PropTypes.object,
   theme: PropTypes.oneOf([
     'blue',
@@ -168,6 +178,19 @@ Card.propTypes = {
     PropTypes.string,
     PropTypes.number
   ])
+}
+
+Card.defaultProps = {
+  column: false,
+  contain: false,
+  style: {
+    card: {},
+    container: {},
+    footer: {},
+    header: {},
+    body: {}
+  },
+  width: { sm: 'auto' }
 }
 
 export { Card }

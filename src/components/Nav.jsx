@@ -3,6 +3,9 @@ import React from 'react'
 import { NavItem } from './NavItem.jsx'
 import '../stylesheets/nav.css'
 
+/**
+ * https://getbootstrap.com/docs/4.5/components/navs/
+ */
 class Nav extends React.Component {
   render() {
     let classes = ['nav']
@@ -60,13 +63,24 @@ class Nav extends React.Component {
 }
 
 Nav.propTypes = {
-  align: PropTypes.string,
+  align: PropTypes.oneOf(['center', 'right', 'vertical']),
+  /** additional className to append to `<ul>` element */
   className: PropTypes.string,
   collapsible: PropTypes.bool,
+  /** controls whether to add the `nav-fill` className */
   fill: PropTypes.bool,
+  /** controls whether to add the `nav-justified` to className */
   justify: PropTypes.bool,
+  /** an array of objects representing [`<NavItem>`](#navitem) props */
   menu: PropTypes.array.isRequired,
-  type: PropTypes.oneOf(['basic', 'pills', 'tabs'])
+  /** controls whether to add `nav-pills` or `nav-tabs` to className */
+  type: PropTypes.oneOf(['pills', 'tabs'])
+}
+
+Nav.defaultProps = {
+  collapsible: false,
+  fill: false,
+  justify: false
 }
 
 export { Nav }

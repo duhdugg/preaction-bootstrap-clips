@@ -254,14 +254,24 @@ class App extends React.Component {
               with header
             </Alert>
             <Alert theme='warning' header={<em>Warning!</em>} />
-            <Alert theme='danger' header='Error'>
+            <Alert theme='danger' header='Error!'>
               You&apos;ve been doing it wrong.
             </Alert>
             <Alert theme='dark'>dark</Alert>
             <Alert theme='light'>light</Alert>
             <Alert theme='secondary'>secondary</Alert>
-            <Alert theme='light' header='light'>
-              with header
+            <Alert
+              theme='light'
+              header='light'
+              style={{
+                container: {
+                  padding: '0.2em',
+                  backgroundImage:
+                    'linear-gradient(to top left, black, var(--red), transparent, var(--blue), transparent)'
+                },
+                alert: { marginBottom: 0 }
+              }}>
+              with header and custom style
             </Alert>
             <Card header='as columns...' headerTheme='dark'>
               <div className='row'>
@@ -311,18 +321,18 @@ class App extends React.Component {
               closeHandler={this.toggleModal.bind(this)}
               closeButtonText='Cancel'
               footer={
-                <div>
-                  <button
-                    type='button'
-                    className='btn btn-primary'
-                    onClick={this.toggleModal.bind(this)}>
-                    Save
-                  </button>{' '}
+                <div className='btn-group'>
                   <button
                     type='button'
                     className='btn btn-secondary'
                     onClick={this.toggleModal.bind(this)}>
                     Cancel
+                  </button>
+                  <button
+                    type='button'
+                    className='btn btn-primary'
+                    onClick={this.toggleModal.bind(this)}>
+                    Save
                   </button>
                 </div>
               }>
