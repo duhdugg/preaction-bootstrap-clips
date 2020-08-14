@@ -142,8 +142,17 @@ class Card extends React.Component {
 }
 
 Card.propTypes = {
-  /** @see theme props */
-  bodyTheme: PropTypes.string,
+  bodyTheme: PropTypes.oneOf([
+    'blue',
+    'dark',
+    'gray',
+    'grey',
+    'green',
+    'light',
+    'yellow',
+    'red',
+    'teal'
+  ]),
   children: PropTypes.node,
   /** this adds to the className of the inner card div */
   className: PropTypes.object,
@@ -155,7 +164,17 @@ Card.propTypes = {
   footer: PropTypes.node,
   footerBgColor: PropTypes.string,
   footerFontColor: PropTypes.string,
-  footerTheme: PropTypes.string,
+  footerTheme: PropTypes.oneOf([
+    'blue',
+    'dark',
+    'gray',
+    'grey',
+    'green',
+    'light',
+    'yellow',
+    'red',
+    'teal'
+  ]),
   header: PropTypes.node,
   headerBgColor: PropTypes.string,
   headerFontColor: PropTypes.string,
