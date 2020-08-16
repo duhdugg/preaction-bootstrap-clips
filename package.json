@@ -46,7 +46,7 @@
     "build": "rollup -c",
     "build-doc": "jsdoc2md src/lib/*.js > docs/functions.md && styleguidist build",
     "doc": "styleguidist server",
-    "test": "prettier -c *.js src/*.* src/components/* src/lib/* && eslint *.js src/*.j* src/components/* src/lib/* && react-scripts test",
+    "test": "prettier -c *.js src/*.* src/components/* src/lib/* && eslint *.js src/*.j* src/components/*.j* src/lib/* && react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

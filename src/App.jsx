@@ -301,9 +301,7 @@ class App extends React.Component {
             </AnimatedButton>
           </Card>
           <Card header='Spinner'>
-            <p>
-              <Spinner size='3' />
-            </p>
+            <Spinner size='3' />
           </Card>
           <Card header='Modal'>
             <button
