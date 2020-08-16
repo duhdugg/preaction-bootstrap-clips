@@ -3,7 +3,6 @@ Modals should be rendered conditionally based on application state. Once rendere
 ### Modal Example
 
 ```jsx
-import { Boilerplate } from './Boilerplate.jsx'
 const [showModal, setShowModal] = React.useState(false)
 const closeHandler = () => {
   setShowModal(!showModal)

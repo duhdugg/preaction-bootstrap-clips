@@ -1,7 +1,6 @@
 ### NavBar Example
 
 ```jsx
-import { Boilerplate } from './Boilerplate.jsx'
 import { FaToggleOff, FaToggleOn } from 'react-icons/fa'
 class App extends React.Component {
   constructor(props) {

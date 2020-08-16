@@ -1,7 +1,6 @@
 ### Nav Examples
 
 ```jsx
-import { Card } from './Card.jsx'
 import { FaToggleOff, FaToggleOn } from 'react-icons/fa'
 class App extends React.Component {
   constructor(props) {

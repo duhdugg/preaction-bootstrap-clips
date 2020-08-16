@@ -1,8 +1,6 @@
 ### Boilerplate Example
 
 ```jsx
-import { NavBar } from './NavBar.jsx'
-import { Card } from './Card.jsx'
 ;<Boilerplate
   jumbotron={
     <h1 className='display-4'>Preaction Boostrap Clips: Boilerplate Example</h1>

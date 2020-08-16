@@ -1,6 +1,9 @@
+const path = require('path')
 module.exports = {
+  require: [path.resolve(__dirname, 'styleguide.imports.js')],
   sections: [
-    { name: 'Install and Import', content: 'docs/usage.md' },
+    { name: 'Introduction', content: 'docs/introduction.md' },
+    { name: 'Getting Started', content: 'docs/getting-started.md' },
     { name: 'Components', components: 'src/components/*.jsx' },
     { name: 'Functions', content: 'docs/functions.md' }
   ],
