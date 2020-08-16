@@ -28,7 +28,7 @@ The full documentation can be found in the [styleguide](https://duhdugg.github.i
 // imports must be named, as this alllows shaking unused components from your bundle
 import { Boilerplate, Card } from '@preaction/bootstrap-clips'
 
-// bootstrap as a peerDependency means you may import bootstrap CSS yourself.
+// bootstrap as a peerDependency means you need to import bootstrap CSS yourself.
 // This gives you the flexibility to choose a different build or theme, if you wish.
 import 'bootstrap/dist/css/bootstrap.min.css'
 
