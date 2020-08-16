@@ -69,5 +69,10 @@
     "type": "git",
     "url": "git+ssh://git@github.com:duhdugg/preaction-bootstrap-clips.git"
   },
-  "bugs": "https://github.com/duhdugg/preaction-bootstrap-clips/issues"
+  "bugs": "https://github.com/duhdugg/preaction-bootstrap-clips/issues",
+  "keywords": [
+    "react",
+    "bootstrap",
+    "bootstrap4"
+  ]
 }
