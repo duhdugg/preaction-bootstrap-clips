@@ -1,103 +1,66 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import '../stylesheets/spin.css'
-import { FaSpinner } from 'react-icons/fa'
 
 /**
  * > _Indicate the loading state of a component or page..._
  * > https://getbootstrap.com/docs/4.5/components/spinners/
  */
 class Spinner extends React.Component {
-  get containerStyle() {
-    return {
-      margin: 'auto'
-    }
-  }
-  get fontSize() {
-    return Number(this.props.fontSize) || 0.8
-  }
-  get imageStyle() {
-    return {
-      position: 'absolute',
-      top: 0,
-      left: 0
-    }
-  }
-  get size() {
-    return Number(this.props.size) || 1
-  }
-  get spinnerContainerStyle() {
-    return {
-      display: 'block',
-      width: this.getEmSize(1),
-      height: this.getEmSize(1),
-      margin: this.props.overlay ? 'auto' : undefined
-    }
-  }
-  get spinnerStyle() {
-    return {
-      display: 'block',
-      width: '100%',
-      height: '100%',
-      animation: 'spin 1.5s linear infinite'
-    }
-  }
-  get textStyle() {
-    return {
-      display: 'block',
-      fontSize: this.fontSize + 'em'
-    }
-  }
-  get topStyle() {
-    let style = {}
-    if (this.props.overlay) {
-      Object.assign(style, {
-        backgroundColor: '#ffffff88',
-        display: 'flex',
-        height: '100%',
-        left: 0,
-        opacity: 0.85,
-        position: 'absolute',
-        top: 0,
-        width: '100%',
-        zIndex: 9999
-      })
-    } else {
-      style.display = 'inline-block'
-    }
-    return style
-  }
-  getEmSize(multipler) {
-    return `${this.size * multipler}rem`
-  }
   render() {
     return (
-      <span style={this.topStyle}>
-        <span style={this.containerStyle}>
-          <span style={this.spinnerContainerStyle}>
-            <span style={this.spinnerStyle}>
-              <FaSpinner size='100%' />
-            </span>
-          </span>
-          <span style={this.textStyle}>{this.props.text}</span>
-        </span>
-      </span>
+      <div
+        className='spinner-container d-flex'
+        style={{
+          flexDirection: this.props.flexDirection
+        }}>
+        <div
+          className={`spinner-${this.props.type}`}
+          role='status'
+          style={{
+            width: `${this.props.size}rem`,
+            height: `${this.props.size}rem`,
+            marginLeft:
+              this.props.flexDirection === 'column' ? 'auto' : undefined,
+            marginRight:
+              this.props.flexDirection === 'column' ? 'auto' : undefined
+          }}></div>
+        {this.props.children ? (
+          <div
+            className='spinner-children'
+            style={{
+              fontSize: `${this.props.fontSize}rem`,
+              lineHeight:
+                this.props.flexDirection === 'row'
+                  ? `${this.props.size}rem`
+                  : undefined,
+              marginLeft:
+                this.props.flexDirection === 'row' ? '0.5rem' : undefined,
+              marginTop:
+                this.props.flexDirection === 'column' ? '0.5rem' : undefined
+            }}>
+            {this.props.children}
+          </div>
+        ) : (
+          <div className='sr-only'>Loading...</div>
+        )}
+      </div>
     )
   }
 }
 
 Spinner.propTypes = {
+  children: PropTypes.node,
+  flexDirection: PropTypes.oneOf(['column', 'row']),
   fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /** overlays the entire page */
-  overlay: PropTypes.bool,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  text: PropTypes.node
+  type: PropTypes.oneOf(['border', 'grow'])
 }
 
 Spinner.defaultProps = {
-  fontSize: 0.8,
-  overlay: false,
-  size: 1
+  fontSize: 1.333,
+  flexDirection: 'row',
+  size: 2,
+  type: 'border'
 }
 
 export { Spinner }
