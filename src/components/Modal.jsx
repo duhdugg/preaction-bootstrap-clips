@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import '../stylesheets/modal.css'
-import { MdClose } from 'react-icons/md'
 
 /**
  * > ...add dialogs to your site for lightboxes, user notifications, or completely custom content.
@@ -44,7 +43,7 @@ class Modal extends React.Component {
                   className='close'
                   onClick={this.close.bind(this)}
                   title={this.closeButtonText}>
-                  <MdClose />
+                  &times;
                 </button>
               ) : (
                 ''
