@@ -17,11 +17,7 @@ const plugins = [
     transforms: ['jsx']
   }),
   commonjs(),
-  terser({
-    output: {
-      comments: 'all'
-    }
-  })
+  terser()
 ]
 
 const cjsConfig = {
