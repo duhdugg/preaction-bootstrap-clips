@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/static/css/main.a4c90d64.chunk.css",
-    "main.js": "/build/main.98903155.js",
+    "main.js": "/build/main.6f06a89a.js",
     "runtime-main.js": "/build/bundle.e4600816.js",
-    "build/2.f487a89e.js": "/build/2.f487a89e.js",
-    "build/2.f487a89e.js.LICENSE.txt": "/build/2.f487a89e.js.LICENSE.txt",
+    "build/2.457ad2ae.js": "/build/2.457ad2ae.js",
+    "build/2.457ad2ae.js.LICENSE.txt": "/build/2.457ad2ae.js.LICENSE.txt",
     "index.html": "/index.html",
-    "precache-manifest.5246b489ebe548aeb0410f0aec516ab1.js": "/precache-manifest.5246b489ebe548aeb0410f0aec516ab1.js",
+    "precache-manifest.6b9083f5c4873001ce5133b6bbaccae9.js": "/precache-manifest.6b9083f5c4873001ce5133b6bbaccae9.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.a4c90d64.chunk.css.map": "/static/css/main.a4c90d64.chunk.css.map"
   },
   "entrypoints": [
     "build/bundle.e4600816.js",
-    "build/2.f487a89e.js",
+    "build/2.457ad2ae.js",
     "static/css/main.a4c90d64.chunk.css",
-    "build/main.98903155.js"
+    "build/main.6f06a89a.js"
   ]
 }
