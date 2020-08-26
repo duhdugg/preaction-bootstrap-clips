@@ -17,16 +17,15 @@ class Boilerplate extends React.Component {
         marginTop:
           this.props.navBar &&
           this.props.navBar.props.fixedTo === 'top' &&
-          this.props.style.marginTop === undefined
+          this.props.style.header &&
+          this.props.style.header.marginTop === undefined
             ? '3.5em'
             : undefined
       },
       main: {},
       footer: {}
     }
-    if (this.props.style) {
-      Object.assign(style, this.props.style)
-    }
+    Object.assign(style, this.props.style)
     return style
   }
 

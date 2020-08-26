@@ -28,10 +28,6 @@ class NavBar extends React.Component {
     return value
   }
 
-  get togglerPosition() {
-    return this.props.togglerPosition || 'right'
-  }
-
   setSize() {
     this.setState(state => {
       state.height = state.toggler && this.props.menu ? '100vh' : 0
@@ -69,7 +65,7 @@ class NavBar extends React.Component {
               ? 'd-flex justify-content-between w-100 flex-wrap'
               : 'container'
           }>
-          {this.togglerPosition === 'left' ? toggleButton() : ''}
+          {this.props.togglerPosition === 'left' ? toggleButton() : ''}
           <div>
             {this.props.brand ? (
               <a
@@ -90,7 +86,7 @@ class NavBar extends React.Component {
               ''
             )}
           </div>
-          {this.togglerPosition === 'right' ? toggleButton() : ''}
+          {this.props.togglerPosition === 'right' ? toggleButton() : ''}
           <div className='navbar-collapse d-none d-md-flex'>
             <ul className='navbar-nav'>
               {this.props.menu.map((item, index) => (

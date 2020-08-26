@@ -11,7 +11,8 @@ class Card extends React.Component {
     let d = {
       card: '',
       header: '',
-      body: ''
+      body: '',
+      footer: ''
     }
     if (this.props.className) {
       Object.assign(d, this.props.className)
@@ -88,9 +89,7 @@ class Card extends React.Component {
       header: {},
       body: {}
     }
-    if (this.props.style) {
-      Object.assign(style, JSON.parse(JSON.stringify(this.props.style)))
-    }
+    Object.assign(style, JSON.parse(JSON.stringify(this.props.style)))
     if (this.props.footerBgColor) {
       style.footer.backgroundColor = this.props.footerBgColor
     }

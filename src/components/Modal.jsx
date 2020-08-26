@@ -13,10 +13,6 @@ class Modal extends React.Component {
     }
   }
 
-  get closeButtonText() {
-    return this.props.closeButtonText ? this.props.closeButtonText : 'Close'
-  }
-
   get show() {
     return {
       closeButton: !this.props.hideCloseButton
@@ -42,7 +38,7 @@ class Modal extends React.Component {
                   type='button'
                   className='close'
                   onClick={this.close.bind(this)}
-                  title={this.closeButtonText}>
+                  title={this.props.closeButtonText}>
                   &times;
                 </button>
               ) : (

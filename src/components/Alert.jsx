@@ -67,9 +67,7 @@ class Alert extends React.Component {
       alert: {},
       container: {}
     }
-    if (this.props.style) {
-      Object.assign(style, JSON.parse(JSON.stringify(this.props.style)))
-    }
+    Object.assign(style, JSON.parse(JSON.stringify(this.props.style)))
     return style
   }
 
