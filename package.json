@@ -5,8 +5,7 @@
   "module": "dist/preaction-bootstrap-clips.esm.js",
   "files": [
     "dist/*",
-    "src/*",
-    "public/*"
+    "src/*"
   ],
   "dependencies": {
     "prop-types": "^15.7.2"
