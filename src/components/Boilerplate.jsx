@@ -5,57 +5,46 @@ import React from 'react'
  * This provides a quick and easy page layout for your React app.
  * You will need to import Bootstrap CSS separately.
  */
-class Boilerplate extends React.Component {
-  get containerClassName() {
-    return this.props.noContain ? '' : 'container'
+function Boilerplate(props) {
+  const containerClassName = props.noContain ? '' : 'container'
+  const style = {
+    jumbotron: {},
+    header: {
+      marginTop:
+        props.navBar &&
+        props.navBar.props.fixedTo === 'top' &&
+        props.style.header &&
+        props.style.header.marginTop === undefined
+          ? '3.5em'
+          : undefined
+    },
+    main: {},
+    footer: {}
   }
-
-  get style() {
-    let style = {
-      jumbotron: {},
-      header: {
-        marginTop:
-          this.props.navBar &&
-          this.props.navBar.props.fixedTo === 'top' &&
-          this.props.style.header &&
-          this.props.style.header.marginTop === undefined
-            ? '3.5em'
-            : undefined
-      },
-      main: {},
-      footer: {}
-    }
-    Object.assign(style, this.props.style)
-    return style
-  }
-
-  render() {
-    return (
-      <div>
-        <div>{this.props.navBar}</div>
-        <header style={this.style.header}>
-          {this.props.jumbotron ? (
-            <div className='jumbotron' style={this.style.jumbotron}>
-              <div className={this.containerClassName}>
-                {this.props.jumbotron}
-              </div>
-            </div>
-          ) : (
-            ''
-          )}
-          <div className={this.containerClassName}>
-            <div>{this.props.header}</div>
+  Object.assign(style, props.style)
+  return (
+    <div>
+      <div>{props.navBar}</div>
+      <header style={style.header}>
+        {props.jumbotron ? (
+          <div className='jumbotron' style={style.jumbotron}>
+            <div className={containerClassName}>{props.jumbotron}</div>
           </div>
-        </header>
-        <main style={this.style.main}>
-          <div className={this.containerClassName}>{this.props.children}</div>
-        </main>
-        <footer style={this.style.footer}>
-          <div className={this.containerClassName}>{this.props.footer}</div>
-        </footer>
-      </div>
-    )
-  }
+        ) : (
+          ''
+        )}
+        <div className={containerClassName}>
+          <div>{props.header}</div>
+        </div>
+      </header>
+      <main style={style.main}>
+        <div className={containerClassName}>{props.children}</div>
+      </main>
+      <footer style={style.footer}>
+        <div className={containerClassName}>{props.footer}</div>
+      </footer>
+    </div>
+  )
 }
 
 Boilerplate.propTypes = {

@@ -6,149 +6,120 @@ import { NavItem } from './NavItem.jsx'
  * > _Bootstrap’s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more..._
  * > https://getbootstrap.com/docs/4.5/components/navbar/
  */
-class NavBar extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      shownSubmenuItems: [],
-      toggler: false,
-      height: 0
-    }
+function NavBar(props) {
+  const [state, setState] = React.useState({ toggler: false, height: 0 })
+
+  const disableToggler = () => {
+    setState({ toggler: false, height: 0 })
   }
 
-  disableToggler() {
-    this.setState({ toggler: false }, this.setSize)
-  }
-
-  get fixedClass() {
+  const getFixedClass = () => {
     let value = ''
-    if (this.props.fixedTo) {
-      value = `fixed-${this.props.fixedTo}`
+    if (props.fixedTo) {
+      value = `fixed-${props.fixedTo}`
     }
     return value
   }
 
-  setSize() {
-    this.setState(state => {
-      state.height = state.toggler && this.props.menu ? '100vh' : 0
-      return state
+  const toggleToggler = () => {
+    setState({
+      toggler: !state.toggler,
+      height: !state.toggler ? '100vh' : 0
     })
   }
 
-  toggleToggler() {
-    this.setState(state => {
-      state.toggler = !state.toggler
-      return state
-    }, this.setSize)
-  }
+  const toggleButton = () => (
+    <button className='navbar-toggler' type='button' onClick={toggleToggler}>
+      <span className='navbar-toggler-icon' />
+    </button>
+  )
 
-  render() {
-    let toggleButton = () => (
-      <button
-        className='navbar-toggler'
-        type='button'
-        onClick={this.toggleToggler.bind(this)}>
-        <span className='navbar-toggler-icon' />
-      </button>
-    )
-    return (
-      <nav
-        className={`navbar ${this.fixedClass} navbar-expand-md ${
-          this.props.theme
-            ? `navbar-${this.props.theme} bg-${this.props.theme}`
-            : ''
-        }`}
-        style={this.style}>
-        <div
-          className={
-            this.props.noContain
-              ? 'd-flex justify-content-between w-100 flex-wrap'
-              : 'container'
-          }>
-          {this.props.togglerPosition === 'left' ? toggleButton() : ''}
-          <div>
-            {this.props.brand ? (
-              <a
-                className={`navbar-brand ${
-                  this.props.brand.link ? '' : 'mb-0 h1'
-                }`}
-                href={this.props.brand.href || ''}
-                onClick={event => {
-                  this.disableToggler()
-                  event.persist()
-                  if (this.props.brand.onClick) {
-                    this.props.brand.onClick(event)
-                  }
-                }}>
-                {this.props.brand.name}
-              </a>
-            ) : (
-              ''
-            )}
-          </div>
-          {this.props.togglerPosition === 'right' ? toggleButton() : ''}
-          <div className='navbar-collapse d-none d-md-flex'>
-            <ul className='navbar-nav'>
-              {this.props.menu.map((item, index) => (
-                <NavItem
-                  name={item.name}
-                  href={item.href}
-                  component={item.component}
-                  key={index}
-                  active={item.active}
-                  disabled={item.disabled}
-                  exact={item.exact}
-                  onClick={item.onClick}
-                  subMenu={item.subMenu}
-                  disableToggler={
-                    item.toggleParent === false
-                      ? undefined
-                      : this.disableToggler.bind(this)
-                  }
-                  toggleParent={item.toggleParent}
-                />
-              ))}
-            </ul>
-          </div>
-          <div className='navbar-collapse d-md-none'>
-            <ul
-              className={`navbar-nav d-md-none animate__animated animate__faster ${
-                this.state.toggler
-                  ? 'animate__bounceInDown'
-                  : 'animate__bounceOutUp'
-              }`}
-              style={{
-                height: this.state.height,
-                transition: `height 500ms ${
-                  this.state.toggler ? 'ease-out' : 'ease-in'
-                }`
+  return (
+    <nav
+      className={`navbar ${getFixedClass()} navbar-expand-md ${
+        props.theme ? `navbar-${props.theme} bg-${props.theme}` : ''
+      }`}>
+      <div
+        className={
+          props.noContain
+            ? 'd-flex justify-content-between w-100 flex-wrap'
+            : 'container'
+        }>
+        {props.togglerPosition === 'left' ? toggleButton() : ''}
+        <div>
+          {props.brand ? (
+            <a
+              className={`navbar-brand ${props.brand.link ? '' : 'mb-0 h1'}`}
+              href={props.brand.href || ''}
+              onClick={event => {
+                disableToggler()
+                event.persist()
+                if (props.brand.onClick) {
+                  props.brand.onClick(event)
+                }
               }}>
-              {this.props.menu.map((item, index) => (
-                <NavItem
-                  name={item.name}
-                  href={item.href}
-                  component={item.component}
-                  key={index}
-                  index={index}
-                  active={item.active}
-                  disabled={item.disabled}
-                  exact={item.exact}
-                  onClick={item.onClick}
-                  subMenu={item.subMenu}
-                  disableToggler={
-                    item.toggleParent === false
-                      ? undefined
-                      : this.disableToggler.bind(this)
-                  }
-                  toggleParent={item.toggleParent}
-                />
-              ))}
-            </ul>
-          </div>
+              {props.brand.name}
+            </a>
+          ) : (
+            ''
+          )}
         </div>
-      </nav>
-    )
-  }
+        {props.togglerPosition === 'right' ? toggleButton() : ''}
+        <div className='navbar-collapse d-none d-md-flex'>
+          <ul className='navbar-nav'>
+            {props.menu.map((item, index) => (
+              <NavItem
+                name={item.name}
+                href={item.href}
+                component={item.component}
+                key={index}
+                active={item.active}
+                disabled={item.disabled}
+                exact={item.exact}
+                onClick={item.onClick}
+                subMenu={item.subMenu}
+                disableToggler={
+                  item.toggleParent === false ? undefined : disableToggler
+                }
+                toggleParent={item.toggleParent}
+              />
+            ))}
+          </ul>
+        </div>
+        <div className='navbar-collapse d-md-none'>
+          <ul
+            className={`navbar-nav d-md-none animate__animated animate__faster ${
+              state.toggler ? 'animate__bounceInDown' : 'animate__bounceOutUp'
+            }`}
+            style={{
+              height: state.height,
+              transition: `height 500ms ${
+                state.toggler ? 'ease-out' : 'ease-in'
+              }`
+            }}>
+            {props.menu.map((item, index) => (
+              <NavItem
+                name={item.name}
+                href={item.href}
+                component={item.component}
+                key={index}
+                index={index}
+                active={item.active}
+                disabled={item.disabled}
+                exact={item.exact}
+                onClick={item.onClick}
+                subMenu={item.subMenu}
+                disableToggler={
+                  item.toggleParent === false ? undefined : disableToggler
+                }
+                toggleParent={item.toggleParent}
+              />
+            ))}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  )
 }
 
 NavBar.propTypes = {

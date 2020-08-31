@@ -1,6 +1,7 @@
 /* global test */
 import React from 'react'
 import '@testing-library/jest-dom'
+import userEvent from '@testing-library/user-event'
 import { render } from '@testing-library/react'
 import { Nav } from '../Nav.jsx'
 
@@ -43,13 +44,31 @@ test('Nav justify', () => {
 })
 
 test('Nav menu', () => {
-  let result = render(
+  let value = ''
+  const result = render(
     <Nav
       menu={[
-        { name: 'Alpha' },
+        {
+          name: 'Alpha',
+          onClick: e => {
+            e.preventDefault()
+            value = 'alpha'
+          }
+        },
         { name: 'Bravo' },
         { name: 'Charlie' },
-        { name: 'Delta' }
+        {
+          name: 'Delta',
+          subMenu: [
+            {
+              name: 'Delta I',
+              onClick: e => {
+                e.preventDefault()
+                value = 'delta-i'
+              }
+            }
+          ]
+        }
       ]}
     />
   )
@@ -57,6 +76,10 @@ test('Nav menu', () => {
   expect(result.getByText('Bravo')).toBeInTheDocument()
   expect(result.getByText('Charlie')).toBeInTheDocument()
   expect(result.getByText('Delta')).toBeInTheDocument()
+  userEvent.click(result.getByText('Alpha'))
+  expect(value).toBe('alpha')
+  userEvent.click(result.getByText('Delta I'))
+  expect(value).toBe('delta-i')
 })
 
 test('Nav type: pills', () => {

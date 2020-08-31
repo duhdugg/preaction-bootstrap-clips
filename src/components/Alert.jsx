@@ -6,88 +6,68 @@ import { getClassesForColumn } from '../lib/getClassesForColumn.js'
  * > _Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages._
  * > https://getbootstrap.com/docs/4.5/components/alerts/
  */
-class Alert extends React.Component {
-  get className() {
-    return `alert alert-${this.theme}`
+function Alert(props) {
+  let theme
+  switch (props.theme) {
+    case 'blue':
+    case 'primary':
+      theme = 'primary'
+      break
+    case 'green':
+    case 'success':
+      theme = 'success'
+      break
+    case 'red':
+    case 'error':
+    case 'danger':
+      theme = 'danger'
+      break
+    case 'yellow':
+    case 'orange':
+    case 'warning':
+      theme = 'warning'
+      break
+    case 'dark':
+      theme = 'dark'
+      break
+    case 'secondary':
+    case 'gray':
+    case 'grey':
+      theme = 'secondary'
+      break
+    case 'light':
+      theme = 'light'
+      break
+    case 'info':
+    default:
+      theme = 'info'
+      break
   }
-
-  get containerClassName() {
-    let classes = ['mb-3']
-    if (this.props.contain) {
-      classes.push('container')
-    }
-    if (this.props.column) {
-      classes.push(...getClassesForColumn(this.props.width))
-    }
-    return classes.join(' ')
+  const style = { alert: {}, container: {} }
+  Object.assign(style, JSON.parse(JSON.stringify(props.style)))
+  const classes = ['mb-3']
+  if (props.contain) {
+    classes.push('container')
   }
-
-  get theme() {
-    let theme
-    switch (this.props.theme) {
-      case 'blue':
-      case 'primary':
-        theme = 'primary'
-        break
-      case 'green':
-      case 'success':
-        theme = 'success'
-        break
-      case 'red':
-      case 'error':
-      case 'danger':
-        theme = 'danger'
-        break
-      case 'yellow':
-      case 'orange':
-      case 'warning':
-        theme = 'warning'
-        break
-      case 'dark':
-        theme = 'dark'
-        break
-      case 'secondary':
-      case 'gray':
-      case 'grey':
-        theme = 'secondary'
-        break
-      case 'light':
-        theme = 'light'
-        break
-      case 'info':
-      default:
-        theme = 'info'
-        break
-    }
-    return theme
+  if (props.column) {
+    classes.push(...getClassesForColumn(props.width))
   }
-
-  get style() {
-    let style = {
-      alert: {},
-      container: {}
-    }
-    Object.assign(style, JSON.parse(JSON.stringify(this.props.style)))
-    return style
-  }
-
-  render() {
-    return (
-      <div className={this.containerClassName} style={this.style.container}>
-        <div className={this.className} style={this.style.alert}>
-          {this.props.header ? (
-            <div>
-              <h4 className='alert-heading'>{this.props.header}</h4>
-              <hr />
-            </div>
-          ) : (
-            ''
-          )}
-          {this.props.children}
-        </div>
+  const containerClassName = classes.join(' ')
+  return (
+    <div className={containerClassName} style={style.container}>
+      <div className={`alert alert-${theme}`} style={style.alert}>
+        {props.header ? (
+          <div>
+            <h4 className='alert-heading'>{props.header}</h4>
+            <hr />
+          </div>
+        ) : (
+          ''
+        )}
+        {props.children}
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 Alert.propTypes = {

@@ -5,47 +5,39 @@ import React from 'react'
  * > _Indicate the loading state of a component or page..._
  * > https://getbootstrap.com/docs/4.5/components/spinners/
  */
-class Spinner extends React.Component {
-  render() {
-    return (
+function Spinner(props) {
+  return (
+    <div
+      className='spinner-container d-flex'
+      style={{
+        flexDirection: props.flexDirection
+      }}>
       <div
-        className='spinner-container d-flex'
+        className={`spinner-${props.type}`}
+        role='status'
         style={{
-          flexDirection: this.props.flexDirection
-        }}>
+          width: `${props.size}rem`,
+          height: `${props.size}rem`,
+          marginLeft: props.flexDirection === 'column' ? 'auto' : undefined,
+          marginRight: props.flexDirection === 'column' ? 'auto' : undefined
+        }}></div>
+      {props.children ? (
         <div
-          className={`spinner-${this.props.type}`}
-          role='status'
+          className='spinner-children'
           style={{
-            width: `${this.props.size}rem`,
-            height: `${this.props.size}rem`,
-            marginLeft:
-              this.props.flexDirection === 'column' ? 'auto' : undefined,
-            marginRight:
-              this.props.flexDirection === 'column' ? 'auto' : undefined
-          }}></div>
-        {this.props.children ? (
-          <div
-            className='spinner-children'
-            style={{
-              fontSize: `${this.props.fontSize}rem`,
-              lineHeight:
-                this.props.flexDirection === 'row'
-                  ? `${this.props.size}rem`
-                  : undefined,
-              marginLeft:
-                this.props.flexDirection === 'row' ? '0.5rem' : undefined,
-              marginTop:
-                this.props.flexDirection === 'column' ? '0.5rem' : undefined
-            }}>
-            {this.props.children}
-          </div>
-        ) : (
-          <div className='sr-only'>Loading...</div>
-        )}
-      </div>
-    )
-  }
+            fontSize: `${props.fontSize}rem`,
+            lineHeight:
+              props.flexDirection === 'row' ? `${props.size}rem` : undefined,
+            marginLeft: props.flexDirection === 'row' ? '0.5rem' : undefined,
+            marginTop: props.flexDirection === 'column' ? '0.5rem' : undefined
+          }}>
+          {props.children}
+        </div>
+      ) : (
+        <div className='sr-only'>Loading...</div>
+      )}
+    </div>
+  )
 }
 
 Spinner.propTypes = {

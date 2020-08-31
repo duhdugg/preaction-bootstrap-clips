@@ -6,68 +6,59 @@ import '../stylesheets/modal.css'
  * > ...add dialogs to your site for lightboxes, user notifications, or completely custom content.
  * > https://getbootstrap.com/docs/4.5/components/modal/
  */
-class Modal extends React.Component {
-  close() {
-    if (this.props.closeHandler) {
-      this.props.closeHandler()
+function Modal(props) {
+  const close = () => {
+    if (props.closeHandler) {
+      props.closeHandler()
     }
   }
 
-  get show() {
-    return {
-      closeButton: !this.props.hideCloseButton
-    }
-  }
-
-  render() {
-    return (
-      <div
-        className='modal'
-        role='dialog'
-        tabIndex='-1'
-        style={{
-          display: 'block',
-          overflowY: 'auto'
-        }}>
-        <div className='modal-dialog modal-lg' role='document'>
-          <div className='modal-content'>
-            <div className='modal-header'>
-              <h5 className='modal-title'>{this.props.title}</h5>
-              {this.show.closeButton ? (
-                <button
-                  type='button'
-                  className='close'
-                  onClick={this.close.bind(this)}
-                  title={this.props.closeButtonText}>
-                  &times;
-                </button>
-              ) : (
-                ''
-              )}
-            </div>
-            <div className='modal-body'>{this.props.children}</div>
-            <div className='modal-footer'>{this.props.footer || ''}</div>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  componentDidMount() {
+  React.useEffect(() => {
     let bd = document.createElement('div')
     bd.className = 'modal-backdrop'
     document.body.appendChild(bd)
     document.body.style.overflow = 'hidden'
-  }
-
-  componentWillUnmount() {
-    let bds = document.getElementsByClassName('modal-backdrop')
-    for (let b = 0; b < bds.length; b++) {
-      let bd = bds[b]
-      document.body.removeChild(bd)
+    return function cleanup() {
+      let bds = document.getElementsByClassName('modal-backdrop')
+      for (let b = 0; b < bds.length; b++) {
+        let bd = bds[b]
+        document.body.removeChild(bd)
+      }
+      document.body.style.overflow = 'scroll'
     }
-    document.body.style.overflow = 'scroll'
-  }
+  })
+
+  return (
+    <div
+      className='modal'
+      role='dialog'
+      tabIndex='-1'
+      style={{
+        display: 'block',
+        overflowY: 'auto'
+      }}>
+      <div className='modal-dialog modal-lg' role='document'>
+        <div className='modal-content'>
+          <div className='modal-header'>
+            <h5 className='modal-title'>{props.title}</h5>
+            {!props.hideCloseButton ? (
+              <button
+                type='button'
+                className='close'
+                onClick={close}
+                title={props.closeButtonText}>
+                &times;
+              </button>
+            ) : (
+              ''
+            )}
+          </div>
+          <div className='modal-body'>{props.children}</div>
+          <div className='modal-footer'>{props.footer || ''}</div>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 Modal.propTypes = {

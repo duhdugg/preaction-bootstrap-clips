@@ -4,88 +4,86 @@ import React from 'react'
 /**
  * These are used as children of both [`<Nav>`](#nav) and [`<NavBar>`](#navbar) components
  */
-class NavItem extends React.Component {
-  disableParentToggler() {
-    if (this.props.disableToggler) {
-      this.props.disableToggler()
+function NavItem(props) {
+  const disableParentToggler = () => {
+    if (props.disableToggler) {
+      props.disableToggler()
     }
   }
 
-  render() {
-    let classes = ['nav-item']
-    if (this.props.subMenu) {
-      classes.push('dropdown')
-    }
-    let className = classes.join(' ')
+  const classes = ['nav-item']
+  if (props.subMenu) {
+    classes.push('dropdown')
+  }
+  const className = classes.join(' ')
 
-    let aClasses = ['nav-link']
-    if (this.props.active) {
-      aClasses.push('active')
-    }
-    if (this.props.disabled) {
-      aClasses.push('disabled')
-    }
-    if (this.props.subMenu) {
-      aClasses.push('dropdown-toggle')
-    }
-    let aClassName = aClasses.join(' ')
+  const aClasses = ['nav-link']
+  if (props.active) {
+    aClasses.push('active')
+  }
+  if (props.disabled) {
+    aClasses.push('disabled')
+  }
+  if (props.subMenu) {
+    aClasses.push('dropdown-toggle')
+  }
+  const aClassName = aClasses.join(' ')
 
-    let href = this.props.href || ''
+  const href = props.href || ''
 
-    let onClick = event => {
-      if (this.props.onClick) {
-        event.persist()
-        this.props.onClick(event)
-      } else if (this.props.href === undefined) {
+  const onClick = event => {
+    if (props.onClick) {
+      event.persist()
+      props.onClick(event)
+    } else if (props.href === undefined) {
+      event.preventDefault()
+    }
+    if (!props.subMenu && props.toggleParent !== false) {
+      disableParentToggler()
+    }
+  }
+
+  const itemOnClick = item => {
+    return event => {
+      if (item.onClick) {
+        item.onClick(event)
+      } else if (item.href === undefined) {
         event.preventDefault()
       }
-      if (!this.props.subMenu && this.props.toggleParent !== false) {
-        this.disableParentToggler()
+      if (item.toggleParent !== false) {
+        disableParentToggler()
       }
     }
-
-    let itemOnClick = item => {
-      return event => {
-        if (item.onClick) {
-          item.onClick(event)
-        } else if (item.href === undefined) {
-          event.preventDefault()
-        }
-        if (item.toggleParent !== false) {
-          this.disableParentToggler()
-        }
-      }
-    }
-
-    return (
-      <li className={className}>
-        <Link
-          href={href}
-          className={aClassName}
-          component={this.props.component}
-          onClick={onClick}>
-          {this.props.name}
-        </Link>
-        {this.props.subMenu ? (
-          <div className='dropdown-menu animate__animated animate__faster animate__fadeIn'>
-            {this.props.subMenu.map((item, index) => (
-              <Link
-                className={`dropdown-item ${item.active ? 'active' : ''}`}
-                component={item.component}
-                exact={item.exact}
-                href={item.href || ''}
-                onClick={itemOnClick(item)}
-                key={index}>
-                {item.name}
-              </Link>
-            ))}
-          </div>
-        ) : (
-          ''
-        )}
-      </li>
-    )
   }
+
+  return (
+    <li className={className}>
+      <Link
+        href={href}
+        className={aClassName}
+        component={props.component}
+        onClick={onClick}>
+        {props.name}
+      </Link>
+      {props.subMenu ? (
+        <div className='dropdown-menu animate__animated animate__faster animate__fadeIn'>
+          {props.subMenu.map((item, index) => (
+            <Link
+              className={`dropdown-item ${item.active ? 'active' : ''}`}
+              component={item.component}
+              exact={item.exact}
+              href={item.href || ''}
+              onClick={itemOnClick(item)}
+              key={index}>
+              {item.name}
+            </Link>
+          ))}
+        </div>
+      ) : (
+        ''
+      )}
+    </li>
+  )
 }
 
 function Link(props) {
