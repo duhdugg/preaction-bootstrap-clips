@@ -61,7 +61,7 @@ function Nav(props) {
 }
 
 Nav.propTypes = {
-  align: PropTypes.oneOf(['center', 'right', 'vertical']),
+  align: PropTypes.oneOf(['left', 'center', 'right', 'vertical']),
   /** additional className to append to `<ul>` element */
   className: PropTypes.string,
   collapsible: PropTypes.bool,
@@ -72,13 +72,15 @@ Nav.propTypes = {
   /** an array of objects representing [`<NavItem>`](#navitem) props */
   menu: PropTypes.array.isRequired,
   /** controls whether to add `nav-pills` or `nav-tabs` to className */
-  type: PropTypes.oneOf(['pills', 'tabs'])
+  type: PropTypes.oneOf(['basic', 'pills', 'tabs'])
 }
 
 Nav.defaultProps = {
+  align: 'left',
   collapsible: false,
   fill: false,
-  justify: false
+  justify: false,
+  type: 'basic'
 }
 
 export { Nav }
