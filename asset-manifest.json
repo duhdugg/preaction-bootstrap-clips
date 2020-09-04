@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/static/css/main.a4c90d64.chunk.css",
-    "main.js": "/build/main.d5e72083.js",
-    "runtime-main.js": "/build/bundle.e4600816.js",
-    "build/2.f246dfe2.js": "/build/2.f246dfe2.js",
-    "build/2.f246dfe2.js.LICENSE.txt": "/build/2.f246dfe2.js.LICENSE.txt",
+    "main.js": "/build/main.86019bbc.js",
+    "runtime-main.js": "/build/bundle.0cdfe123.js",
+    "build/2.dfd19458.js": "/build/2.dfd19458.js",
+    "build/2.dfd19458.js.LICENSE.txt": "/build/2.dfd19458.js.LICENSE.txt",
     "index.html": "/index.html",
-    "precache-manifest.ef7776cd9199a658dac3b4616c8db7fc.js": "/precache-manifest.ef7776cd9199a658dac3b4616c8db7fc.js",
+    "precache-manifest.8811e622d99f53b031ffa4f815b9d62d.js": "/precache-manifest.8811e622d99f53b031ffa4f815b9d62d.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.a4c90d64.chunk.css.map": "/static/css/main.a4c90d64.chunk.css.map"
   },
   "entrypoints": [
-    "build/bundle.e4600816.js",
-    "build/2.f246dfe2.js",
+    "build/bundle.0cdfe123.js",
+    "build/2.dfd19458.js",
     "static/css/main.a4c90d64.chunk.css",
-    "build/main.d5e72083.js"
+    "build/main.86019bbc.js"
   ]
 }
