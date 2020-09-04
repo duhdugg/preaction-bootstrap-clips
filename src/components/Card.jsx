@@ -173,6 +173,9 @@ Card.propTypes = {
     'red',
     'teal'
   ]),
+  /** when `column` is `true`, `width` can be 'auto', a number representing a fraction of 12, or an object representing values at specific breakpoints: xs, sm, md, lg, xl. The default is an object with sm: 'auto'.
+   * see [getClassesForColumn](https://duhdugg.github.io/preaction-bootstrap-clips/#section-functions)
+   */
   width: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.string,

@@ -10,12 +10,12 @@
 
 ### Import
 
-This library uses named exports only.
+This library uses named exports only. To help keep the size of your application's JavaScript bundle to a minimum, you should only import the components you are using.
 
 #### ES Module
 
-`import { Boilerplate } from '@preaction/bootstrap-clips'`
+`import { Alert, AnimatedButton, Boilerplate, Card, Modal, Nav, NavBar, Spinner } from '@preaction/bootstrap-clips'`
 
 #### CommonJS Module
 
-`const { Boilerplate } = require('@preaction/bootstrap-clips')`
+`const { Alert, AnimatedButton, Boilerplate, Card, Modal, Nav, NavBar, Spinner } = require('@preaction/bootstrap-clips')`
