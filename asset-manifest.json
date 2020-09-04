@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/static/css/main.a4c90d64.chunk.css",
-    "main.js": "/build/main.86019bbc.js",
+    "main.js": "/build/main.d59d9070.js",
     "runtime-main.js": "/build/bundle.0cdfe123.js",
     "build/2.dfd19458.js": "/build/2.dfd19458.js",
     "build/2.dfd19458.js.LICENSE.txt": "/build/2.dfd19458.js.LICENSE.txt",
     "index.html": "/index.html",
-    "precache-manifest.8811e622d99f53b031ffa4f815b9d62d.js": "/precache-manifest.8811e622d99f53b031ffa4f815b9d62d.js",
+    "precache-manifest.89d1fca868136b598e370023246ad106.js": "/precache-manifest.89d1fca868136b598e370023246ad106.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.a4c90d64.chunk.css.map": "/static/css/main.a4c90d64.chunk.css.map"
   },
@@ -14,6 +14,6 @@
     "build/bundle.0cdfe123.js",
     "build/2.dfd19458.js",
     "static/css/main.a4c90d64.chunk.css",
-    "build/main.86019bbc.js"
+    "build/main.d59d9070.js"
   ]
 }
