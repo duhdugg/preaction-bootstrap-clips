@@ -19,3 +19,7 @@ This library uses named exports only. To help keep the size of your application'
 #### CommonJS Module
 
 `const { Alert, AnimatedButton, Boilerplate, Card, Modal, Nav, NavBar, Spinner } = require('@preaction/bootstrap-clips')`
+
+#### UMD/IIFE
+
+See [Preaction UMD Example](https://duhdugg.github.io/preaction-umd-examples/) to see how this library and others may be loaded from CDN to build a no-JSX React app.
