@@ -88,9 +88,7 @@ function NavBar(props) {
         </div>
         <div className='navbar-collapse d-md-none'>
           <ul
-            className={`navbar-nav d-md-none animate__animated animate__faster ${
-              state.toggler ? 'animate__bounceInDown' : 'animate__bounceOutUp'
-            }`}
+            className='navbar-nav d-md-none'
             style={{
               height: state.height,
               transition: `height 500ms ${

@@ -98,8 +98,6 @@ test('NavBar toggleToggler()', async () => {
   const result = render(<NavBar menu={[]} />)
   userEvent.click(result.container.querySelector('.navbar-toggler'))
   await waitFor(() =>
-    expect(result.container.querySelector('.navbar-nav.d-md-none')).toHaveClass(
-      'animate__bounceInDown'
-    )
+    expect(result.container.querySelector('.navbar-nav')).toBeInTheDocument()
   )
 })

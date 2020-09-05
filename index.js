@@ -1,5 +1,4 @@
 export { Alert } from './src/components/Alert.jsx'
-export { AnimatedButton } from './src/components/AnimatedButton.jsx'
 export { Boilerplate } from './src/components/Boilerplate.jsx'
 export { Card } from './src/components/Card.jsx'
 export { Modal } from './src/components/Modal.jsx'

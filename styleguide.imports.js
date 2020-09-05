@@ -1,5 +1,4 @@
 import { Alert } from './src/components/Alert.jsx'
-import { AnimatedButton } from './src/components/AnimatedButton.jsx'
 import { Boilerplate } from './src/components/Boilerplate.jsx'
 import { Card } from './src/components/Card.jsx'
 import { Modal } from './src/components/Modal.jsx'
@@ -10,7 +9,6 @@ import { Spinner } from './src/components/Spinner.jsx'
 import { getClassesForColumn } from './src/lib/getClassesForColumn.js'
 
 global.Alert = Alert
-global.AnimatedButton = AnimatedButton
 global.Boilerplate = Boilerplate
 global.Card = Card
 global.Modal = Modal

@@ -66,7 +66,7 @@ function NavItem(props) {
         {props.name}
       </Link>
       {props.subMenu ? (
-        <div className='dropdown-menu animate__animated animate__faster animate__fadeIn'>
+        <div className='dropdown-menu'>
           {props.subMenu.map((item, index) => (
             <Link
               className={`dropdown-item ${item.active ? 'active' : ''}`}

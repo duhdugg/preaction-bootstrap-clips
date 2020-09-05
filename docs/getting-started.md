@@ -14,11 +14,11 @@ This library uses named exports only. To help keep the size of your application'
 
 #### ES Module
 
-`import { Alert, AnimatedButton, Boilerplate, Card, Modal, Nav, NavBar, Spinner } from '@preaction/bootstrap-clips'`
+`import { Alert, Boilerplate, Card, Modal, Nav, NavBar, Spinner } from '@preaction/bootstrap-clips'`
 
 #### CommonJS Module
 
-`const { Alert, AnimatedButton, Boilerplate, Card, Modal, Nav, NavBar, Spinner } = require('@preaction/bootstrap-clips')`
+`const { Alert, Boilerplate, Card, Modal, Nav, NavBar, Spinner } = require('@preaction/bootstrap-clips')`
 
 #### UMD/IIFE
 
