@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import '../stylesheets/modal.css'
 
 /**
  * > ...add dialogs to your site for lightboxes, user notifications, or completely custom content.
@@ -13,20 +12,38 @@ function Modal(props) {
     }
   }
 
+  const firstRender = React.useRef(true)
+  const [opacity, setOpacity] = React.useState(0)
+  const transitionDuration = 333
+
   React.useEffect(() => {
-    let bd = document.createElement('div')
-    bd.className = 'modal-backdrop'
-    document.body.appendChild(bd)
-    document.body.style.overflow = 'hidden'
+    if (firstRender.current) {
+      firstRender.current = false
+      let bd = document.createElement('div')
+      bd.className = 'modal-backdrop'
+      bd.style.opacity = 0
+      bd.style.transition = `opacity ${transitionDuration}ms linear`
+      setTimeout(() => {
+        bd.style.opacity = 0.63
+      })
+      document.body.appendChild(bd)
+      document.body.style.overflow = 'hidden'
+      setOpacity(1)
+    }
     return function cleanup() {
       let bds = document.getElementsByClassName('modal-backdrop')
       for (let b = 0; b < bds.length; b++) {
         let bd = bds[b]
-        document.body.removeChild(bd)
+        bd.style.opacity = 0
+        setTimeout(() => {
+          document.body.removeChild(bd)
+        }, transitionDuration)
       }
-      document.body.style.overflow = 'scroll'
+      setTimeout(() => {
+        document.body.style.overflow = 'scroll'
+      }, transitionDuration)
     }
-  })
+  }, [setOpacity])
 
   return (
     <div
@@ -35,7 +52,9 @@ function Modal(props) {
       tabIndex='-1'
       style={{
         display: 'block',
-        overflowY: 'auto'
+        overflowY: 'auto',
+        opacity,
+        transition: `opacity ${transitionDuration}ms linear`
       }}>
       <div className='modal-dialog modal-lg' role='document'>
         <div className='modal-content'>
