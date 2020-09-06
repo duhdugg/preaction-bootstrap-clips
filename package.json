@@ -1,6 +1,6 @@
 {
   "name": "@preaction/bootstrap-clips",
-  "version": "3.0.0-alpha.12",
+  "version": "3.0.0-alpha.13",
   "main": "dist/preaction-bootstrap-clips.cjs.js",
   "module": "dist/preaction-bootstrap-clips.esm.js",
   "files": [
