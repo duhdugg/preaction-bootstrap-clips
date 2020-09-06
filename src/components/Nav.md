@@ -76,8 +76,7 @@ class App extends React.Component {
                 <span style={{ marginLeft: '0.3333em' }}>Toggler</span>
               </span>
             ),
-            onClick: this.toggleToggler.bind(this),
-            toggleParent: false
+            onClick: this.toggleToggler.bind(this)
           }
         ]
       }
