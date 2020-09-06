@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { NavItem } from './NavItem.jsx'
-import '../stylesheets/nav.css'
 
 /**
  * https://getbootstrap.com/docs/4.5/components/navs/

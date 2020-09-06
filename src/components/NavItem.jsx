@@ -56,8 +56,27 @@ function NavItem(props) {
     }
   }
 
+  const [dropOpacity, setDropOpacity] = React.useState(0)
+  const [dropDisplay, setDropDisplay] = React.useState('none')
+  const dropDisplayTimeout = React.useRef()
+  const transitionDuration = 250
+
   return (
-    <li className={className}>
+    <li
+      className={className}
+      onMouseEnter={() => {
+        setDropDisplay('block')
+        clearTimeout(dropDisplayTimeout.current)
+        setTimeout(() => {
+          setDropOpacity(1)
+        }, 0)
+      }}
+      onMouseLeave={() => {
+        setDropOpacity(0)
+        dropDisplayTimeout.current = setTimeout(() => {
+          setDropDisplay('none')
+        }, transitionDuration)
+      }}>
       <Link
         href={href}
         className={aClassName}
@@ -66,7 +85,14 @@ function NavItem(props) {
         {props.name}
       </Link>
       {props.subMenu ? (
-        <div className='dropdown-menu'>
+        <div
+          className='dropdown-menu'
+          style={{
+            margin: 0,
+            display: dropDisplay,
+            opacity: dropOpacity,
+            transition: `opacity ${transitionDuration}ms linear`
+          }}>
           {props.subMenu.map((item, index) => (
             <Link
               className={`dropdown-item ${item.active ? 'active' : ''}`}
