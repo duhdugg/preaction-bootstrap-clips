@@ -53,7 +53,8 @@ class App extends React.Component {
           },
           { name: 'Item 2', active: true },
           { name: 'Item 3' }
-        ]
+        ],
+        toggleParent: false
       },
       {
         name: 'Dropdown 2',
@@ -64,7 +65,8 @@ class App extends React.Component {
               event.preventDefault()
             }
           }
-        ]
+        ],
+        toggleParent: false
       },
       {
         name: 'Dropdown 3',
