@@ -44,14 +44,32 @@ test('NavBar fixedTo: bottom', async () => {
   expect(result.container.firstChild).toHaveClass('fixed-bottom')
 })
 
-test('NavBar menu', () => {
+test('NavBar menu', async () => {
+  let x
   const result = render(
     <NavBar
       menu={[
-        { name: 'Alpha' },
+        {
+          name: 'Alpha',
+          onClick: e => {
+            e.preventDefault()
+            x = 'clicked-alpha'
+          }
+        },
         { name: 'Bravo' },
         { name: 'Charlie' },
-        { name: 'Delta' }
+        {
+          name: 'Delta',
+          className: 'navbar-delta',
+          toggleParent: false,
+          subMenu: [
+            {
+              name: 'Delta-I',
+              className: 'navbar-delta-i',
+              toggleParent: false
+            }
+          ]
+        }
       ]}
     />
   )
@@ -59,6 +77,20 @@ test('NavBar menu', () => {
   expect(result.getAllByText('Bravo').length).toBe(2)
   expect(result.getAllByText('Charlie').length).toBe(2)
   expect(result.getAllByText('Delta').length).toBe(2)
+  userEvent.click(result.container.querySelector('.navbar-toggler'))
+  expect(result.container.querySelector('.navbar-nav.d-md-none')).toHaveStyle({
+    height: '100vh'
+  })
+  userEvent.click(result.getAllByText('Delta')[0])
+  userEvent.click(result.getAllByText('Delta-I')[0])
+  expect(result.container.querySelector('.navbar-nav.d-md-none')).toHaveStyle({
+    height: '100vh'
+  })
+  userEvent.click(result.getAllByText('Alpha')[0])
+  expect(x).toBe('clicked-alpha')
+  expect(result.container.querySelector('.navbar-nav.d-md-none')).toHaveStyle({
+    height: 0
+  })
 })
 
 test('NavBar noContain', () => {
@@ -94,10 +126,10 @@ test('NavBar togglerPosition: right', () => {
   ).toBeInTheDocument()
 })
 
-test('NavBar toggleToggler()', async () => {
+test('NavBar toggleToggler()', () => {
   const result = render(<NavBar menu={[]} />)
   userEvent.click(result.container.querySelector('.navbar-toggler'))
-  await waitFor(() =>
-    expect(result.container.querySelector('.navbar-nav')).toBeInTheDocument()
-  )
+  expect(result.container.querySelector('.navbar-nav.d-md-none')).toHaveStyle({
+    height: '100vh'
+  })
 })

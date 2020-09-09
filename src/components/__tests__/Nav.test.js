@@ -49,6 +49,8 @@ test('Nav menu', () => {
     <Nav
       menu={[
         {
+          active: true,
+          className: 'nav-alpha',
           name: 'Alpha',
           onClick: e => {
             e.preventDefault()
@@ -56,11 +58,13 @@ test('Nav menu', () => {
           }
         },
         { name: 'Bravo' },
-        { name: 'Charlie' },
+        { name: 'Charlie', className: 'nav-charlie', disabled: true },
         {
+          className: 'nav-delta',
           name: 'Delta',
           subMenu: [
             {
+              className: 'nav-delta-i',
               name: 'Delta I',
               onClick: e => {
                 e.preventDefault()
@@ -76,6 +80,15 @@ test('Nav menu', () => {
   expect(result.getByText('Bravo')).toBeInTheDocument()
   expect(result.getByText('Charlie')).toBeInTheDocument()
   expect(result.getByText('Delta')).toBeInTheDocument()
+  expect(
+    result.container.querySelector('.nav-alpha .active')
+  ).toBeInTheDocument()
+  expect(
+    result.container.querySelector('.nav-charlie .disabled')
+  ).toBeInTheDocument()
+  expect(result.container.querySelector('.nav-delta')).toBeInTheDocument()
+  expect(result.container.querySelector('.nav-delta')).toBeInTheDocument()
+  expect(result.container.querySelector('.nav-delta-i')).toBeInTheDocument()
   userEvent.click(result.getByText('Alpha'))
   expect(value).toBe('alpha')
   userEvent.click(result.getByText('Delta I'))
