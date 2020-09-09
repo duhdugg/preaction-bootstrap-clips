@@ -98,7 +98,9 @@ function NavItem(props) {
           }}>
           {props.subMenu.map((item, index) => (
             <Link
-              className={`dropdown-item ${item.active ? 'active' : ''}`}
+              className={`dropdown-item ${item.className || ''} ${
+                item.active ? 'active' : ''
+              }`}
               component={item.component}
               exact={item.exact}
               href={item.href || ''}
