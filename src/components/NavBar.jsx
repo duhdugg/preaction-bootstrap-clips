@@ -71,6 +71,7 @@ function NavBar(props) {
               <NavItem
                 name={item.name}
                 href={item.href}
+                className={item.className}
                 component={item.component}
                 key={index}
                 active={item.active}
@@ -100,6 +101,7 @@ function NavBar(props) {
               <NavItem
                 name={item.name}
                 href={item.href}
+                className={item.className}
                 component={item.component}
                 key={index}
                 index={index}

@@ -15,6 +15,9 @@ function NavItem(props) {
   if (props.subMenu) {
     classes.push('dropdown')
   }
+  if (props.className) {
+    classes.push(props.className)
+  }
   const className = classes.join(' ')
 
   const aClasses = ['nav-link']
@@ -140,6 +143,9 @@ NavItem.propTypes = {
   active: PropTypes.bool,
   /** you can pass the `Link` component imported from [react-router-dom](https://www.npmjs.com/package/react-router-dom) here */
   component: PropTypes.elementType,
+  /** additional className string to be appended to a generated string that matches the regex: `nav-item(\sdropdown)?` */
+  className: PropTypes.string,
+  /** controls whether the 'disabled' className should be added to the link */
   disabled: PropTypes.bool,
   /** in submenu item, this callback should handle toggling the parent menu. Typically, this is only used by `NavBar`. */
   disableToggler: PropTypes.func,
