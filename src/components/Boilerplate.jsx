@@ -26,7 +26,7 @@ function Boilerplate(props) {
     <div>
       <div>{props.navBar}</div>
       <header style={style.header}>
-        {props.jumbotron ? (
+        {props.jumbotron && props.jumbotronPosition === 'above-header' ? (
           <div className='jumbotron' style={style.jumbotron}>
             <div className={containerClassName}>{props.jumbotron}</div>
           </div>
@@ -36,6 +36,13 @@ function Boilerplate(props) {
         <div className={containerClassName}>
           <div>{props.header}</div>
         </div>
+        {props.jumbotron && props.jumbotronPosition === 'below-header' ? (
+          <div className='jumbotron' style={style.jumbotron}>
+            <div className={containerClassName}>{props.jumbotron}</div>
+          </div>
+        ) : (
+          ''
+        )}
       </header>
       <main style={style.main}>
         <div className={containerClassName}>{props.children}</div>
@@ -58,6 +65,8 @@ Boilerplate.propTypes = {
    * https://getbootstrap.com/docs/4.5/components/jumbotron/
    */
   jumbotron: PropTypes.node,
+  /** controls where the jumbotron appears */
+  jumbotronPosition: PropTypes.oneOf(['above-header', 'below-header']),
   /** this should be an instance of [`<NavBar>`](#navbar) */
   navBar: PropTypes.element,
   /** do not use the `container` className within the child `<div>` elements of `<main>`, `<header>`, and `<footer>` */
@@ -67,6 +76,7 @@ Boilerplate.propTypes = {
 }
 
 Boilerplate.defaultProps = {
+  jumbotronPosition: 'above-header',
   noContain: false,
   /** set the styles of jumbotron, header, main, and footer separately */
   style: {
