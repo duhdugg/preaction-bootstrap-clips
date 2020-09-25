@@ -17,6 +17,15 @@ test('Boilerplate basic', () => {
   expect(result.container.querySelector('footer > div')).toHaveClass(
     'container'
   )
+  expect(result.container.querySelector('main > div')).not.toHaveClass(
+    'container-fluid'
+  )
+  expect(result.container.querySelector('header > div')).not.toHaveClass(
+    'container-fluid'
+  )
+  expect(result.container.querySelector('footer > div')).not.toHaveClass(
+    'container-fluid'
+  )
 })
 
 test('Boilerplate footer', () => {
@@ -51,6 +60,30 @@ test('Boilerplate jumbotron', () => {
   expect(
     result.container.querySelector('.jumbotron > .container')
   ).toBeInTheDocument()
+  expect(result.container.querySelector('.jumbotron')).not.toHaveClass(
+    'jumbotron-fluid'
+  )
+  expect(result.container.querySelector('.jumbotron > div')).not.toHaveClass(
+    'container-fluid'
+  )
+})
+
+test('Boilerplate jumbotronPosition', () => {
+  const result = render(
+    <Boilerplate
+      jumbotron={
+        <div>
+          <h1 className='display-4'>Jumbo Header</h1>
+        </div>
+      }
+      jumbotronPosition='below-header'
+    />
+  )
+  expect(result.getByText('Jumbo Header')).toBeInTheDocument()
+  expect(result.getByText('Jumbo Header')).toHaveClass('display-4')
+  expect(
+    result.container.querySelector('.jumbotron > .container')
+  ).toBeInTheDocument()
 })
 
 test('Boilerplate navBar', () => {
@@ -60,11 +93,28 @@ test('Boilerplate navBar', () => {
   expect(result.container.querySelector('.navbar')).toBeInTheDocument()
 })
 
-test('Boilerplate noContain', () => {
+test('Boilerplate noContain: true', () => {
   const result = render(<Boilerplate noContain />)
   expect(result.container.querySelector('main > div')).toBeInTheDocument()
   expect(result.container.querySelector('main > div')).not.toHaveClass(
     'container'
+  )
+  expect(result.container.querySelector('main > div')).toHaveClass(
+    'container-fluid'
+  )
+})
+
+test('Boilerplate noContain: {jumbotron: true}', () => {
+  const result = render(
+    <Boilerplate jumbotron={<div>jumbo</div>} noContain={{ jumbotron: true }} />
+  )
+  expect(result.container.querySelector('main > div')).toBeInTheDocument()
+  expect(result.container.querySelector('main > div')).toHaveClass('container')
+  expect(result.container.querySelector('main > div')).not.toHaveClass(
+    'container-fluid'
+  )
+  expect(result.container.querySelector('.jumbotron')).toHaveClass(
+    'jumbotron-fluid'
   )
 })
 
