@@ -34,10 +34,63 @@ function NavBar(props) {
     </button>
   )
 
+  const darkOrLight = [
+    'white',
+    'light',
+    'transparent',
+    'warning',
+    'yellow'
+  ].includes(props.theme)
+    ? 'light'
+    : 'dark'
+
+  let bg = ''
+  switch (props.theme) {
+    case 'blue':
+    case 'primary':
+      bg = 'primary'
+      break
+    case 'dark':
+      bg = 'dark'
+      break
+    case 'grey':
+    case 'gray':
+    case 'secondary':
+      bg = 'secondary'
+      break
+    case 'green':
+    case 'success':
+      bg = 'success'
+      break
+    case 'light':
+      bg = 'light'
+      break
+    case 'yellow':
+    case 'warning':
+      bg = 'warning'
+      break
+    case 'red':
+    case 'danger':
+      bg = 'danger'
+      break
+    case 'teal':
+    case 'info':
+      bg = 'info'
+      break
+    case 'white':
+      bg = 'white'
+      break
+    case 'transparent':
+      bg = 'transparent'
+      break
+    default:
+      break
+  }
+
   return (
     <nav
       className={`navbar ${getFixedClass()} navbar-expand-md ${
-        props.theme ? `navbar-${props.theme} bg-${props.theme}` : ''
+        props.theme ? `navbar-${darkOrLight} bg-${bg}` : ''
       }`}>
       <div
         className={
@@ -132,7 +185,25 @@ NavBar.propTypes = {
   menu: PropTypes.array.isRequired,
   /** controls whether the nav should be in a `div.container` */
   noContain: PropTypes.bool,
-  theme: PropTypes.oneOf(['dark', 'light']),
+  theme: PropTypes.oneOf([
+    'blue',
+    'dark',
+    'gray',
+    'grey',
+    'green',
+    'light',
+    'yellow',
+    'red',
+    'teal',
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'info',
+    'warning',
+    'white',
+    'transparent'
+  ]),
   /** where to put the hamburger menu */
   togglerPosition: PropTypes.oneOf(['left', 'right'])
 }

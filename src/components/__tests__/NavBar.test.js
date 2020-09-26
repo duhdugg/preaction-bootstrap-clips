@@ -108,6 +108,46 @@ test('NavBar theme: light', () => {
   expect(result.container.querySelector('.navbar')).toHaveClass('navbar-light')
 })
 
+test('NavBar theme: blue', () => {
+  const result = render(<NavBar menu={[]} theme='blue' />)
+  expect(result.container.querySelector('.navbar')).toHaveClass('navbar-dark')
+})
+
+test('NavBar theme: grey', () => {
+  const result = render(<NavBar menu={[]} theme='grey' />)
+  expect(result.container.querySelector('.navbar')).toHaveClass('navbar-dark')
+})
+
+test('NavBar theme: green', () => {
+  const result = render(<NavBar menu={[]} theme='green' />)
+  expect(result.container.querySelector('.navbar')).toHaveClass('navbar-dark')
+})
+
+test('NavBar theme: yellow', () => {
+  const result = render(<NavBar menu={[]} theme='yellow' />)
+  expect(result.container.querySelector('.navbar')).toHaveClass('navbar-light')
+})
+
+test('NavBar theme: red', () => {
+  const result = render(<NavBar menu={[]} theme='red' />)
+  expect(result.container.querySelector('.navbar')).toHaveClass('navbar-dark')
+})
+
+test('NavBar theme: teal', () => {
+  const result = render(<NavBar menu={[]} theme='teal' />)
+  expect(result.container.querySelector('.navbar')).toHaveClass('navbar-dark')
+})
+
+test('NavBar theme: white', () => {
+  const result = render(<NavBar menu={[]} theme='white' />)
+  expect(result.container.querySelector('.navbar')).toHaveClass('navbar-light')
+})
+
+test('NavBar theme: transparent', () => {
+  const result = render(<NavBar menu={[]} theme='transparent' />)
+  expect(result.container.querySelector('.navbar')).toHaveClass('navbar-light')
+})
+
 test('NavBar togglerPosition: left', () => {
   const result = render(<NavBar menu={[]} togglerPosition='left' />)
   expect(
