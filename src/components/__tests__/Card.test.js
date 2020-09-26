@@ -53,6 +53,15 @@ test('Card bodyTheme', () => {
   result = render(<Card bodyTheme='teal' />)
   expect(result.container.querySelector('.card-body')).toHaveClass('bg-info')
   expect(result.container.querySelector('.card-body')).toHaveClass('text-light')
+
+  result = render(<Card bodyTheme='white' />)
+  expect(result.container.querySelector('.card-body')).toHaveClass('bg-white')
+  expect(result.container.querySelector('.card-body')).toHaveClass('text-dark')
+
+  result = render(<Card bodyTheme='transparent' />)
+  expect(result.container.querySelector('.card-body')).toHaveClass(
+    'bg-transparent'
+  )
 })
 
 test('Card className', () => {
@@ -90,20 +99,6 @@ test('Card footer', () => {
   const result = render(<Card footer='foobar' />)
   expect(result.container.querySelector('.card-footer')).toBeInTheDocument()
   expect(result.getByText('foobar')).toHaveClass('card-footer')
-})
-
-test('Card footerBgColor', () => {
-  const result = render(<Card footer='foobar' footerBgColor='black' />)
-  expect(result.container.querySelector('.card-footer')).toHaveStyle({
-    backgroundColor: 'black'
-  })
-})
-
-test('Card footerFontColor', () => {
-  const result = render(<Card footer='foobar' footerFontColor='red' />)
-  expect(result.container.querySelector('.card-footer')).toHaveStyle({
-    color: 'red'
-  })
 })
 
 test('Card footerTheme', () => {
@@ -182,20 +177,6 @@ test('Card header', () => {
   expect(result.getByText('Foobar')).toHaveClass('test-header')
 })
 
-test('Card headerBgColor', () => {
-  const result = render(<Card header='foobar' headerBgColor='black' />)
-  expect(result.container.querySelector('.card-header')).toHaveStyle({
-    backgroundColor: 'black'
-  })
-})
-
-test('Card headerFontColor', () => {
-  const result = render(<Card header='foobar' headerFontColor='red' />)
-  expect(result.container.querySelector('.card-header')).toHaveStyle({
-    color: 'red'
-  })
-})
-
 test('Card headerTheme', () => {
   let result = render(<Card headerTheme='blue' header='test' />)
   expect(result.container.querySelector('.card-header')).toHaveClass(
@@ -262,6 +243,17 @@ test('Card headerTheme', () => {
   expect(result.container.querySelector('.card-header')).toHaveClass(
     'text-light'
   )
+
+  result = render(<Card headerTheme='white' header='test' />)
+  expect(result.container.querySelector('.card-header')).toHaveClass('bg-white')
+  expect(result.container.querySelector('.card-header')).toHaveClass(
+    'text-dark'
+  )
+
+  result = render(<Card headerTheme='transparent' header='test' />)
+  expect(result.container.querySelector('.card-header')).toHaveClass(
+    'bg-transparent'
+  )
 })
 
 test('Card theme', () => {
@@ -300,6 +292,13 @@ test('Card theme', () => {
   result = render(<Card theme='teal' />)
   expect(result.container.querySelector('.card')).toHaveClass('bg-info')
   expect(result.container.querySelector('.card')).toHaveClass('text-light')
+
+  result = render(<Card theme='white' />)
+  expect(result.container.querySelector('.card')).toHaveClass('bg-white')
+  expect(result.container.querySelector('.card')).toHaveClass('text-dark')
+
+  result = render(<Card theme='transparent' />)
+  expect(result.container.querySelector('.card')).toHaveClass('bg-transparent')
 })
 
 test('Card width', () => {

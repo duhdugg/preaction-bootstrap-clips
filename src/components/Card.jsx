@@ -38,24 +38,13 @@ function Card(props) {
       body: {}
     }
     Object.assign(style, JSON.parse(JSON.stringify(props.style)))
-    if (props.footerBgColor) {
-      style.footer.backgroundColor = props.footerBgColor
-    }
-    if (props.footerFontColor) {
-      style.footer.color = props.footerFontColor
-    }
-    if (props.headerBgColor) {
-      style.header.backgroundColor = props.headerBgColor
-    }
-    if (props.headerFontColor) {
-      style.header.color = props.headerFontColor
-    }
     return style
   }
   const getTheme = name => {
     let theme = ''
     switch (name) {
       case 'blue':
+      case 'primary':
         theme = 'bg-primary text-light'
         break
       case 'dark':
@@ -63,22 +52,33 @@ function Card(props) {
         break
       case 'gray':
       case 'grey':
+      case 'secondary':
         theme = 'bg-secondary text-light'
         break
       case 'green':
+      case 'success':
         theme = 'bg-success text-light'
         break
       case 'light':
         theme = 'bg-light text-dark'
         break
       case 'yellow':
+      case 'warning':
         theme = 'bg-warning text-dark'
         break
       case 'red':
+      case 'danger':
         theme = 'bg-danger text-light'
         break
       case 'teal':
+      case 'info':
         theme = 'bg-info text-light'
+        break
+      case 'white':
+        theme = 'bg-white text-dark'
+        break
+      case 'transparent':
+        theme = 'bg-transparent'
         break
       default:
         break
@@ -132,7 +132,15 @@ Card.propTypes = {
     'light',
     'yellow',
     'red',
-    'teal'
+    'teal',
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'info',
+    'warning',
+    'white',
+    'transparent'
   ]),
   children: PropTypes.node,
   /** this adds to the className of the inner card div */
@@ -143,8 +151,6 @@ Card.propTypes = {
    * */
   contain: PropTypes.bool,
   footer: PropTypes.node,
-  footerBgColor: PropTypes.string,
-  footerFontColor: PropTypes.string,
   footerTheme: PropTypes.oneOf([
     'blue',
     'dark',
@@ -154,12 +160,36 @@ Card.propTypes = {
     'light',
     'yellow',
     'red',
-    'teal'
+    'teal',
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'info',
+    'warning',
+    'white',
+    'transparent'
   ]),
   header: PropTypes.node,
-  headerBgColor: PropTypes.string,
-  headerFontColor: PropTypes.string,
-  headerTheme: PropTypes.string,
+  headerTheme: PropTypes.oneOf([
+    'blue',
+    'dark',
+    'gray',
+    'grey',
+    'green',
+    'light',
+    'yellow',
+    'red',
+    'teal',
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'info',
+    'warning',
+    'white',
+    'transparent'
+  ]),
   /** set the style of the card, container, footer, header, and body separately */
   style: PropTypes.object,
   theme: PropTypes.oneOf([
@@ -171,7 +201,15 @@ Card.propTypes = {
     'light',
     'yellow',
     'red',
-    'teal'
+    'teal',
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'info',
+    'warning',
+    'white',
+    'transparent'
   ]),
   /** when `column` is `true`, `width` can be 'auto', a number representing a fraction of 12, or an object representing values at specific breakpoints: xs, sm, md, lg, xl. The default is an object with sm: 'auto'.
    * see [getClassesForColumn](https://duhdugg.github.io/preaction-bootstrap-clips/#section-functions)
