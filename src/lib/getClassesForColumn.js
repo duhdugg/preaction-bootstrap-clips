@@ -20,7 +20,7 @@
  */
 const getClassesForColumn = width => {
   width = width || { sm: 'auto' }
-  let classes = []
+  const classes = []
   const getSizeNum = value => {
     // return a floored number appropriate for the number of total columns
     const columns = 12
