@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { getClassesForColumn } from '../lib/getClassesForColumn.js'
+import { getClassesForTheme } from '../lib/getClassesForTheme.js'
 
 /**
  * > _Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options._
@@ -40,55 +41,10 @@ function Card(props) {
     Object.assign(style, JSON.parse(JSON.stringify(props.style)))
     return style
   }
-  const getTheme = name => {
-    let theme = ''
-    switch (name) {
-      case 'blue':
-      case 'primary':
-        theme = 'bg-primary text-light'
-        break
-      case 'dark':
-        theme = 'bg-dark text-light'
-        break
-      case 'gray':
-      case 'grey':
-      case 'secondary':
-        theme = 'bg-secondary text-light'
-        break
-      case 'green':
-      case 'success':
-        theme = 'bg-success text-light'
-        break
-      case 'light':
-        theme = 'bg-light text-dark'
-        break
-      case 'yellow':
-      case 'warning':
-        theme = 'bg-warning text-dark'
-        break
-      case 'red':
-      case 'danger':
-        theme = 'bg-danger text-light'
-        break
-      case 'teal':
-      case 'info':
-        theme = 'bg-info text-light'
-        break
-      case 'white':
-        theme = 'bg-white text-dark'
-        break
-      case 'transparent':
-        theme = 'bg-transparent'
-        break
-      default:
-        break
-    }
-    return theme
-  }
-  const bodyTheme = getTheme(props.bodyTheme)
-  const cardTheme = getTheme(props.theme)
-  const headerTheme = getTheme(props.headerTheme)
-  const footerTheme = getTheme(props.footerTheme)
+  const bodyTheme = getClassesForTheme(props.bodyTheme).join(' ')
+  const cardTheme = getClassesForTheme(props.theme).join(' ')
+  const headerTheme = getClassesForTheme(props.headerTheme).join(' ')
+  const footerTheme = getClassesForTheme(props.footerTheme).join(' ')
   const className = getClassName()
   const style = getStyle()
   return (

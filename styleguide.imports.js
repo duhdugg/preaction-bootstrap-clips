@@ -7,6 +7,7 @@ import { NavBar } from './src/components/NavBar.jsx'
 import { NavItem } from './src/components/NavItem.jsx'
 import { Spinner } from './src/components/Spinner.jsx'
 import { getClassesForColumn } from './src/lib/getClassesForColumn.js'
+import { getClassesForTheme } from './src/lib/getClassesForTheme.js'
 
 global.Alert = Alert
 global.Boilerplate = Boilerplate
@@ -17,3 +18,4 @@ global.NavBar = NavBar
 global.NavItem = NavItem
 global.Spinner = Spinner
 global.getClassesForColumn = getClassesForColumn
+global.getClassesForTheme = getClassesForTheme

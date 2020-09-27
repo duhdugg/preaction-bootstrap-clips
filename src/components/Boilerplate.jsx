@@ -1,51 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-
-const getTheme = name => {
-  let theme = ''
-  switch (name) {
-    case 'blue':
-    case 'primary':
-      theme = 'bg-primary text-light'
-      break
-    case 'dark':
-      theme = 'bg-dark text-light'
-      break
-    case 'gray':
-    case 'grey':
-    case 'secondary':
-      theme = 'bg-secondary text-light'
-      break
-    case 'green':
-    case 'success':
-      theme = 'bg-success text-light'
-      break
-    case 'light':
-      theme = 'bg-light text-dark'
-      break
-    case 'yellow':
-    case 'warning':
-      theme = 'bg-warning text-dark'
-      break
-    case 'red':
-    case 'danger':
-      theme = 'bg-danger text-light'
-      break
-    case 'teal':
-    case 'info':
-      theme = 'bg-info text-light'
-      break
-    case 'white':
-      theme = 'bg-white text-dark'
-      break
-    case 'transparent':
-      theme = 'bg-transparent'
-      break
-    default:
-      break
-  }
-  return theme
-}
+import { getClassesForTheme } from '../lib/getClassesForTheme.js'
 
 /**
  * This provides a quick and easy page layout for your React app.
@@ -57,7 +12,7 @@ function Boilerplate(props) {
       props.noContain === true || (props.noContain && props.noContain.jumbotron)
         ? 'jumbotron-fluid'
         : ''
-    } ${getTheme(props.jumbotronTheme)}`,
+    } ${getClassesForTheme(props.jumbotronTheme).join(' ')}`,
     jumbotronContainer:
       props.noContain === true ||
       (props.noContain && props.noContain.jumbotronContainer)
@@ -94,7 +49,9 @@ function Boilerplate(props) {
   return (
     <div>
       <div>{props.navBar}</div>
-      <header style={style.header} className={getTheme(props.headerTheme)}>
+      <header
+        style={style.header}
+        className={getClassesForTheme(props.headerTheme).join(' ')}>
         {props.jumbotron && props.jumbotronPosition === 'above-header' ? (
           <div className={classes.jumbotron} style={style.jumbotron}>
             <div className={classes.jumbotronContainer}>{props.jumbotron}</div>
@@ -113,10 +70,14 @@ function Boilerplate(props) {
           ''
         )}
       </header>
-      <main style={style.main} className={getTheme(props.mainTheme)}>
+      <main
+        style={style.main}
+        className={getClassesForTheme(props.mainTheme).join(' ')}>
         <div className={classes.mainContainer}>{props.children}</div>
       </main>
-      <footer style={style.footer} className={getTheme(props.footerTheme)}>
+      <footer
+        style={style.footer}
+        className={getClassesForTheme(props.footerTheme).join(' ')}>
         <div className={classes.footerContainer}>{props.footer}</div>
       </footer>
     </div>

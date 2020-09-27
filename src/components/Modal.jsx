@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import { getClassesForTheme } from '../lib/getClassesForTheme.js'
 
 /**
  * > ...add dialogs to your site for lightboxes, user notifications, or completely custom content.
@@ -45,56 +46,10 @@ function Modal(props) {
     }
   }, [setOpacity])
 
-  const getTheme = name => {
-    let theme = ''
-    switch (name) {
-      case 'blue':
-      case 'primary':
-        theme = 'bg-primary text-light'
-        break
-      case 'dark':
-        theme = 'bg-dark text-light'
-        break
-      case 'gray':
-      case 'grey':
-      case 'secondary':
-        theme = 'bg-secondary text-light'
-        break
-      case 'green':
-      case 'success':
-        theme = 'bg-success text-light'
-        break
-      case 'light':
-        theme = 'bg-light text-dark'
-        break
-      case 'yellow':
-      case 'warning':
-        theme = 'bg-warning text-dark'
-        break
-      case 'red':
-      case 'danger':
-        theme = 'bg-danger text-light'
-        break
-      case 'teal':
-      case 'info':
-        theme = 'bg-info text-light'
-        break
-      case 'white':
-        theme = 'bg-white text-dark'
-        break
-      case 'transparent':
-        theme = 'bg-transparent'
-        break
-      default:
-        break
-    }
-    return theme
-  }
-
-  const theme = getTheme(props.theme)
-  const headerTheme = getTheme(props.headerTheme)
-  const bodyTheme = getTheme(props.bodyTheme)
-  const footerTheme = getTheme(props.footerTheme)
+  const theme = getClassesForTheme(props.theme).join(' ')
+  const headerTheme = getClassesForTheme(props.headerTheme).join(' ')
+  const bodyTheme = getClassesForTheme(props.bodyTheme).join(' ')
+  const footerTheme = getClassesForTheme(props.footerTheme).join(' ')
   let closeButtonTheme = ['white', 'light', 'warning', 'yellow'].includes(
     props.headerTheme
   )
