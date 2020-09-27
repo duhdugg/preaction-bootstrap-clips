@@ -143,3 +143,144 @@ test('Boilerplate style', () => {
     backgroundColor: '#ccc'
   })
 })
+
+test('Boilerplate headerTheme', () => {
+  let result = render(<Boilerplate header='test' headerTheme='blue' />)
+  expect(result.container.querySelector('header')).toHaveClass('bg-primary')
+  expect(result.container.querySelector('header')).toHaveClass('text-light')
+
+  result = render(<Boilerplate header='test' headerTheme='dark' />)
+  expect(result.container.querySelector('header')).toHaveClass('bg-dark')
+  expect(result.container.querySelector('header')).toHaveClass('text-light')
+
+  result = render(<Boilerplate header='test' headerTheme='gray' />)
+  expect(result.container.querySelector('header')).toHaveClass('bg-secondary')
+  expect(result.container.querySelector('header')).toHaveClass('text-light')
+
+  result = render(<Boilerplate header='test' headerTheme='grey' />)
+  expect(result.container.querySelector('header')).toHaveClass('bg-secondary')
+  expect(result.container.querySelector('header')).toHaveClass('text-light')
+
+  result = render(<Boilerplate header='test' headerTheme='green' />)
+  expect(result.container.querySelector('header')).toHaveClass('bg-success')
+  expect(result.container.querySelector('header')).toHaveClass('text-light')
+
+  result = render(<Boilerplate header='test' headerTheme='light' />)
+  expect(result.container.querySelector('header')).toHaveClass('bg-light')
+  expect(result.container.querySelector('header')).toHaveClass('text-dark')
+
+  result = render(<Boilerplate header='test' headerTheme='yellow' />)
+  expect(result.container.querySelector('header')).toHaveClass('bg-warning')
+  expect(result.container.querySelector('header')).toHaveClass('text-dark')
+
+  result = render(<Boilerplate header='test' headerTheme='red' />)
+  expect(result.container.querySelector('header')).toHaveClass('bg-danger')
+  expect(result.container.querySelector('header')).toHaveClass('text-light')
+
+  result = render(<Boilerplate header='test' headerTheme='teal' />)
+  expect(result.container.querySelector('header')).toHaveClass('bg-info')
+  expect(result.container.querySelector('header')).toHaveClass('text-light')
+
+  result = render(<Boilerplate header='test' headerTheme='white' />)
+  expect(result.container.querySelector('header')).toHaveClass('bg-white')
+  expect(result.container.querySelector('header')).toHaveClass('text-dark')
+
+  result = render(<Boilerplate header='test' headerTheme='transparent' />)
+  expect(result.container.querySelector('header')).toHaveClass('bg-transparent')
+})
+
+test('Boilerplate footerTheme', () => {
+  let result = render(<Boilerplate footer='test' footerTheme='blue' />)
+  expect(result.container.querySelector('footer')).toHaveClass('bg-primary')
+  expect(result.container.querySelector('footer')).toHaveClass('text-light')
+
+  result = render(<Boilerplate footer='test' footerTheme='dark' />)
+  expect(result.container.querySelector('footer')).toHaveClass('bg-dark')
+  expect(result.container.querySelector('footer')).toHaveClass('text-light')
+
+  result = render(<Boilerplate footer='test' footerTheme='gray' />)
+  expect(result.container.querySelector('footer')).toHaveClass('bg-secondary')
+  expect(result.container.querySelector('footer')).toHaveClass('text-light')
+
+  result = render(<Boilerplate footer='test' footerTheme='grey' />)
+  expect(result.container.querySelector('footer')).toHaveClass('bg-secondary')
+  expect(result.container.querySelector('footer')).toHaveClass('text-light')
+
+  result = render(<Boilerplate footer='test' footerTheme='green' />)
+  expect(result.container.querySelector('footer')).toHaveClass('bg-success')
+  expect(result.container.querySelector('footer')).toHaveClass('text-light')
+
+  result = render(<Boilerplate footer='test' footerTheme='light' />)
+  expect(result.container.querySelector('footer')).toHaveClass('bg-light')
+  expect(result.container.querySelector('footer')).toHaveClass('text-dark')
+
+  result = render(<Boilerplate footer='test' footerTheme='yellow' />)
+  expect(result.container.querySelector('footer')).toHaveClass('bg-warning')
+  expect(result.container.querySelector('footer')).toHaveClass('text-dark')
+
+  result = render(<Boilerplate footer='test' footerTheme='red' />)
+  expect(result.container.querySelector('footer')).toHaveClass('bg-danger')
+  expect(result.container.querySelector('footer')).toHaveClass('text-light')
+
+  result = render(<Boilerplate footer='test' footerTheme='teal' />)
+  expect(result.container.querySelector('footer')).toHaveClass('bg-info')
+  expect(result.container.querySelector('footer')).toHaveClass('text-light')
+
+  result = render(<Boilerplate footer='test' footerTheme='white' />)
+  expect(result.container.querySelector('footer')).toHaveClass('bg-white')
+  expect(result.container.querySelector('footer')).toHaveClass('text-dark')
+
+  result = render(<Boilerplate footer='test' footerTheme='transparent' />)
+  expect(result.container.querySelector('footer')).toHaveClass('bg-transparent')
+})
+
+test('Boilerplate jumbotronTheme', () => {
+  let result = render(<Boilerplate jumbotron='test' jumbotronTheme='blue' />)
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('bg-primary')
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('text-light')
+
+  result = render(<Boilerplate jumbotron='test' jumbotronTheme='dark' />)
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('bg-dark')
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('text-light')
+
+  result = render(<Boilerplate jumbotron='test' jumbotronTheme='gray' />)
+  expect(result.container.querySelector('.jumbotron')).toHaveClass(
+    'bg-secondary'
+  )
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('text-light')
+
+  result = render(<Boilerplate jumbotron='test' jumbotronTheme='grey' />)
+  expect(result.container.querySelector('.jumbotron')).toHaveClass(
+    'bg-secondary'
+  )
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('text-light')
+
+  result = render(<Boilerplate jumbotron='test' jumbotronTheme='green' />)
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('bg-success')
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('text-light')
+
+  result = render(<Boilerplate jumbotron='test' jumbotronTheme='light' />)
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('bg-light')
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('text-dark')
+
+  result = render(<Boilerplate jumbotron='test' jumbotronTheme='yellow' />)
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('bg-warning')
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('text-dark')
+
+  result = render(<Boilerplate jumbotron='test' jumbotronTheme='red' />)
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('bg-danger')
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('text-light')
+
+  result = render(<Boilerplate jumbotron='test' jumbotronTheme='teal' />)
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('bg-info')
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('text-light')
+
+  result = render(<Boilerplate jumbotron='test' jumbotronTheme='white' />)
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('bg-white')
+  expect(result.container.querySelector('.jumbotron')).toHaveClass('text-dark')
+
+  result = render(<Boilerplate jumbotron='test' jumbotronTheme='transparent' />)
+  expect(result.container.querySelector('.jumbotron')).toHaveClass(
+    'bg-transparent'
+  )
+})
