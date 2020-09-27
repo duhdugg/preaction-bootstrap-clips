@@ -93,10 +93,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='row'>
+      <div className='row nav-examples'>
         <style>
           {`
-          .card { margin-bottom: 1em; }
+          .nav-examples .card { margin-bottom: 1em; }
           `}
         </style>
         <Card header='Normal' column width={1}>

@@ -23,20 +23,13 @@ function getRandomTheme() {
         column
         width='auto'
         theme={getRandomTheme()}
-        style={{ container: { minWidth: '10em' } }}>
+        style={{ container: { minWidth: '10em', marginBottom: '1em' } }}>
         <blockquote className='blockquote'>
           &quot;Here is my card.&quot;
         </blockquote>
       </Card>
     ))}
   </div>
-  <style>
-    {`
-  .card .card {
-  margin-bottom: 1em;
-  }
-  `}
-  </style>
   <div className='row'>
     <Card header='Here is a themed card with a header' column theme='dark' />
     <Card header='This one has a red head' column headerTheme='red' />
