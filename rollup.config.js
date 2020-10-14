@@ -44,7 +44,9 @@ const cjsConfig = {
       ]
     }
   ],
-  plugins: plugins.concat(visualizer({ filename: 'stats/cjs.html' }))
+  plugins: plugins.concat(
+    visualizer({ filename: 'stats/cjs.html', sourcemap: true, gzipSize: true })
+  )
 }
 
 const esmConfig = {
@@ -57,7 +59,9 @@ const esmConfig = {
       sourcemap: true
     }
   ],
-  plugins: plugins.concat(visualizer({ filename: 'stats/esm.html' }))
+  plugins: plugins.concat(
+    visualizer({ filename: 'stats/esm.html', sourcemap: true, gzipSize: true })
+  )
 }
 
 const umdConfig = {
@@ -91,7 +95,9 @@ const umdConfig = {
       ]
     }
   ],
-  plugins: plugins.concat(visualizer({ filename: 'stats/umd.html' }))
+  plugins: plugins.concat(
+    visualizer({ filename: 'stats/umd.html', sourcemap: true, gzipSize: true })
+  )
 }
 
 export default [esmConfig, cjsConfig, umdConfig]
