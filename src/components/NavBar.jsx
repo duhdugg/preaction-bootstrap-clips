@@ -148,7 +148,7 @@ function NavBar(props) {
               transition: `height 500ms ${
                 state.toggler ? 'ease-out' : 'ease-in'
               }`,
-              overflow: 'scroll'
+              overflow: 'auto'
             }}>
             {props.menu.map((item, index) => (
               <NavItem
