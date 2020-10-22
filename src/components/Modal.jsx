@@ -41,7 +41,7 @@ function Modal(props) {
         }, transitionDuration)
       }
       setTimeout(() => {
-        document.body.style.overflow = 'scroll'
+        document.body.style.overflow = 'auto'
       }, transitionDuration)
     }
   }, [setOpacity])
