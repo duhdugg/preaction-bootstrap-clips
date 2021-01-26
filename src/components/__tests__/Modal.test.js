@@ -1,7 +1,6 @@
-/* global test */
 import React from 'react'
 import '@testing-library/jest-dom'
-import { render, waitFor } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Modal } from '../Modal.jsx'
 
@@ -24,7 +23,7 @@ test('Modal closeHandler', () => {
   const func = () => x++
   const result = render(<Modal closeHandler={func} />)
   userEvent.click(result.getByTitle('Close'))
-  waitFor(() => expect(x).toBe(1))
+  expect(x).toBe(1)
 })
 
 test('Modal footer', () => {

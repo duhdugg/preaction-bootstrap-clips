@@ -100,4 +100,5 @@ const umdConfig = {
   )
 }
 
-export default [esmConfig, cjsConfig, umdConfig]
+const rollupConfig = [esmConfig, cjsConfig, umdConfig]
+export default rollupConfig
