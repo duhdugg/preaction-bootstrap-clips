@@ -58,7 +58,7 @@ function App() {
 
 ### License
 
-> Copyright 2018-2020 (c) Doug Elkin
+> Copyright (c) 2018-2021 Doug Elkin
 >
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 > of this software and associated documentation files (the "Software"), to deal
