@@ -10,22 +10,27 @@
   <Alert theme='danger' header='Error!'>
     You&apos;ve been doing it wrong.
   </Alert>
-  <Alert theme='dark'>dark</Alert>
+  <Alert theme='dark' gradient>dark with gradient</Alert>
   <Alert theme='light'>light</Alert>
   <Alert theme='secondary'>secondary</Alert>
   <Alert
     theme='light'
     header='light'
-    style={{
-      container: {
-        padding: '0.25em',
-        backgroundImage:
-          'linear-gradient(to top left, black, var(--red), transparent, var(--blue), transparent)'
-      },
-      alert: { marginBottom: 0 }
-    }}>
+    className='wild-style'
+    >
     with header and custom style
   </Alert>
+  <style>{`
+    .pxn-alert-container.wild-style {
+      padding: 0.25em;
+      background-image: linear-gradient(to top left, black,var(--bs-red), transparent, var(--bs-blue), transparent);
+      margin-bottom: 1em;
+    }
+    .pxn-alert-container.wild-style .alert {
+      margin-bottom: 0;
+    }
+  `}
+  </style>
   <div className='row'>
     <Alert column width={3/4}>3/4 Column (all breakpoints)</Alert>
     <Alert column width={1/4}>1/4 Column (all breakpoints)</Alert>

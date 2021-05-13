@@ -1,61 +1,30 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { getClassesForColumn } from '../lib/getClassesForColumn.js'
+import { getColumnClassNames } from '../lib/getColumnClassNames.js'
+import { getGradientClassName } from '../lib/getGradientClassName.js'
+import { joinClassNames } from '../lib/joinClassNames.js'
 
 /**
  * > _Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages._
- * > https://getbootstrap.com/docs/4.5/components/alerts/
+ * > https://getbootstrap.com/docs/5.0/components/alerts/
  */
 function Alert(props) {
-  let theme
-  switch (props.theme) {
-    case 'blue':
-    case 'primary':
-      theme = 'primary'
-      break
-    case 'green':
-    case 'success':
-      theme = 'success'
-      break
-    case 'red':
-    case 'error':
-    case 'danger':
-      theme = 'danger'
-      break
-    case 'yellow':
-    case 'orange':
-    case 'warning':
-      theme = 'warning'
-      break
-    case 'dark':
-      theme = 'dark'
-      break
-    case 'secondary':
-    case 'gray':
-    case 'grey':
-      theme = 'secondary'
-      break
-    case 'light':
-      theme = 'light'
-      break
-    case 'info':
-    default:
-      theme = 'info'
-      break
+  const classNames = {
+    container: joinClassNames(
+      'pxn-alert-container',
+      props.className,
+      props.contain ? 'container' : '',
+      ...(props.column ? getColumnClassNames(props.width) : [])
+    ),
+    alert: joinClassNames(
+      'alert',
+      `alert-${props.theme}`,
+      getGradientClassName(props.gradient)
+    )
   }
-  const style = { alert: {}, container: {} }
-  Object.assign(style, JSON.parse(JSON.stringify(props.style)))
-  const classes = ['mb-3']
-  if (props.contain) {
-    classes.push('container')
-  }
-  if (props.column) {
-    classes.push(...getClassesForColumn(props.width))
-  }
-  const containerClassName = classes.join(' ')
   return (
-    <div className={containerClassName} style={style.container}>
-      <div className={`alert alert-${theme}`} style={style.alert}>
+    <div className={classNames.container}>
+      <div className={classNames.alert}>
         {props.header ? (
           <div>
             <h4 className='alert-heading'>{props.header}</h4>
@@ -72,36 +41,28 @@ function Alert(props) {
 
 Alert.propTypes = {
   children: PropTypes.node,
+  /** adds to the className of the `.pxn-alert-container` element */
+  className: PropTypes.string,
   /** set to true if the alert is a child of a `.row` element */
   column: PropTypes.bool,
   /** setting to true will include the `.container` class to the outer `<div>`
-   * [See: Bootstrap Docs > Layout > Overview > Containers](https://getbootstrap.com/docs/4.5/layout/overview/#containers)
+   * [See: Bootstrap Docs > Layout > Containers](https://getbootstrap.com/docs/5.0/layout/containers/)
    * */
   contain: PropTypes.bool,
-  /** will render an an alert heading with this prop as its contents **/
+  gradient: PropTypes.bool,
   header: PropTypes.node,
-  /** set the style of the inner container and alert `<div>` elements separately */
-  style: PropTypes.object,
   theme: PropTypes.oneOf([
-    'blue',
     'primary',
-    'green',
     'success',
-    'red',
-    'error',
     'danger',
-    'yellow',
-    'orange',
     'warning',
     'dark',
     'secondary',
-    'gray',
-    'grey',
     'light',
     'info'
   ]),
-  /** when `column` is `true`, `width` can be 'auto', a number representing a fraction of 12, or an object representing values at specific breakpoints: xs, sm, md, lg, xl. The default is an object with sm: 'auto'.
-   * see [getClassesForColumn](https://duhdugg.github.io/preaction-bootstrap-clips/#section-functions)
+  /** when `column` is `true`, `width` can be 'auto', a number representing a fraction of 12, or an object representing values at specific breakpoints: xs, sm, md, lg, xl, xxl. The default is an object with sm: 'auto'.
+   * see [getColumnClassNames](https://duhdugg.github.io/preaction-bootstrap-clips/#section-functions)
    */
   width: PropTypes.oneOfType([
     PropTypes.object,
@@ -113,6 +74,7 @@ Alert.propTypes = {
 Alert.defaultProps = {
   column: false,
   contain: false,
+  gradient: false,
   style: { alert: {}, container: {} },
   theme: 'info',
   width: { sm: 'auto' }

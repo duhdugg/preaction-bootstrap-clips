@@ -1,44 +1,25 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { NavItem } from './NavItem.jsx'
+import { joinClassNames } from '../lib/joinClassNames.js'
+import 'bootstrap/js/dist/dropdown.js'
 
 /**
- * https://getbootstrap.com/docs/4.5/components/navs/
+ * https://getbootstrap.com/docs/5.0/components/navs-tabs/
  */
 function Nav(props) {
-  let classes = ['nav']
-
-  if (props.align === 'center') {
-    classes.push('justify-content-center')
-  } else if (props.align === 'right') {
-    classes.push('justify-content-end')
-  } else if (props.align === 'vertical') {
-    classes.push('flex-column')
-  }
-
-  if (props.type === 'pills') {
-    classes.push('nav-pills')
-  } else if (props.type === 'tabs') {
-    classes.push('nav-tabs')
-  }
-
-  if (props.collapsible) {
-    classes.push('flex-column flex-md-row')
-  }
-
-  if (props.fill) {
-    classes.push('nav-fill')
-  }
-
-  if (props.justify) {
-    classes.push('nav-justified')
-  }
-
-  if (props.className) {
-    classes.push(props.className)
-  }
-
-  let className = classes.join(' ')
+  const className = joinClassNames(
+    'nav',
+    props.align === 'center' ? 'justify-content-center' : '',
+    props.align === 'right' ? 'justify-content-end' : '',
+    props.align === 'vertical' ? 'flex-column' : '',
+    props.type === 'pills' ? 'nav-pills' : '',
+    props.type === 'tabs' ? 'nav-tabs' : '',
+    props.collapsible ? 'flex-column flex-md-row' : '',
+    props.fill ? 'nav-fill' : '',
+    props.justify ? 'nav-justified' : '',
+    props.className || ''
+  )
 
   return (
     <ul className={className}>
@@ -54,6 +35,7 @@ function Nav(props) {
           exact={item.exact}
           onClick={item.onClick}
           subMenu={item.subMenu}
+          autoClose={item.autoClose}
         />
       ))}
     </ul>
@@ -62,7 +44,7 @@ function Nav(props) {
 
 Nav.propTypes = {
   align: PropTypes.oneOf(['left', 'center', 'right', 'vertical']),
-  /** additional className to append to `<ul>` element */
+  /** additional className to append to the `.nav` element */
   className: PropTypes.string,
   collapsible: PropTypes.bool,
   /** controls whether to add the `nav-fill` className */

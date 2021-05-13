@@ -21,14 +21,14 @@ test('Spinner children', () => {
 
 test('Spinner flexDirection: column', () => {
   const result = render(<Spinner flexDirection='column'>hold up</Spinner>)
-  expect(result.container.querySelector('.spinner-container')).toHaveStyle({
+  expect(result.container.querySelector('.pxn-spinner-container')).toHaveStyle({
     flexDirection: 'column'
   })
 })
 
 test('Spinner flexDirection: row', () => {
   const result = render(<Spinner flexDirection='row'>hold up</Spinner>)
-  expect(result.container.querySelector('.spinner-container')).toHaveStyle({
+  expect(result.container.querySelector('.pxn-spinner-container')).toHaveStyle({
     flexDirection: 'row'
   })
 })

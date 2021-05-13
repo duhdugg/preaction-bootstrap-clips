@@ -1,16 +1,17 @@
 /**
  * @function
  *
- * @param width can be 'auto', a number representing a fraction of 12, or an object representing values at specific breakpoints: xs, sm, md, lg, xl. The default is an object with `sm: 'auto'`.
+ * @param width can be 'auto', a number representing a fraction of 12, or an object representing values at specific breakpoints: xs, sm, md, lg, xl, xxl. The default is an object with `sm: 'auto'`.
  * @returns {array} an array of className strings
  *
  * @example
  * const width = {
  *   md: 5 / 6,
  *   lg: 2 / 3,
- *   xl: 1 / 2
+ *   xl: 1 / 2,
+ *   xxl: 1 / 3
  * }
- * const columnClassNames = getClassesForColumn(width)
+ * const columnClassNames = getColumnClassNames(width)
  * ;<div className='row'>
  *    <div className={columnClassNames.join(' ')} style={{border: '1px solid black'}}>
  *      <p>width: <code>{JSON.stringify(width)}</code></p>
@@ -18,7 +19,7 @@
  *    </div>
  *  </div>
  */
-const getClassesForColumn = width => {
+const getColumnClassNames = width => {
   width = width || { sm: 'auto' }
   const classes = []
   const getSizeNum = value => {
@@ -64,6 +65,7 @@ const getClassesForColumn = width => {
     handleColumnSizeObjects('md')
     handleColumnSizeObjects('lg')
     handleColumnSizeObjects('xl')
+    handleColumnSizeObjects('xxl')
   } else {
     // specified width is not an object
     if (width === 'auto') {
@@ -75,4 +77,4 @@ const getClassesForColumn = width => {
   return classes
 }
 
-export { getClassesForColumn }
+export { getColumnClassNames }
