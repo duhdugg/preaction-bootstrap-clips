@@ -45,7 +45,7 @@
     "react-dom": "^17.0.1"
   },
   "scripts": {
-    "start": "styleguidist server",
+    "start": "DISABLE_ESLINT_PLUGIN=true styleguidist server",
     "build": "rollup -c",
     "build:doc": "npm run build:doc:functions && npm run build:doc:components",
     "build:doc:functions": "jsdoc2md src/lib/*.js > docs/functions.md",
