@@ -1,25 +1,12 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { joinClassNames } from '../lib/joinClassNames.js'
+import Dropdown from 'bootstrap/js/dist/dropdown.js'
 
 /**
  * These are used as children of both [`<Nav>`](#nav) and [`<NavBar>`](#navbar) components
  */
 function NavItem(props) {
-  const classNames = {
-    li: joinClassNames(
-      'nav-item',
-      props.subMenu ? 'dropdown' : '',
-      props.className || ''
-    ),
-    a: joinClassNames(
-      'nav-link',
-      props.active ? 'active' : '',
-      props.disabled ? 'disabled' : '',
-      props.subMenu ? 'dropdown-toggle' : ''
-    )
-  }
-
   const linkId = React.useRef(
     `nav-link-id-${String(Math.random()).replace(/[^\d]/g, '')}`
   )
@@ -42,8 +29,39 @@ function NavItem(props) {
       }
     }
   }
+
+  // dropdown workaround
+  const liRef = React.useRef(null)
+  const [firstToggle, setFirstToggle] = React.useState(false)
+  React.useEffect(() => {
+    if (props.subMenu && !firstToggle) {
+      const dt = liRef.current.querySelector('.dropdown-toggle')
+      const dd =
+        Dropdown.getInstance(dt) ||
+        new Dropdown(dt, { autoClose: props.autoClose || true })
+      dd.show()
+      dd.hide()
+      setFirstToggle(true)
+    }
+  }, [props, firstToggle, setFirstToggle])
+
+  const classNames = {
+    li: joinClassNames(
+      'nav-item',
+      props.subMenu ? 'dropdown' : '',
+      props.className || ''
+    ),
+    a: joinClassNames(
+      'nav-link',
+      'show', // needed for dropdown workaround
+      props.active ? 'active' : '',
+      props.disabled ? 'disabled' : '',
+      props.subMenu ? 'dropdown-toggle' : ''
+    )
+  }
+
   return (
-    <li className={classNames.li}>
+    <li className={classNames.li} ref={liRef}>
       <Link
         href={props.href || ''}
         className={classNames.a}

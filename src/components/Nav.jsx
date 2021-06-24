@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { NavItem } from './NavItem.jsx'
 import { joinClassNames } from '../lib/joinClassNames.js'
-import 'bootstrap/js/dist/dropdown.js'
 
 /**
  * https://getbootstrap.com/docs/5.0/components/navs-tabs/

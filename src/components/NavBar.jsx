@@ -3,7 +3,6 @@ import React from 'react'
 import { NavItem } from './NavItem.jsx'
 import { joinClassNames } from '../lib/joinClassNames.js'
 import 'bootstrap/js/dist/collapse.js'
-import 'bootstrap/js/dist/dropdown.js'
 
 /**
  * > _Bootstrap’s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more..._
