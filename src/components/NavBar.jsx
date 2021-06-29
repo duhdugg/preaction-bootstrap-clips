@@ -32,6 +32,7 @@ function NavBar(props) {
 
   const darkOrLight = [
     'cyan',
+    'info',
     'light',
     'teal',
     'transparent',
