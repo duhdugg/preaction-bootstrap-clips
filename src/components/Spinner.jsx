@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import { joinClassNames } from '../lib/joinClassNames.js'
 
 /**
  * > _Indicate the loading state of a component or page..._
@@ -8,7 +9,11 @@ import React from 'react'
 function Spinner(props) {
   return (
     <div
-      className={`pxn-spinner-container d-flex ${props.className}`}
+      className={joinClassNames(
+        'pxn-spinner-container',
+        'd-flex',
+        props.className || ''
+      )}
       style={{
         flexDirection: props.flexDirection
       }}>
