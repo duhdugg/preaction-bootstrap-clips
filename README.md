@@ -18,7 +18,7 @@ The full documentation can be found in the [styleguide](https://duhdugg.github.i
 
 ### Installation
 
-`npm install --save-dev @preaction/bootstrap-clips@5.0.0-alpha.5`
+`npm install --save-dev @preaction/bootstrap-clips@5.0.0-alpha.6`
 
 ### Usage
 
