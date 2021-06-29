@@ -2,11 +2,11 @@
 
 #### yarn:
 
-`yarn add --dev @preaction/bootstrap-clips@5.0.0-alpha.4`
+`yarn add --dev @preaction/bootstrap-clips@5.0.0-alpha.5`
 
 #### npm:
 
-`npm install --save-dev @preaction/bootstrap-clips@5.0.0-alpha.4`
+`npm install --save-dev @preaction/bootstrap-clips@5.0.0-alpha.5`
 
 ### Import
 
