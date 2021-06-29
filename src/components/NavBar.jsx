@@ -2,7 +2,11 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { NavItem } from './NavItem.jsx'
 import { joinClassNames } from '../lib/joinClassNames.js'
-import 'bootstrap/js/dist/collapse.js'
+
+const ssr = typeof window === 'undefined'
+if (!ssr) {
+  require('bootstrap/js/dist/collapse.js')
+}
 
 /**
  * > _Bootstrap’s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more..._

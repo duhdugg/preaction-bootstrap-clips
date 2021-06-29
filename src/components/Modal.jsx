@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import BSModal from 'bootstrap/js/dist/modal.js'
 import { getGradientClassName } from '../lib/getGradientClassName.js'
 import { getThemeClassName } from '../lib/getThemeClassName.js'
 import { joinClassNames } from '../lib/joinClassNames.js'
+
+const ssr = typeof window === 'undefined'
+let BSModal
+if (!ssr) {
+  BSModal = require('bootstrap/js/dist/modal.js')
+}
 
 const sizes = ['sm', 'lg', 'xl']
 const fullscreenOptions = [false, true, 'sm', 'md', 'lg', 'xl', 'xxl']
@@ -71,7 +76,7 @@ function Modal(props) {
   const [bsModal, setBsModal] = React.useState(undefined)
 
   React.useEffect(() => {
-    if (thisModal && thisModal.current && !bsModal) {
+    if (thisModal && thisModal.current && !bsModal && !ssr) {
       const m = new BSModal(thisModal.current, {
         backdrop: props.closeOnBackdropClick ? true : 'static',
         keyboard: props.closeOnEscape,
