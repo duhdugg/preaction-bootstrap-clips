@@ -38,9 +38,6 @@ function Card(props) {
       getGradientClassName(props.footerGradient)
     )
   }
-  if (props.className) {
-    Object.assign(classNames, props.className)
-  }
   return (
     <div className={classNames.container}>
       <div className={classNames.card}>
