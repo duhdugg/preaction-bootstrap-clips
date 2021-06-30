@@ -2,11 +2,11 @@
 
 #### yarn:
 
-`yarn add --dev @preaction/bootstrap-clips@5.0.0-alpha.7`
+`yarn add --dev @preaction/bootstrap-clips@5.0.0-alpha.8`
 
 #### npm:
 
-`npm install --save-dev @preaction/bootstrap-clips@5.0.0-alpha.7`
+`npm install --save-dev @preaction/bootstrap-clips@5.0.0-alpha.8`
 
 ### Import
 
@@ -15,6 +15,10 @@ This library uses named exports only. To help keep the size of your application'
 #### ES Module
 
 `import { Alert, Boilerplate, Card, Modal, Nav, NavBar, Spinner } from '@preaction/bootstrap-clips'`
+
+CSS needs to be imported separately
+
+`import '@preaction/bootstrap-clips/dist/preaction-bootstrap-clips.css'`
 
 #### CommonJS Module
 

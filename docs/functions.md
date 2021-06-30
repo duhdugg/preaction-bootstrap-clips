@@ -3,9 +3,9 @@
 <dl>
 <dt><a href="#getColumnClassNames">getColumnClassNames(width)</a> ⇒ <code>array</code></dt>
 <dd></dd>
-<dt><a href="#getGradientClassName">getGradientClassName()</a> ⇒ <code>string</code></dt>
+<dt><a href="#getGradientClassName">getGradientClassName(bool)</a> ⇒ <code>string</code></dt>
 <dd></dd>
-<dt><a href="#getThemeClassName">getThemeClassName()</a> ⇒ <code>string</code></dt>
+<dt><a href="#getThemeClassName">getThemeClassName(str)</a> ⇒ <code>string</code></dt>
 <dd></dd>
 <dt><a href="#joinClassNames">joinClassNames()</a> ⇒ <code>string</code></dt>
 <dd></dd>
@@ -39,14 +39,24 @@ const columnClassNames = getColumnClassNames(width)
 ```
 <a name="getGradientClassName"></a>
 
-## getGradientClassName() ⇒ <code>string</code>
+## getGradientClassName(bool) ⇒ <code>string</code>
 **Kind**: global function  
 **Returns**: <code>string</code> - 'bg-gradient' if bool, else empty  
+
+| Param | Type |
+| --- | --- |
+| bool | <code>bool</code> | 
+
 <a name="getThemeClassName"></a>
 
-## getThemeClassName() ⇒ <code>string</code>
+## getThemeClassName(str) ⇒ <code>string</code>
 **Kind**: global function  
 **Returns**: <code>string</code> - `pxn-theme-${str}`  
+
+| Param | Type |
+| --- | --- |
+| str | <code>string</code> | 
+
 <a name="joinClassNames"></a>
 
 ## joinClassNames() ⇒ <code>string</code>

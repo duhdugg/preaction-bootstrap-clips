@@ -1,6 +1,7 @@
 /**
  * @function
  *
+ * @param {string} str
  * @returns {string} `pxn-theme-${str}`
  *
  */

@@ -18,13 +18,15 @@ The full documentation can be found in the [styleguide](https://duhdugg.github.i
 
 ### Installation
 
-`npm install --save-dev @preaction/bootstrap-clips@5.0.0-alpha.7`
+`npm install --save-dev @preaction/bootstrap-clips@5.0.0-alpha.8`
 
 ### Usage
 
 ```jsx
 // imports must be named, as this alllows shaking unused components from your bundle
 import { Boilerplate, Card } from '@preaction/bootstrap-clips'
+// CSS needs to be imported separately
+import '@preaction/bootstrap-clips/dist/preaction-bootstrap-clips.css'
 
 // bootstrap as a peerDependency means you need to import bootstrap CSS yourself.
 // This gives you the flexibility to choose a different build or theme, if you wish.

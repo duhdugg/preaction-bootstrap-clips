@@ -1,6 +1,7 @@
 /**
  * @function
  *
+ * @param {bool} bool
  * @returns {string} 'bg-gradient' if bool, else empty
  *
  */
