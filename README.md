@@ -25,12 +25,13 @@ The full documentation can be found in the [styleguide](https://duhdugg.github.i
 ```jsx
 // imports must be named, as this alllows shaking unused components from your bundle
 import { Boilerplate, Card } from '@preaction/bootstrap-clips'
-// CSS needs to be imported separately
-import '@preaction/bootstrap-clips/dist/preaction-bootstrap-clips.css'
 
 // bootstrap as a peerDependency means you need to import bootstrap CSS yourself.
 // This gives you the flexibility to choose a different build or theme, if you wish.
 import 'bootstrap/dist/css/bootstrap.min.css'
+
+// library css needs to be imported separately after bootstrap
+import '@preaction/bootstrap-clips/dist/preaction-bootstrap-clips.css'
 
 // this is an example of how your application may choose to use a simple Bootstrap template,
 // using fractions to determine the width of cards in a row at different breakpoints

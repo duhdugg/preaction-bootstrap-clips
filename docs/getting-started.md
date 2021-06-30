@@ -16,8 +16,9 @@ This library uses named exports only. To help keep the size of your application'
 
 `import { Alert, Boilerplate, Card, Modal, Nav, NavBar, Spinner } from '@preaction/bootstrap-clips'`
 
-CSS needs to be imported separately
+CSS needs to be imported separately (first bootstrap, then the library CSS)
 
+`import 'bootstrap/dist/css/bootstrap.min.css'`
 `import '@preaction/bootstrap-clips/dist/preaction-bootstrap-clips.css'`
 
 #### CommonJS Module
