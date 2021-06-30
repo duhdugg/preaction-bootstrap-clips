@@ -11,7 +11,10 @@ import visualizer from 'rollup-plugin-visualizer'
 const plugins = [
   external(),
   nodeResolve(),
-  postcss({}),
+  postcss({
+    extract: 'preaction-bootstrap-clips.css',
+    minimize: true
+  }),
   sucrase({
     exclude: ['node_modules/**'],
     transforms: ['jsx']

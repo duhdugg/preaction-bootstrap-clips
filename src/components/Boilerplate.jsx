@@ -3,7 +3,7 @@ import React from 'react'
 import { getGradientClassName } from '../lib/getGradientClassName.js'
 import { getThemeClassName } from '../lib/getThemeClassName.js'
 import { joinClassNames } from '../lib/joinClassNames.js'
-import '../style/boilerplate.scss'
+import '../style/preaction.scss'
 
 /**
  * This provides a quick and easy page layout for your React app.
