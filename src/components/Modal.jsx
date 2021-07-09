@@ -83,7 +83,9 @@ function Modal(props) {
         focus: props.focusOnInit
       })
       thisModal.current.addEventListener('hidden.bs.modal', () => {
-        props.setShow(false)
+        if (props.setShow) {
+          props.setShow(false)
+        }
       })
       setBsModal(m)
       if (props.show) {
@@ -160,7 +162,7 @@ Modal.propTypes = {
   /** sets a background gradient on the `.modal-header` element */
   headerGradient: PropTypes.bool,
   headerTheme: PropTypes.string,
-  setShow: PropTypes.func.isRequired,
+  setShow: PropTypes.func,
   size: PropTypes.oneOf(sizes),
   show: PropTypes.bool,
   /** sets a background gradient on the `.modal-content` element */
