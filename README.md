@@ -1,6 +1,6 @@
 # Preaction Boostrap Clips
 
-This is a small library of React components targeting Bootstrap v5. The primary intention of this project is to reduce the markup needed for commonly-used elements. It is not intended to be a replacement for react-bootstrap.
+This is a small library of React components targeting Bootstrap v5. The primary intention of this project is to reduce the markup needed for commonly-used elements.
 
 Components provided by this library include:
 
@@ -23,9 +23,6 @@ The full documentation can be found in the [styleguide](https://duhdugg.github.i
 ### Usage
 
 ```jsx
-// imports must be named, as this alllows shaking unused components from your bundle
-import { Boilerplate, Card } from '@preaction/bootstrap-clips'
-
 // bootstrap as a peerDependency means you need to import bootstrap CSS yourself.
 // This gives you the flexibility to choose a different build or theme, if you wish.
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -33,13 +30,16 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 // library css needs to be imported separately after bootstrap
 import '@preaction/bootstrap-clips/dist/preaction-bootstrap-clips.css'
 
-// this is an example of how your application may choose to use a simple Bootstrap template,
+// component imports must be named, to allow shaking unused components from your bundle
+import { Boilerplate, Card } from '@preaction/bootstrap-clips'
+
+// this is an example of how your application may choose to use a simple template,
 // using fractions to determine the width of cards in a row at different breakpoints
 // see the full documentation for more examples
 function App() {
-  const cardWidths = { md: 1 / 2, lg: 1 / 3, xl: 1 / 4 }
+  const cardWidths = { md: 1 / 2, lg: 1 / 3, xl: 1 / 4, xxl: 1 / 6 }
   return (
-    <Boilerplate footer='Copyright (c) 2018-2020 Doug Elkin. All rights reserved.'>
+    <Boilerplate footer='Copyright (c) 2018-2021 Doug Elkin. All rights reserved.'>
       <div className='row'>
         <Card header='Alpha' headerTheme='green' column width={cardWidths}>
           <p>Greetings, Earthlings!</p>
