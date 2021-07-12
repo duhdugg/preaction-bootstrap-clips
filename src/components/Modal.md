@@ -1,46 +1,44 @@
-Modals should be rendered conditionally based on application state. Once rendered, a modal will be on top of all other elements on the page. Use the `closeHandler` prop to allow exiting the modal. You may also add additional buttons to handle this inside the modal. See the example below.
-
 ### Modal Example
 
 ```jsx
 const [showModal, setShowModal] = React.useState(false)
-const closeHandler = () => {
-  setShowModal(!showModal)
-}
 ;<Boilerplate
   footer={
-    showModal ? (
-      <Modal
-        title='Modal Title'
-        closeButtonText='Cancel'
-        closeHandler={closeHandler}
-        footer={
-          <div className='btn-group'>
-            <button
-              type='button'
-              className='btn btn-secondary'
-              onClick={closeHandler}>
-              Cancel
-            </button>
-            <button
-              type='button'
-              className='btn btn-primary'
-              onClick={closeHandler}>
-              Save
-            </button>
-          </div>
-        }>
-        Modal content goes here
-      </Modal>
-    ) : (
-      ''
-    )
+    <Modal
+      show={showModal}
+      setShow={setShowModal}
+      headerTheme='indigo'
+      headerGradient
+      title='Modal Title'
+      closeButtonText='Cancel'
+      footer={
+        <div className='btn-group'>
+          <button
+            type='button'
+            className='btn btn-secondary'
+            onClick={() => {
+              setShowModal(false)
+            }}>
+            Cancel
+          </button>
+          <button
+            type='button'
+            className='btn btn-primary'
+            onClick={() => {
+              setShowModal(false)
+            }}>
+            Save
+          </button>
+        </div>
+      }>
+      Modal content goes here
+    </Modal>
   }>
   <button
     type='button'
-    className='btn btn-primary'
+    className='btn btn-primary btn-lg'
     onClick={e => {
-      setShowModal(!showModal)
+      setShowModal(true)
     }}>
     Show Modal
   </button>

@@ -1,75 +1,54 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { getClassesForColumn } from '../lib/getClassesForColumn.js'
-import { getClassesForTheme } from '../lib/getClassesForTheme.js'
+import { getColumnClassNames } from '../lib/getColumnClassNames.js'
+import { getGradientClassName } from '../lib/getGradientClassName.js'
+import { getThemeClassName } from '../lib/getThemeClassName.js'
+import { joinClassNames } from '../lib/joinClassNames.js'
 
 /**
  * > _Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options._
- * > https://getbootstrap.com/docs/4.5/components/card/
+ * > https://getbootstrap.com/docs/5.0/components/card/
  */
 function Card(props) {
-  const getClassName = () => {
-    let d = {
-      card: '',
-      header: '',
-      body: '',
-      footer: ''
-    }
-    if (props.className) {
-      Object.assign(d, props.className)
-    }
-    return d
+  const classNames = {
+    container: joinClassNames(
+      'pxn-card-container',
+      props.className || '',
+      props.contain ? 'container' : '',
+      ...(props.column ? getColumnClassNames(props.width) : '')
+    ),
+    card: joinClassNames(
+      'card',
+      getThemeClassName(props.theme),
+      getGradientClassName(props.gradient)
+    ),
+    header: joinClassNames(
+      'card-header',
+      getThemeClassName(props.headerTheme),
+      getGradientClassName(props.headerGradient)
+    ),
+    body: joinClassNames(
+      'card-body',
+      getThemeClassName(props.bodyTheme),
+      getGradientClassName(props.bodyGradient)
+    ),
+    footer: joinClassNames(
+      'card-footer',
+      getThemeClassName(props.footerTheme),
+      getGradientClassName(props.footerGradient)
+    )
   }
-  const getContainerClassName = () => {
-    let classes = []
-    if (props.contain) {
-      classes.push('container')
-    }
-    if (props.column) {
-      classes.push(...getClassesForColumn(props.width))
-    }
-    return classes.join(' ')
-  }
-  const getStyle = () => {
-    const style = {
-      card: {},
-      container: {},
-      footer: {},
-      header: {},
-      body: {}
-    }
-    Object.assign(style, JSON.parse(JSON.stringify(props.style)))
-    return style
-  }
-  const bodyTheme = getClassesForTheme(props.bodyTheme).join(' ')
-  const cardTheme = getClassesForTheme(props.theme).join(' ')
-  const headerTheme = getClassesForTheme(props.headerTheme).join(' ')
-  const footerTheme = getClassesForTheme(props.footerTheme).join(' ')
-  const className = getClassName()
-  const style = getStyle()
   return (
-    <div className={getContainerClassName()} style={style.container}>
-      <div className={`card ${cardTheme} ${className.card}`} style={style.card}>
+    <div className={classNames.container}>
+      <div className={classNames.card}>
         {props.header ? (
-          <div
-            className={`card-header ${headerTheme} ${className.header}`}
-            style={style.header}>
-            {props.header}
-          </div>
+          <div className={classNames.header}>{props.header}</div>
         ) : (
           ''
         )}
-        <div
-          className={`card-body ${bodyTheme} ${className.body}`}
-          style={style.body}>
-          {props.children}
-        </div>
+        <div className={classNames.body}>{props.children}</div>
         {props.footer ? (
-          <div
-            className={`card-footer ${footerTheme} ${className.footer}`}
-            style={style.footer}>
-            {props.footer}
-          </div>
+          <div className={classNames.footer}>{props.footer}</div>
         ) : (
           ''
         )}
@@ -79,96 +58,35 @@ function Card(props) {
 }
 
 Card.propTypes = {
-  bodyTheme: PropTypes.oneOf([
-    'blue',
-    'dark',
-    'gray',
-    'grey',
-    'green',
-    'light',
-    'yellow',
-    'red',
-    'teal',
-    'primary',
-    'secondary',
-    'success',
-    'danger',
-    'info',
-    'warning',
-    'white',
-    'transparent'
-  ]),
+  /** sets a `pxn-theme-` class on the `.card-body` element */
+  bodyTheme: PropTypes.string,
+  /** sets a background gradient on the `.card-body` element */
+  bodyGradient: PropTypes.bool,
   children: PropTypes.node,
-  /** this adds to the className of the inner card div */
-  className: PropTypes.object,
+  /** this adds to the className of the `.pxn-card-container` element */
+  className: PropTypes.string,
+  /** set to true if the card is a child of a `.row` element */
   column: PropTypes.bool,
   /** setting to true will include the `.container` class to the outer `<div>`
-   * [See: Bootstrap Docs > Layout > Overview > Containers](https://getbootstrap.com/docs/4.5/layout/overview/#containers)
+   * [See: Bootstrap Docs > Layout > Containers](https://getbootstrap.com/docs/5.0/layout/containers/)
    * */
   contain: PropTypes.bool,
   footer: PropTypes.node,
-  footerTheme: PropTypes.oneOf([
-    'blue',
-    'dark',
-    'gray',
-    'grey',
-    'green',
-    'light',
-    'yellow',
-    'red',
-    'teal',
-    'primary',
-    'secondary',
-    'success',
-    'danger',
-    'info',
-    'warning',
-    'white',
-    'transparent'
-  ]),
+  /** sets a `pxn-theme-` class on the `.card-footer` element */
+  footerTheme: PropTypes.string,
+  /** sets a background gradient on the `.card-footer` element */
+  footerGradient: PropTypes.bool,
+  /** sets a background gradient on the `.card` element */
+  gradient: PropTypes.bool,
   header: PropTypes.node,
-  headerTheme: PropTypes.oneOf([
-    'blue',
-    'dark',
-    'gray',
-    'grey',
-    'green',
-    'light',
-    'yellow',
-    'red',
-    'teal',
-    'primary',
-    'secondary',
-    'success',
-    'danger',
-    'info',
-    'warning',
-    'white',
-    'transparent'
-  ]),
-  /** set the style of the card, container, footer, header, and body separately */
-  style: PropTypes.object,
-  theme: PropTypes.oneOf([
-    'blue',
-    'dark',
-    'gray',
-    'grey',
-    'green',
-    'light',
-    'yellow',
-    'red',
-    'teal',
-    'primary',
-    'secondary',
-    'success',
-    'danger',
-    'info',
-    'warning',
-    'white',
-    'transparent'
-  ]),
-  /** when `column` is `true`, `width` can be 'auto', a number representing a fraction of 12, or an object representing values at specific breakpoints: xs, sm, md, lg, xl. The default is an object with sm: 'auto'.
-   * see [getClassesForColumn](https://duhdugg.github.io/preaction-bootstrap-clips/#section-functions)
+  /** sets a `pxn-theme-` class on the `.card-header` element */
+  headerTheme: PropTypes.string,
+  /** sets a background gradient on the `.card-header` element */
+  headerGradient: PropTypes.bool,
+  /** sets a `pxn-theme-` class on the `.card` element */
+  theme: PropTypes.string,
+  /** when `column` is `true`, `width` can be 'auto', a number representing a fraction of 12, or an object representing values at specific breakpoints: xs, sm, md, lg, xl, xxl. The default is an object with sm: 'auto'.
+   * see [getColumnClassNames](https://duhdugg.github.io/preaction-bootstrap-clips/#section-functions)
    */
   width: PropTypes.oneOfType([
     PropTypes.object,
@@ -180,13 +98,6 @@ Card.propTypes = {
 Card.defaultProps = {
   column: false,
   contain: false,
-  style: {
-    card: {},
-    container: {},
-    footer: {},
-    header: {},
-    body: {}
-  },
   width: { sm: 'auto' }
 }
 

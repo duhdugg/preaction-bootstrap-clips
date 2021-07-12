@@ -1,6 +1,6 @@
 {
   "name": "@preaction/bootstrap-clips",
-  "version": "3.0.0",
+  "version": "5.0.0-alpha.10",
   "main": "dist/preaction-bootstrap-clips.cjs.js",
   "module": "dist/preaction-bootstrap-clips.esm.js",
   "files": [
@@ -11,39 +11,41 @@
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
     "@rollup/plugin-babel": "^5.2.2",
-    "@rollup/plugin-commonjs": "^17.0.0",
-    "@rollup/plugin-node-resolve": "^11.1.0",
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
     "@rollup/plugin-sucrase": "^3.1.0",
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.3",
-    "@testing-library/user-event": "^12.6.2",
-    "bootstrap": "^4.6.0",
-    "eslint-config-prettier": "^7.2.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.1.8",
+    "bootstrap": "^5.0.2",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.3.1",
-    "jest-environment-jsdom-sixteen": "^1.0.3",
-    "jsdoc-to-markdown": "^6.0.1",
-    "prettier": "^2.2.1",
+    "jest-environment-jsdom-sixteen": "^2.0.0",
+    "jsdoc-to-markdown": "^7.0.1",
+    "postcss": "^8.3.5",
+    "prettier": "^2.3.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
     "react-scripts": "^4.0.1",
-    "react-styleguidist": "^11.1.5",
-    "rollup": "^2.38.0",
+    "react-styleguidist": "^11.1.7",
+    "rollup": "^2.53.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-visualizer": "^4.2.0"
+    "rollup-plugin-visualizer": "^5.5.2",
+    "sass": "^1.35.2"
   },
   "peerDependencies": {
-    "bootstrap": "^4.6.0",
+    "bootstrap": "^5.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
   "scripts": {
-    "start": "styleguidist server",
+    "start": "DISABLE_ESLINT_PLUGIN=true styleguidist server",
     "build": "rollup -c",
     "build:doc": "npm run build:doc:functions && npm run build:doc:components",
     "build:doc:functions": "jsdoc2md src/lib/*.js > docs/functions.md",
@@ -62,7 +64,7 @@
       "plugin:react/recommended"
     ],
     "parserOptions": {
-      "ecmaVersion": 2020
+      "ecmaVersion": 2021
     }
   },
   "browserslist": {
@@ -77,12 +79,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:duhdugg/preaction-bootstrap-clips.git"
+    "url": "https://github.com/duhdugg/preaction-bootstrap-clips"
   },
   "bugs": "https://github.com/duhdugg/preaction-bootstrap-clips/issues",
   "keywords": [
     "react",
     "bootstrap",
-    "bootstrap4"
+    "bootstrap5"
   ]
 }

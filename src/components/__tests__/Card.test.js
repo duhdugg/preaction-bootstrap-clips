@@ -3,6 +3,31 @@ import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import { Card } from '../Card.jsx'
 
+const themes = [
+  'blue',
+  'cyan',
+  'danger',
+  'dark',
+  'gray',
+  'gray-dark',
+  'green',
+  'indigo',
+  'info',
+  'light',
+  'orange',
+  'pink',
+  'primary',
+  'purple',
+  'red',
+  'secondary',
+  'success',
+  'teal',
+  'transparent',
+  'warning',
+  'white',
+  'yellow'
+]
+
 test('Card basic', () => {
   const result = render(<Card>Aloha</Card>)
   expect(result.container.firstChild).toBeInTheDocument()
@@ -13,65 +38,27 @@ test('Card basic', () => {
 })
 
 test('Card bodyTheme', () => {
-  let result = render(<Card bodyTheme='blue' />)
-  expect(result.container.querySelector('.card-body')).toHaveClass('bg-primary')
-  expect(result.container.querySelector('.card-body')).toHaveClass('text-light')
+  let result
+  for (const theme of themes) {
+    result = render(<Card bodyTheme={theme} />)
+    expect(result.container.querySelector('.card-body')).toHaveClass(
+      `pxn-theme-${theme}`
+    )
+  }
+})
 
-  result = render(<Card bodyTheme='dark' />)
-  expect(result.container.querySelector('.card-body')).toHaveClass('bg-dark')
-  expect(result.container.querySelector('.card-body')).toHaveClass('text-light')
-
-  result = render(<Card bodyTheme='gray' />)
+test('Card bodyGradient', () => {
+  const result = render(<Card theme='dark' bodyGradient />)
   expect(result.container.querySelector('.card-body')).toHaveClass(
-    'bg-secondary'
-  )
-  expect(result.container.querySelector('.card-body')).toHaveClass('text-light')
-
-  result = render(<Card bodyTheme='grey' />)
-  expect(result.container.querySelector('.card-body')).toHaveClass(
-    'bg-secondary'
-  )
-  expect(result.container.querySelector('.card-body')).toHaveClass('text-light')
-
-  result = render(<Card bodyTheme='green' />)
-  expect(result.container.querySelector('.card-body')).toHaveClass('bg-success')
-  expect(result.container.querySelector('.card-body')).toHaveClass('text-light')
-
-  result = render(<Card bodyTheme='light' />)
-  expect(result.container.querySelector('.card-body')).toHaveClass('bg-light')
-  expect(result.container.querySelector('.card-body')).toHaveClass('text-dark')
-
-  result = render(<Card bodyTheme='yellow' />)
-  expect(result.container.querySelector('.card-body')).toHaveClass('bg-warning')
-  expect(result.container.querySelector('.card-body')).toHaveClass('text-dark')
-
-  result = render(<Card bodyTheme='red' />)
-  expect(result.container.querySelector('.card-body')).toHaveClass('bg-danger')
-  expect(result.container.querySelector('.card-body')).toHaveClass('text-light')
-
-  result = render(<Card bodyTheme='teal' />)
-  expect(result.container.querySelector('.card-body')).toHaveClass('bg-info')
-  expect(result.container.querySelector('.card-body')).toHaveClass('text-light')
-
-  result = render(<Card bodyTheme='white' />)
-  expect(result.container.querySelector('.card-body')).toHaveClass('bg-white')
-  expect(result.container.querySelector('.card-body')).toHaveClass('text-dark')
-
-  result = render(<Card bodyTheme='transparent' />)
-  expect(result.container.querySelector('.card-body')).toHaveClass(
-    'bg-transparent'
+    'bg-gradient'
   )
 })
 
 test('Card className', () => {
-  let result = render(<Card className={{ card: 'foobar' }} />)
-  expect(result.container.querySelector('.card')).toHaveClass('foobar')
-
-  result = render(<Card className={{ header: 'foobar' }} header='test' />)
-  expect(result.container.querySelector('.card-header')).toHaveClass('foobar')
-
-  result = render(<Card className={{ footer: 'foobar' }} footer='test' />)
-  expect(result.container.querySelector('.card-footer')).toHaveClass('foobar')
+  let result = render(<Card className='foobar' />)
+  expect(result.container.querySelector('.pxn-card-container')).toHaveClass(
+    'foobar'
+  )
 })
 
 test('Card column', () => {
@@ -100,72 +87,21 @@ test('Card footer', () => {
   expect(result.getByText('foobar')).toHaveClass('card-footer')
 })
 
+test('Card footerGradient', () => {
+  const result = render(<Card theme='dark' footer='test' footerGradient />)
+  expect(result.container.querySelector('.card-footer')).toHaveClass(
+    'bg-gradient'
+  )
+})
+
 test('Card footerTheme', () => {
-  let result = render(<Card footerTheme='blue' footer='test' />)
-  expect(result.container.querySelector('.card-footer')).toHaveClass(
-    'bg-primary'
-  )
-  expect(result.container.querySelector('.card-footer')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Card footerTheme='dark' footer='test' />)
-  expect(result.container.querySelector('.card-footer')).toHaveClass('bg-dark')
-  expect(result.container.querySelector('.card-footer')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Card footerTheme='gray' footer='test' />)
-  expect(result.container.querySelector('.card-footer')).toHaveClass(
-    'bg-secondary'
-  )
-  expect(result.container.querySelector('.card-footer')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Card footerTheme='grey' footer='test' />)
-  expect(result.container.querySelector('.card-footer')).toHaveClass(
-    'bg-secondary'
-  )
-  expect(result.container.querySelector('.card-footer')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Card footerTheme='green' footer='test' />)
-  expect(result.container.querySelector('.card-footer')).toHaveClass(
-    'bg-success'
-  )
-  expect(result.container.querySelector('.card-footer')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Card footerTheme='light' footer='test' />)
-  expect(result.container.querySelector('.card-footer')).toHaveClass('bg-light')
-  expect(result.container.querySelector('.card-footer')).toHaveClass(
-    'text-dark'
-  )
-
-  result = render(<Card footerTheme='yellow' footer='test' />)
-  expect(result.container.querySelector('.card-footer')).toHaveClass(
-    'bg-warning'
-  )
-  expect(result.container.querySelector('.card-footer')).toHaveClass(
-    'text-dark'
-  )
-
-  result = render(<Card footerTheme='red' footer='test' />)
-  expect(result.container.querySelector('.card-footer')).toHaveClass(
-    'bg-danger'
-  )
-  expect(result.container.querySelector('.card-footer')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Card footerTheme='teal' footer='test' />)
-  expect(result.container.querySelector('.card-footer')).toHaveClass('bg-info')
-  expect(result.container.querySelector('.card-footer')).toHaveClass(
-    'text-light'
-  )
+  let result
+  for (const theme of themes) {
+    result = render(<Card footer='test' footerTheme={theme} />)
+    expect(result.container.querySelector('.card-footer')).toHaveClass(
+      `pxn-theme-${theme}`
+    )
+  }
 })
 
 test('Card header', () => {
@@ -176,128 +112,36 @@ test('Card header', () => {
   expect(result.getByText('Foobar')).toHaveClass('test-header')
 })
 
-test('Card headerTheme', () => {
-  let result = render(<Card headerTheme='blue' header='test' />)
+test('Card headerGradient', () => {
+  const result = render(<Card theme='dark' header='test' headerGradient />)
   expect(result.container.querySelector('.card-header')).toHaveClass(
-    'bg-primary'
-  )
-  expect(result.container.querySelector('.card-header')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Card headerTheme='dark' header='test' />)
-  expect(result.container.querySelector('.card-header')).toHaveClass('bg-dark')
-  expect(result.container.querySelector('.card-header')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Card headerTheme='gray' header='test' />)
-  expect(result.container.querySelector('.card-header')).toHaveClass(
-    'bg-secondary'
-  )
-  expect(result.container.querySelector('.card-header')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Card headerTheme='grey' header='test' />)
-  expect(result.container.querySelector('.card-header')).toHaveClass(
-    'bg-secondary'
-  )
-  expect(result.container.querySelector('.card-header')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Card headerTheme='green' header='test' />)
-  expect(result.container.querySelector('.card-header')).toHaveClass(
-    'bg-success'
-  )
-  expect(result.container.querySelector('.card-header')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Card headerTheme='light' header='test' />)
-  expect(result.container.querySelector('.card-header')).toHaveClass('bg-light')
-  expect(result.container.querySelector('.card-header')).toHaveClass(
-    'text-dark'
-  )
-
-  result = render(<Card headerTheme='yellow' header='test' />)
-  expect(result.container.querySelector('.card-header')).toHaveClass(
-    'bg-warning'
-  )
-  expect(result.container.querySelector('.card-header')).toHaveClass(
-    'text-dark'
-  )
-
-  result = render(<Card headerTheme='red' header='test' />)
-  expect(result.container.querySelector('.card-header')).toHaveClass(
-    'bg-danger'
-  )
-  expect(result.container.querySelector('.card-header')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Card headerTheme='teal' header='test' />)
-  expect(result.container.querySelector('.card-header')).toHaveClass('bg-info')
-  expect(result.container.querySelector('.card-header')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Card headerTheme='white' header='test' />)
-  expect(result.container.querySelector('.card-header')).toHaveClass('bg-white')
-  expect(result.container.querySelector('.card-header')).toHaveClass(
-    'text-dark'
-  )
-
-  result = render(<Card headerTheme='transparent' header='test' />)
-  expect(result.container.querySelector('.card-header')).toHaveClass(
-    'bg-transparent'
+    'bg-gradient'
   )
 })
 
+test('Card headerTheme', () => {
+  let result
+  for (const theme of themes) {
+    result = render(<Card header='test' headerTheme={theme} />)
+    expect(result.container.querySelector('.card-header')).toHaveClass(
+      `pxn-theme-${theme}`
+    )
+  }
+})
+
 test('Card theme', () => {
-  let result = render(<Card theme='blue' />)
-  expect(result.container.querySelector('.card')).toHaveClass('bg-primary')
-  expect(result.container.querySelector('.card')).toHaveClass('text-light')
+  let result
+  for (const theme of themes) {
+    result = render(<Card theme={theme} />)
+    expect(result.container.querySelector('.card')).toHaveClass(
+      `pxn-theme-${theme}`
+    )
+  }
+})
 
-  result = render(<Card theme='dark' />)
-  expect(result.container.querySelector('.card')).toHaveClass('bg-dark')
-  expect(result.container.querySelector('.card')).toHaveClass('text-light')
-
-  result = render(<Card theme='gray' />)
-  expect(result.container.querySelector('.card')).toHaveClass('bg-secondary')
-  expect(result.container.querySelector('.card')).toHaveClass('text-light')
-
-  result = render(<Card theme='grey' />)
-  expect(result.container.querySelector('.card')).toHaveClass('bg-secondary')
-  expect(result.container.querySelector('.card')).toHaveClass('text-light')
-
-  result = render(<Card theme='green' />)
-  expect(result.container.querySelector('.card')).toHaveClass('bg-success')
-  expect(result.container.querySelector('.card')).toHaveClass('text-light')
-
-  result = render(<Card theme='light' />)
-  expect(result.container.querySelector('.card')).toHaveClass('bg-light')
-  expect(result.container.querySelector('.card')).toHaveClass('text-dark')
-
-  result = render(<Card theme='yellow' />)
-  expect(result.container.querySelector('.card')).toHaveClass('bg-warning')
-  expect(result.container.querySelector('.card')).toHaveClass('text-dark')
-
-  result = render(<Card theme='red' />)
-  expect(result.container.querySelector('.card')).toHaveClass('bg-danger')
-  expect(result.container.querySelector('.card')).toHaveClass('text-light')
-
-  result = render(<Card theme='teal' />)
-  expect(result.container.querySelector('.card')).toHaveClass('bg-info')
-  expect(result.container.querySelector('.card')).toHaveClass('text-light')
-
-  result = render(<Card theme='white' />)
-  expect(result.container.querySelector('.card')).toHaveClass('bg-white')
-  expect(result.container.querySelector('.card')).toHaveClass('text-dark')
-
-  result = render(<Card theme='transparent' />)
-  expect(result.container.querySelector('.card')).toHaveClass('bg-transparent')
+test('Card gradient', () => {
+  const result = render(<Card theme='dark' gradient />)
+  expect(result.container.querySelector('.card')).toHaveClass('bg-gradient')
 })
 
 test('Card width', () => {

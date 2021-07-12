@@ -53,8 +53,7 @@ class App extends React.Component {
           },
           { name: 'Item 2', active: true },
           { name: 'Item 3' }
-        ],
-        toggleParent: false
+        ]
       },
       {
         name: 'Dropdown 2',
@@ -65,11 +64,11 @@ class App extends React.Component {
               event.preventDefault()
             }
           }
-        ],
-        toggleParent: false
+        ]
       },
       {
         name: 'Dropdown 3',
+        autoClose: 'outside',
         subMenu: [
           {
             name: (
@@ -78,8 +77,7 @@ class App extends React.Component {
                 <span style={{ marginLeft: '0.3333em' }}>Toggler</span>
               </span>
             ),
-            onClick: this.toggleToggler.bind(this),
-            toggleParent: false
+            onClick: this.toggleToggler.bind(this)
           }
         ]
       }

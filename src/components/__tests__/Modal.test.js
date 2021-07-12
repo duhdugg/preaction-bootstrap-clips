@@ -1,34 +1,59 @@
 import React from 'react'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import { Modal } from '../Modal.jsx'
 
+const mock = () => {}
+const themes = [
+  'blue',
+  'cyan',
+  'danger',
+  'dark',
+  'gray',
+  'gray-dark',
+  'green',
+  'indigo',
+  'info',
+  'light',
+  'orange',
+  'pink',
+  'primary',
+  'purple',
+  'red',
+  'secondary',
+  'success',
+  'teal',
+  'transparent',
+  'warning',
+  'white',
+  'yellow'
+]
+
 test('Modal basic', () => {
-  const result = render(<Modal>Woot</Modal>)
+  const result = render(
+    <Modal show setShow={mock}>
+      Woot
+    </Modal>
+  )
   expect(result.getByText('Woot')).toBeInTheDocument()
   expect(result.getByText('Woot')).toBeVisible()
 })
 
 test('Modal closeButtonText', () => {
-  const result = render(<Modal closeButtonText='Nope Out' />)
+  const result = render(
+    <Modal show setShow={mock} closeButtonText='Nope Out' />
+  )
   expect(result.getByTitle('Nope Out')).toBeInTheDocument()
   expect(
-    result.container.querySelector('.modal-header button.close')
+    result.container.querySelector('.modal-header button.btn-close')
   ).toBeInTheDocument()
-})
-
-test('Modal closeHandler', () => {
-  let x = 0
-  const func = () => x++
-  const result = render(<Modal closeHandler={func} />)
-  userEvent.click(result.getByTitle('Close'))
-  expect(x).toBe(1)
 })
 
 test('Modal footer', () => {
   const result = render(
     <Modal
+      show
+      setShow={mock}
       footer={
         <div className='btn-group'>
           <button type='button' className='btn btn-default'>
@@ -45,336 +70,127 @@ test('Modal footer', () => {
   ).toBeInTheDocument()
 })
 
+test('Modal fullscreen', () => {
+  const result = render(
+    <Modal show setShow={mock} fullscreen>
+      Woot
+    </Modal>
+  )
+  expect(result.container.querySelector('.modal-dialog')).toHaveClass(
+    'modal-fullscreen'
+  )
+})
+
 test('Modal hideCloseButton', () => {
-  const result = render(<Modal hideCloseButton />)
+  const result = render(<Modal show setShow={mock} hideCloseButton />)
   expect(
     result.container.querySelector('.modal-header button.close')
   ).not.toBeInTheDocument()
 })
 
+test('Modal size', () => {
+  const result = render(
+    <Modal show setShow={mock} size='lg'>
+      Woot
+    </Modal>
+  )
+  expect(result.container.querySelector('.modal-dialog')).toHaveClass(
+    'modal-lg'
+  )
+})
+
 test('Modal title', () => {
   const result = render(
-    <Modal title={<div className='custom-title'>Foobar</div>} />
+    <Modal
+      show
+      setShow={mock}
+      title={<div className='custom-title'>Foobar</div>}
+    />
   )
   expect(result.getByText('Foobar')).toBeInTheDocument()
   expect(result.getByText('Foobar')).toHaveClass('custom-title')
 })
 
 test('Modal theme', () => {
-  let result = render(<Modal theme='blue' />)
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'bg-primary'
-  )
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'text-light'
-  )
+  let result
+  for (const theme of themes) {
+    result = render(<Modal show setShow={mock} theme={theme} />)
+    expect(result.container.querySelector('.modal-content')).toHaveClass(
+      `pxn-theme-${theme}`
+    )
+  }
+})
 
-  result = render(<Modal theme='dark' />)
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'bg-dark'
+test('Modal gradient', () => {
+  const result = render(
+    <Modal show setShow={mock} gradient>
+      Woot
+    </Modal>
   )
   expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'text-light'
+    'bg-gradient'
   )
+})
 
-  result = render(<Modal theme='gray' />)
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'bg-secondary'
+test('Modal headerGradient', () => {
+  const result = render(
+    <Modal show setShow={mock} headerGradient header='test'>
+      Woot
+    </Modal>
   )
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal theme='grey' />)
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'bg-secondary'
-  )
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal theme='green' />)
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'bg-success'
-  )
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal theme='light' />)
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'bg-light'
-  )
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'text-dark'
-  )
-
-  result = render(<Modal theme='yellow' />)
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'bg-warning'
-  )
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'text-dark'
-  )
-
-  result = render(<Modal theme='red' />)
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'bg-danger'
-  )
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal theme='teal' />)
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'bg-info'
-  )
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal theme='white' />)
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'bg-white'
-  )
-  expect(result.container.querySelector('.modal-content')).toHaveClass(
-    'text-dark'
+  expect(result.container.querySelector('.modal-header')).toHaveClass(
+    'bg-gradient'
   )
 })
 
 test('Modal headerTheme', () => {
-  let result = render(<Modal headerTheme='blue' />)
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'bg-primary'
-  )
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal headerTheme='dark' />)
-  expect(result.container.querySelector('.modal-header')).toHaveClass('bg-dark')
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal headerTheme='gray' />)
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'bg-secondary'
-  )
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal headerTheme='grey' />)
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'bg-secondary'
-  )
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal headerTheme='green' />)
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'bg-success'
-  )
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal headerTheme='light' />)
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'bg-light'
-  )
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'text-dark'
-  )
-
-  result = render(<Modal headerTheme='yellow' />)
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'bg-warning'
-  )
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'text-dark'
-  )
-
-  result = render(<Modal headerTheme='red' />)
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'bg-danger'
-  )
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal headerTheme='teal' />)
-  expect(result.container.querySelector('.modal-header')).toHaveClass('bg-info')
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal headerTheme='white' />)
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'bg-white'
-  )
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'text-dark'
-  )
-
-  result = render(<Modal headerTheme='transparent' />)
-  expect(result.container.querySelector('.modal-header')).toHaveClass(
-    'bg-transparent'
-  )
+  let result
+  for (const theme of themes) {
+    result = render(<Modal show setShow={mock} headerTheme={theme} />)
+    expect(result.container.querySelector('.modal-header')).toHaveClass(
+      `pxn-theme-${theme}`
+    )
+  }
 })
 
 test('Modal bodyTheme', () => {
-  let result = render(<Modal bodyTheme='blue' />)
-  expect(result.container.querySelector('.modal-body')).toHaveClass(
-    'bg-primary'
-  )
-  expect(result.container.querySelector('.modal-body')).toHaveClass(
-    'text-light'
-  )
+  let result
+  for (const theme of themes) {
+    result = render(<Modal show setShow={mock} bodyTheme={theme} />)
+    expect(result.container.querySelector('.modal-body')).toHaveClass(
+      `pxn-theme-${theme}`
+    )
+  }
+})
 
-  result = render(<Modal bodyTheme='dark' />)
-  expect(result.container.querySelector('.modal-body')).toHaveClass('bg-dark')
-  expect(result.container.querySelector('.modal-body')).toHaveClass(
-    'text-light'
+test('Modal bodyGradient', () => {
+  const result = render(
+    <Modal show setShow={mock} bodyGradient>
+      Woot
+    </Modal>
   )
+  expect(result.container.querySelector('.modal-body')).toHaveClass(
+    'bg-gradient'
+  )
+})
 
-  result = render(<Modal bodyTheme='gray' />)
-  expect(result.container.querySelector('.modal-body')).toHaveClass(
-    'bg-secondary'
+test('Modal footerGradient', () => {
+  const result = render(
+    <Modal show setShow={mock} footerGradient footer='test'>
+      Woot
+    </Modal>
   )
-  expect(result.container.querySelector('.modal-body')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal bodyTheme='grey' />)
-  expect(result.container.querySelector('.modal-body')).toHaveClass(
-    'bg-secondary'
-  )
-  expect(result.container.querySelector('.modal-body')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal bodyTheme='green' />)
-  expect(result.container.querySelector('.modal-body')).toHaveClass(
-    'bg-success'
-  )
-  expect(result.container.querySelector('.modal-body')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal bodyTheme='light' />)
-  expect(result.container.querySelector('.modal-body')).toHaveClass('bg-light')
-  expect(result.container.querySelector('.modal-body')).toHaveClass('text-dark')
-
-  result = render(<Modal bodyTheme='yellow' />)
-  expect(result.container.querySelector('.modal-body')).toHaveClass(
-    'bg-warning'
-  )
-  expect(result.container.querySelector('.modal-body')).toHaveClass('text-dark')
-
-  result = render(<Modal bodyTheme='red' />)
-  expect(result.container.querySelector('.modal-body')).toHaveClass('bg-danger')
-  expect(result.container.querySelector('.modal-body')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal bodyTheme='teal' />)
-  expect(result.container.querySelector('.modal-body')).toHaveClass('bg-info')
-  expect(result.container.querySelector('.modal-body')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal bodyTheme='white' />)
-  expect(result.container.querySelector('.modal-body')).toHaveClass('bg-white')
-  expect(result.container.querySelector('.modal-body')).toHaveClass('text-dark')
-
-  result = render(<Modal bodyTheme='transparent' />)
-  expect(result.container.querySelector('.modal-body')).toHaveClass(
-    'bg-transparent'
+  expect(result.container.querySelector('.modal-footer')).toHaveClass(
+    'bg-gradient'
   )
 })
 
 test('Modal footerTheme', () => {
-  let result = render(<Modal footerTheme='blue' />)
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'bg-primary'
-  )
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal footerTheme='dark' />)
-  expect(result.container.querySelector('.modal-footer')).toHaveClass('bg-dark')
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal footerTheme='gray' />)
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'bg-secondary'
-  )
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal footerTheme='grey' />)
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'bg-secondary'
-  )
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal footerTheme='green' />)
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'bg-success'
-  )
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal footerTheme='light' />)
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'bg-light'
-  )
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'text-dark'
-  )
-
-  result = render(<Modal footerTheme='yellow' />)
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'bg-warning'
-  )
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'text-dark'
-  )
-
-  result = render(<Modal footerTheme='red' />)
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'bg-danger'
-  )
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal footerTheme='teal' />)
-  expect(result.container.querySelector('.modal-footer')).toHaveClass('bg-info')
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'text-light'
-  )
-
-  result = render(<Modal footerTheme='white' />)
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'bg-white'
-  )
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'text-dark'
-  )
-
-  result = render(<Modal footerTheme='transparent' />)
-  expect(result.container.querySelector('.modal-footer')).toHaveClass(
-    'bg-transparent'
-  )
+  let result
+  for (const theme of themes) {
+    result = render(<Modal show setShow={mock} footerTheme={theme} />)
+    expect(result.container.querySelector('.modal-footer')).toHaveClass(
+      `pxn-theme-${theme}`
+    )
+  }
 })

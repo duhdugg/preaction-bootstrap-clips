@@ -11,7 +11,10 @@ import visualizer from 'rollup-plugin-visualizer'
 const plugins = [
   external(),
   nodeResolve(),
-  postcss({}),
+  postcss({
+    extract: 'preaction-bootstrap-clips.css',
+    minimize: true
+  }),
   sucrase({
     exclude: ['node_modules/**'],
     transforms: ['jsx']
@@ -74,7 +77,8 @@ const umdConfig = {
       globals: {
         react: 'React',
         'react-dom': 'ReactDOM',
-        'prop-types': 'PropTypes'
+        'prop-types': 'PropTypes',
+        'bootstrap/js/dist/modal.js': 'Modal'
       },
       sourcemap: true,
       name: '@preaction/bootstrap-clips',

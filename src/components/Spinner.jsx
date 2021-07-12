@@ -1,14 +1,19 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import { joinClassNames } from '../lib/joinClassNames.js'
 
 /**
  * > _Indicate the loading state of a component or page..._
- * > https://getbootstrap.com/docs/4.5/components/spinners/
+ * > https://getbootstrap.com/docs/5.0/components/spinners/
  */
 function Spinner(props) {
   return (
     <div
-      className='spinner-container d-flex'
+      className={joinClassNames(
+        'pxn-spinner-container',
+        'd-flex',
+        props.className || ''
+      )}
       style={{
         flexDirection: props.flexDirection
       }}>
@@ -34,7 +39,7 @@ function Spinner(props) {
           {props.children}
         </div>
       ) : (
-        <div className='sr-only'>Loading...</div>
+        <div className='visually-hidden'>Loading...</div>
       )}
     </div>
   )
@@ -42,6 +47,8 @@ function Spinner(props) {
 
 Spinner.propTypes = {
   children: PropTypes.node,
+  /** adds to the className of the `.pxn-spinner-container' class */
+  className: PropTypes.string,
   flexDirection: PropTypes.oneOf(['column', 'row']),
   fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

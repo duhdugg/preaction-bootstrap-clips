@@ -1,30 +1,35 @@
 ## Functions
 
 <dl>
-<dt><a href="#getClassesForColumn">getClassesForColumn(width)</a> ⇒ <code>array</code></dt>
+<dt><a href="#getColumnClassNames">getColumnClassNames(width)</a> ⇒ <code>array</code></dt>
 <dd></dd>
-<dt><a href="#getClassesForTheme">getClassesForTheme(name)</a> ⇒ <code>array</code></dt>
+<dt><a href="#getGradientClassName">getGradientClassName(bool)</a> ⇒ <code>string</code></dt>
+<dd></dd>
+<dt><a href="#getThemeClassName">getThemeClassName(str)</a> ⇒ <code>string</code></dt>
+<dd></dd>
+<dt><a href="#joinClassNames">joinClassNames()</a> ⇒ <code>string</code></dt>
 <dd></dd>
 </dl>
 
-<a name="getClassesForColumn"></a>
+<a name="getColumnClassNames"></a>
 
-## getClassesForColumn(width) ⇒ <code>array</code>
+## getColumnClassNames(width) ⇒ <code>array</code>
 **Kind**: global function  
 **Returns**: <code>array</code> - an array of className strings  
 
 | Param | Description |
 | --- | --- |
-| width | can be 'auto', a number representing a fraction of 12, or an object representing values at specific breakpoints: xs, sm, md, lg, xl. The default is an object with `sm: 'auto'`. |
+| width | can be 'auto', a number representing a fraction of 12, or an object representing values at specific breakpoints: xs, sm, md, lg, xl, xxl. The default is an object with `sm: 'auto'`. |
 
 **Example**  
 ```js
 const width = {
   md: 5 / 6,
   lg: 2 / 3,
-  xl: 1 / 2
+  xl: 1 / 2,
+  xxl: 1 / 3
 }
-const columnClassNames = getClassesForColumn(width)
+const columnClassNames = getColumnClassNames(width)
 ;<div className='row'>
    <div className={columnClassNames.join(' ')} style={{border: '1px solid black'}}>
      <p>width: <code>{JSON.stringify(width)}</code></p>
@@ -32,22 +37,28 @@ const columnClassNames = getClassesForColumn(width)
    </div>
  </div>
 ```
-<a name="getClassesForTheme"></a>
+<a name="getGradientClassName"></a>
 
-## getClassesForTheme(name) ⇒ <code>array</code>
+## getGradientClassName(bool) ⇒ <code>string</code>
 **Kind**: global function  
-**Returns**: <code>array</code> - an array of className strings  
+**Returns**: <code>string</code> - 'bg-gradient' if bool, else empty  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| name | <code>string</code> | can be: blue, primary, dark, gray, grey, secondary, green, success, light, yellow, warning, red, danger, teal, info, white, transparent |
+| Param | Type |
+| --- | --- |
+| bool | <code>bool</code> | 
 
-**Example**  
-```js
-const name = 'primary'
-const columnClassNames = getClassesForTheme(name)
-;<div className={columnClassNames.join(' ')}>
-   <p>name: <code className='text-light'>{JSON.stringify(name)}</code></p>
-   <p>returns: <code className='text-light'>{JSON.stringify(columnClassNames)}</code></p>
- </div>
-```
+<a name="getThemeClassName"></a>
+
+## getThemeClassName(str) ⇒ <code>string</code>
+**Kind**: global function  
+**Returns**: <code>string</code> - `pxn-theme-${str}`  
+
+| Param | Type |
+| --- | --- |
+| str | <code>string</code> | 
+
+<a name="joinClassNames"></a>
+
+## joinClassNames() ⇒ <code>string</code>
+**Kind**: global function  
+**Returns**: <code>string</code> - arguments joined by space  

@@ -15,7 +15,8 @@ function getRandomTheme() {
 ;<Card
   header='Outer Card'
   headerTheme='yellow'
-  style={{ header: { fontWeight: 'bold' } }}>
+  headerGradient
+  className='example-outer-card'>
   <div className='row'>
     {getArray(11).map((id, index) => (
       <Card
@@ -23,7 +24,7 @@ function getRandomTheme() {
         column
         width='auto'
         theme={getRandomTheme()}
-        style={{ container: { minWidth: '10em', marginBottom: '1em' } }}>
+        className='rando-card'>
         <blockquote className='blockquote'>
           &quot;Here is my card.&quot;
         </blockquote>
@@ -36,7 +37,15 @@ function getRandomTheme() {
     <Card header='This one has a blue head' headerTheme='blue' column>
       <h4 className='display-4'>Woo!</h4>
     </Card>
-    <Card header='This one has a green head' headerTheme='green' column />
+    <Card
+      header='This one has a green gradient head'
+      headerTheme='green'
+      bodyTheme='indigo'
+      bodyGradient
+      headerGradient
+      column>
+      with an indigo gradient body
+    </Card>
   </div>
   <div className='row'>
     <Card
@@ -51,12 +60,24 @@ function getRandomTheme() {
     </Card>
     <Card
       column
+      headerTheme='dark'
       footerTheme='dark'
       bodyTheme='red'
       width={{ sm: 2 / 3, md: 1 / 4 }}
+      header='and'
       footer='has a footer'>
-      <p>and this one</p>
+      this one
     </Card>
   </div>
+  <style>
+    {`
+    .example-outer-card .card {
+      margin-bottom: 1rem;
+    }
+    .rando-card {
+      min-width: 10rem;
+    }
+  `}
+  </style>
 </Card>
 ```
