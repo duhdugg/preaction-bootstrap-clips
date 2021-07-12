@@ -2,11 +2,15 @@
 
 #### yarn:
 
-`yarn add --dev @preaction/bootstrap-clips@latest`
+`yarn add --dev @preaction/bootstrap-clips`
 
 #### npm:
 
-`npm install --save-dev @preaction/bootstrap-clips@latest`
+`npm install --save-dev @preaction/bootstrap-clips`
+
+#### Peer Dependencies
+
+Important: `bootstrap` is a peerDependency of this library, and `@popperjs/core` is a peerDependency of bootstrap. You will need to install these in your project as well.
 
 ### Import
 

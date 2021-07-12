@@ -18,7 +18,11 @@ The full documentation can be found in the [styleguide](https://duhdugg.github.i
 
 ### Installation
 
-`npm install --save-dev @preaction/bootstrap-clips@latest`
+`npm install --save-dev @preaction/bootstrap-clips`
+
+Important: `bootstrap` is a peerDependency of this library, and `@popperjs/core` is a peerDependency of bootstrap. You will need to install these in your project as well.
+
+`npm install --save-dev bootstrap @popperjs/core`
 
 ### Usage
 
