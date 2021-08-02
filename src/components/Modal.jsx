@@ -7,7 +7,9 @@ import { joinClassNames } from '../lib/joinClassNames.js'
 const ssr = typeof window === 'undefined'
 let BSModal
 if (!ssr) {
-  BSModal = require('bootstrap/js/dist/modal.js')
+  BSModal = window.bootstrap
+    ? window.bootstrap.Modal
+    : require('bootstrap/js/dist/modal.js')
 }
 
 const sizes = ['sm', 'lg', 'xl']

@@ -5,7 +5,9 @@ import { joinClassNames } from '../lib/joinClassNames.js'
 const ssr = typeof window === 'undefined'
 let Dropdown
 if (!ssr) {
-  Dropdown = require('bootstrap/js/dist/dropdown.js')
+  Dropdown = window.bootstrap
+    ? window.bootstrap.Dropdown
+    : require('bootstrap/js/dist/dropdown.js')
 }
 
 /**

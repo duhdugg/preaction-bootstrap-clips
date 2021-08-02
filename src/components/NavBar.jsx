@@ -5,7 +5,9 @@ import { joinClassNames } from '../lib/joinClassNames.js'
 
 const ssr = typeof window === 'undefined'
 if (!ssr) {
-  require('bootstrap/js/dist/collapse.js')
+  if (!window.bootstrap) {
+    require('bootstrap/js/dist/collapse.js')
+  }
 }
 
 /**

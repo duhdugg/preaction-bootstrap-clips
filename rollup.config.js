@@ -77,8 +77,7 @@ const umdConfig = {
       globals: {
         react: 'React',
         'react-dom': 'ReactDOM',
-        'prop-types': 'PropTypes',
-        'bootstrap/js/dist/modal.js': 'Modal'
+        'prop-types': 'PropTypes'
       },
       sourcemap: true,
       name: '@preaction/bootstrap-clips',
