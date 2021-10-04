@@ -67,6 +67,14 @@
       "ecmaVersion": 2021
     }
   },
+  "prettier": {
+    "arrowParens": "avoid",
+    "jsxSingleQuote": true,
+    "bracketSameLine": true,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
   "browserslist": {
     "development": [
       "last 1 chrome version",
