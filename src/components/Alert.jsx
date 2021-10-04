@@ -75,7 +75,6 @@ Alert.defaultProps = {
   column: false,
   contain: false,
   gradient: false,
-  style: { alert: {}, container: {} },
   theme: 'info',
   width: { sm: 'auto' }
 }
