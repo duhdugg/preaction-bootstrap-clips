@@ -1,0 +1,22 @@
+.pxn-table-container {
+  table {
+    thead {
+      .btn-sm {
+        margin-left: 5px;
+      }
+    }
+    .pagination-controls {
+      nav {
+        padding: 0;
+        overflow: hidden;
+      }
+      .form-range {
+        width: 1%;
+        flex: 1 1 auto;
+        height: 31px;
+        position: relative;
+        top: 1px;
+      }
+    }
+  }
+}
