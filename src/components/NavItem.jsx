@@ -139,7 +139,7 @@ Link.propTypes = {
 NavItem.propTypes = {
   /** controls whether the `active` className should be added to the link */
   active: PropTypes.bool,
-  /** https://getbootstrap.com/docs/5.0/components/dropdowns/#auto-close-behavior */
+  /** https://getbootstrap.com/docs/5.1/components/dropdowns/#auto-close-behavior */
   autoClose: PropTypes.oneOf(['true', 'false', 'inside', 'outside']),
   /** you can pass the `Link` component imported from [react-router-dom](https://www.npmjs.com/package/react-router-dom) here */
   component: PropTypes.elementType,

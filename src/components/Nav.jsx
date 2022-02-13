@@ -4,7 +4,7 @@ import { NavItem } from './NavItem.jsx'
 import { joinClassNames } from '../lib/joinClassNames.js'
 
 /**
- * https://getbootstrap.com/docs/5.0/components/navs-tabs/
+ * https://getbootstrap.com/docs/5.1/components/navs-tabs/
  */
 function Nav(props) {
   const className = joinClassNames(

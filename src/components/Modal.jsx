@@ -33,7 +33,7 @@ const darkThemes = [
 
 /**
  * > ...add dialogs to your site for lightboxes, user notifications, or completely custom content.
- * > https://getbootstrap.com/docs/5.0/components/modal/
+ * > https://getbootstrap.com/docs/5.1/components/modal/
  */
 function Modal(props) {
   const size = sizes.includes(props.size) ? `modal-${props.size}` : ''

@@ -7,7 +7,7 @@ import { joinClassNames } from '../lib/joinClassNames.js'
 
 /**
  * > _Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options._
- * > https://getbootstrap.com/docs/5.0/components/card/
+ * > https://getbootstrap.com/docs/5.1/components/card/
  */
 function Card(props) {
   const classNames = {
@@ -68,7 +68,7 @@ Card.propTypes = {
   /** set to true if the card is a child of a `.row` element */
   column: PropTypes.bool,
   /** setting to true will include the `.container` class to the outer `<div>`
-   * [See: Bootstrap Docs > Layout > Containers](https://getbootstrap.com/docs/5.0/layout/containers/)
+   * [See: Bootstrap Docs > Layout > Containers](https://getbootstrap.com/docs/5.1/layout/containers/)
    * */
   contain: PropTypes.bool,
   footer: PropTypes.node,

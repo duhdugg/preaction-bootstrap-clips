@@ -12,7 +12,7 @@ if (!ssr) {
 
 /**
  * > _Bootstrap’s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more..._
- * > https://getbootstrap.com/docs/5.0/components/navbar/
+ * > https://getbootstrap.com/docs/5.1/components/navbar/
  */
 function NavBar(props) {
   const collapseId = React.useRef(

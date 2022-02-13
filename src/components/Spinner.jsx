@@ -4,7 +4,7 @@ import { joinClassNames } from '../lib/joinClassNames.js'
 
 /**
  * > _Indicate the loading state of a component or page..._
- * > https://getbootstrap.com/docs/5.0/components/spinners/
+ * > https://getbootstrap.com/docs/5.1/components/spinners/
  */
 function Spinner(props) {
   return (

@@ -6,7 +6,7 @@ import { joinClassNames } from '../lib/joinClassNames.js'
 
 /**
  * > _Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages._
- * > https://getbootstrap.com/docs/5.0/components/alerts/
+ * > https://getbootstrap.com/docs/5.1/components/alerts/
  */
 function Alert(props) {
   const classNames = {
@@ -46,7 +46,7 @@ Alert.propTypes = {
   /** set to true if the alert is a child of a `.row` element */
   column: PropTypes.bool,
   /** setting to true will include the `.container` class to the outer `<div>`
-   * [See: Bootstrap Docs > Layout > Containers](https://getbootstrap.com/docs/5.0/layout/containers/)
+   * [See: Bootstrap Docs > Layout > Containers](https://getbootstrap.com/docs/5.1/layout/containers/)
    * */
   contain: PropTypes.bool,
   gradient: PropTypes.bool,
