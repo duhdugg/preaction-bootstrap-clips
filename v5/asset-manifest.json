@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.03a32ea8.chunk.css",
-    "main.js": "/build/main.b132989d.js",
-    "runtime-main.js": "/build/bundle.3527ec54.js",
-    "build/2.e27b9f41.js": "/build/2.e27b9f41.js",
-    "build/2.e27b9f41.js.LICENSE.txt": "/build/2.e27b9f41.js.LICENSE.txt",
+    "main.css": "/static/css/main.8955b0f0.chunk.css",
+    "main.js": "/build/main.8657e093.js",
+    "runtime-main.js": "/build/bundle.c0e43e4d.js",
+    "build/2.fc68d1db.js": "/build/2.fc68d1db.js",
+    "build/2.fc68d1db.js.LICENSE.txt": "/build/2.fc68d1db.js.LICENSE.txt",
     "index.html": "/index.html",
-    "static/css/main.03a32ea8.chunk.css.map": "/static/css/main.03a32ea8.chunk.css.map"
+    "static/css/main.8955b0f0.chunk.css.map": "/static/css/main.8955b0f0.chunk.css.map"
   },
   "entrypoints": [
-    "build/bundle.3527ec54.js",
-    "build/2.e27b9f41.js",
-    "static/css/main.03a32ea8.chunk.css",
-    "build/main.b132989d.js"
+    "build/bundle.c0e43e4d.js",
+    "build/2.fc68d1db.js",
+    "static/css/main.8955b0f0.chunk.css",
+    "build/main.8657e093.js"
   ]
 }
