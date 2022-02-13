@@ -140,6 +140,28 @@ describe('className tests', () => {
     result.rerender(<Table compact />)
     expect(result.container.querySelector('.table-sm')).toBeInTheDocument()
   })
+  test('renders .table-{theme} when theme prop is a valid theme name', () => {
+    const result = render(<Table />)
+    const themeNames = [
+      'primary',
+      'secondary',
+      'success',
+      'danger',
+      'warning',
+      'info',
+      'light',
+      'dark'
+    ]
+    for (const theme of themeNames) {
+      expect(
+        result.container.querySelector(`.table-${theme}`)
+      ).not.toBeInTheDocument()
+      result.rerender(<Table theme={theme} />)
+      expect(
+        result.container.querySelector(`.table-${theme}`)
+      ).toBeInTheDocument()
+    }
+  })
 })
 
 describe('sorting', () => {
