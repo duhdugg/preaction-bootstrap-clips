@@ -3,14 +3,14 @@
     "main.css": "/static/css/main.8955b0f0.chunk.css",
     "main.js": "/build/main.8657e093.js",
     "runtime-main.js": "/build/bundle.c0e43e4d.js",
-    "build/2.fc68d1db.js": "/build/2.fc68d1db.js",
-    "build/2.fc68d1db.js.LICENSE.txt": "/build/2.fc68d1db.js.LICENSE.txt",
+    "build/2.a5cf99af.js": "/build/2.a5cf99af.js",
+    "build/2.a5cf99af.js.LICENSE.txt": "/build/2.a5cf99af.js.LICENSE.txt",
     "index.html": "/index.html",
     "static/css/main.8955b0f0.chunk.css.map": "/static/css/main.8955b0f0.chunk.css.map"
   },
   "entrypoints": [
     "build/bundle.c0e43e4d.js",
-    "build/2.fc68d1db.js",
+    "build/2.a5cf99af.js",
     "static/css/main.8955b0f0.chunk.css",
     "build/main.8657e093.js"
   ]
