@@ -11,6 +11,7 @@ Components provided by this library include:
 - Nav
 - NavBar
 - Spinner
+- Table
 
 ## Quick Start
 
