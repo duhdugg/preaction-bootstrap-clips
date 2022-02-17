@@ -7,7 +7,7 @@
   }
   heroTheme='dark'
   heroGradient
-  footer='Copyright 2018-2021 © Doug Elkin. All rights reserved.'>
+  footer='Copyright 2018-2022 © Doug Elkin. All rights reserved.'>
   <strong>Main Content</strong>
 </Boilerplate>
 ```

@@ -44,7 +44,7 @@ import { Boilerplate, Card } from '@preaction/bootstrap-clips'
 function App() {
   const cardWidths = { md: 1 / 2, lg: 1 / 3, xl: 1 / 4, xxl: 1 / 6 }
   return (
-    <Boilerplate footer='Copyright (c) 2018-2021 Doug Elkin. All rights reserved.'>
+    <Boilerplate footer='Copyright (c) 2018-2022 Doug Elkin. All rights reserved.'>
       <div className='row'>
         <Card header='Alpha' headerTheme='green' column width={cardWidths}>
           <p>Greetings, Earthlings!</p>
@@ -66,7 +66,7 @@ function App() {
 
 ### License
 
-> Copyright (c) 2018-2021 Doug Elkin
+> Copyright (c) 2018-2022 Doug Elkin
 >
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 > of this software and associated documentation files (the "Software"), to deal
