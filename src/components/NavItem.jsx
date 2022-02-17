@@ -37,21 +37,30 @@ function NavItem(props) {
     }
   }
 
-  // dropdown workaround
+  // dropdown workarounds!
   const liRef = React.useRef(null)
-  const [firstToggle, setFirstToggle] = React.useState(false)
   React.useEffect(() => {
-    if (props.subMenu && !firstToggle && !ssr) {
-      const dt = liRef.current.querySelector('.dropdown-toggle')
-      const dd =
-        Dropdown.getInstance(dt) ||
-        new Dropdown(dt, { autoClose: props.autoClose || true })
-      dd.show()
-      dd.hide()
-      dd._element.blur()
-      setFirstToggle(true)
+    if (props.subMenu && !ssr) {
+      const toggler = liRef.current.querySelector('.dropdown-toggle')
+      if (toggler && !toggler._workaroundsApplied) {
+        // ensure the dropdown plugin is initialized
+        const dropdown =
+          Dropdown.getInstance(toggler) ||
+          new Dropdown(toggler, {
+            autoClose: props.autoClose || true
+          })
+
+        // workaround: very first click does not activate dropdown
+        // also: prevent focus from being stolen in the process
+        const elFocus = toggler.focus
+        toggler.focus = () => {} // prevents dropdown.show() from stealing focus
+        dropdown.show()
+        dropdown.hide()
+        toggler.focus = elFocus // restores focus functionality
+        toggler._workaroundsApplied = true
+      }
     }
-  }, [props.subMenu, props.autoClose, firstToggle])
+  })
 
   const classNames = {
     li: joinClassNames(
