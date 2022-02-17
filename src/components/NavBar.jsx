@@ -96,7 +96,7 @@ function NavBar(props) {
                 href={item.href}
                 className={item.className}
                 component={item.component}
-                key={index}
+                key={props.itemKey ? item[props.itemKey] : index}
                 active={item.active}
                 disabled={item.disabled}
                 exact={item.exact}
@@ -119,6 +119,8 @@ NavBar.propTypes = {
   fixedTo: PropTypes.oneOf(['top', 'bottom']),
   /** controls whether the `-fluid` container container className is used` */
   fluid: PropTypes.bool,
+  /** unique key attribute for item iteration */
+  itemKey: PropTypes.string,
   /** an array of objects representing [`<NavItem>`](#navitem) props */
   menu: PropTypes.array.isRequired,
   /** sets .`bg-` className */

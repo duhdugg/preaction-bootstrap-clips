@@ -28,7 +28,7 @@ function Nav(props) {
           href={item.href}
           className={item.className}
           component={item.component}
-          key={index}
+          key={props.itemKey ? item[props.itemKey] : index}
           active={item.active}
           disabled={item.disabled}
           exact={item.exact}
@@ -48,6 +48,8 @@ Nav.propTypes = {
   collapsible: PropTypes.bool,
   /** controls whether to add the `nav-fill` className */
   fill: PropTypes.bool,
+  /** unique key attribute for item iteration */
+  itemKey: PropTypes.string,
   /** controls whether to add the `nav-justified` to className */
   justify: PropTypes.bool,
   /** an array of objects representing [`<NavItem>`](#navitem) props */
