@@ -48,9 +48,10 @@ function NavItem(props) {
         new Dropdown(dt, { autoClose: props.autoClose || true })
       dd.show()
       dd.hide()
+      dd._element.blur()
       setFirstToggle(true)
     }
-  }, [props, firstToggle, setFirstToggle])
+  }, [props.subMenu, props.autoClose, firstToggle])
 
   const classNames = {
     li: joinClassNames(
