@@ -42,7 +42,7 @@ test('Nav justify', () => {
   expect(result.container.firstChild).toHaveClass('nav-justified')
 })
 
-test('Nav menu', () => {
+test('Nav menu', async () => {
   let value = ''
   const result = render(
     <Nav
@@ -88,9 +88,9 @@ test('Nav menu', () => {
   expect(result.container.querySelector('.nav-delta')).toBeInTheDocument()
   expect(result.container.querySelector('.nav-delta')).toBeInTheDocument()
   expect(result.container.querySelector('.nav-delta-i')).toBeInTheDocument()
-  userEvent.click(result.getByText('Alpha'))
+  await userEvent.click(result.getByText('Alpha'))
   expect(value).toBe('alpha')
-  userEvent.click(result.getByText('Delta I'))
+  await userEvent.click(result.getByText('Delta I'))
   expect(value).toBe('delta-i')
 })
 

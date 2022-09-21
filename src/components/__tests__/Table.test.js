@@ -272,7 +272,7 @@ describe('sorting', () => {
     }
   })
 
-  test('renders rows sorted by clicked sort button', () => {
+  test('renders rows sorted by clicked sort button', async () => {
     const userHeaders = new Map()
       .set('view', 'View')
       .set('id', 'ID')
@@ -287,7 +287,7 @@ describe('sorting', () => {
     const sortBtn = result.container.querySelector(
       `table thead tr th.${getRowKeyClassName(sortBy)} .pxn-sort-btn`
     )
-    userEvent.click(sortBtn)
+    await userEvent.click(sortBtn)
     result.rerender(
       <Table headers={userHeaders} rows={users} sort defaultSortKey='id' />
     )
@@ -302,7 +302,7 @@ describe('sorting', () => {
     }
   })
 
-  test('renders rows sorted in reverse by clicking same sort button twice', () => {
+  test('renders rows sorted in reverse by clicking same sort button twice', async () => {
     const userHeaders = new Map()
       .set('view', 'View')
       .set('id', 'ID')
@@ -322,9 +322,9 @@ describe('sorting', () => {
     const sortBtn = result.container.querySelector(
       `table thead tr th.${getRowKeyClassName(sortBy)} .pxn-sort-btn`
     )
-    userEvent.click(sortBtn)
+    await userEvent.click(sortBtn)
     rerender()
-    userEvent.click(sortBtn)
+    await userEvent.click(sortBtn)
     rerender()
     const tbodyRows = result.container.querySelectorAll('table tbody tr')
     let latestAlpha = tbodyRows[0].querySelector(
@@ -394,7 +394,7 @@ describe('filtering', () => {
     }
   })
 
-  test('renders filtered rows when filter selection is made', () => {
+  test('renders filtered rows when filter selection is made', async () => {
     const userHeaders = new Map()
       .set('view', 'View')
       .set('id', 'ID')
@@ -406,7 +406,7 @@ describe('filtering', () => {
     const filterSelect = result.container.querySelector(
       `table thead tr:nth-child(2) th.${getRowKeyClassName('id')} select`
     )
-    userEvent.selectOptions(filterSelect, '1')
+    await userEvent.selectOptions(filterSelect, '1')
     result.rerender(<Table headers={userHeaders} rows={users} filter />)
     expect(filterSelect.value).toBe('1')
     const tbodyRows = result.container.querySelectorAll('table tbody tr')
@@ -416,7 +416,7 @@ describe('filtering', () => {
     ).toBe('1')
   })
 
-  test('renders filtered rows correctly after de-selecting a filter', () => {
+  test('renders filtered rows correctly after de-selecting a filter', async () => {
     const userHeaders = new Map()
       .set('view', 'View')
       .set('id', 'ID')
@@ -431,7 +431,7 @@ describe('filtering', () => {
     const filterSelects = result.container.querySelectorAll(
       `table thead tr:nth-child(2) th select`
     )
-    userEvent.selectOptions(filterSelects[1], '1')
+    await userEvent.selectOptions(filterSelects[1], '1')
     rerender()
     expect(filterSelects[1].value).toBe('1')
     const tbodyRows = result.container.querySelectorAll('table tbody tr')
@@ -439,20 +439,20 @@ describe('filtering', () => {
     expect(
       tbodyRows[0].querySelector(`td.${getRowKeyClassName('id')}`).innerHTML
     ).toBe('1')
-    userEvent.selectOptions(filterSelects[2], 'Ervin Howell')
+    await userEvent.selectOptions(filterSelects[2], 'Ervin Howell')
     rerender()
     expect(filterSelects[2].value).toBe('Ervin Howell')
     const resetBtn = result.container.querySelector(
       'table tbody tr .pxn-filter-btn'
     )
     expect(resetBtn).toBeInTheDocument()
-    userEvent.selectOptions(filterSelects[2], '')
+    await userEvent.selectOptions(filterSelects[2], '')
     rerender()
     expect(filterSelects[2].value).toBe('')
     expect(resetBtn).not.toBeInTheDocument()
   })
 
-  test('renders working "reset filters" button when all rows are filtered out', () => {
+  test('renders working "reset filters" button when all rows are filtered out', async () => {
     const userHeaders = new Map()
       .set('view', 'View')
       .set('id', 'ID')
@@ -467,17 +467,17 @@ describe('filtering', () => {
     const filterSelects = result.container.querySelectorAll(
       `table thead tr:nth-child(2) th select`
     )
-    userEvent.selectOptions(filterSelects[1], '1')
+    await userEvent.selectOptions(filterSelects[1], '1')
     rerender()
     expect(filterSelects[1].value).toBe('1')
-    userEvent.selectOptions(filterSelects[2], 'Ervin Howell')
+    await userEvent.selectOptions(filterSelects[2], 'Ervin Howell')
     rerender()
     expect(filterSelects[2].value).toBe('Ervin Howell')
     const resetBtn = result.container.querySelector(
       'table tbody tr .pxn-filter-btn'
     )
     expect(resetBtn).toBeInTheDocument()
-    userEvent.click(resetBtn)
+    await userEvent.click(resetBtn)
     rerender()
     const tbodyRows = result.container.querySelectorAll('table tbody tr')
     expect(tbodyRows.length).toBe(10)
@@ -515,7 +515,7 @@ describe('searching', () => {
     expect(searchInputs.length).toBe(1)
   })
 
-  test('renders filtered results when search is entered', () => {
+  test('renders filtered results when search is entered', async () => {
     const userHeaders = new Map()
       .set('view', 'View')
       .set('id', 'ID')
@@ -529,14 +529,14 @@ describe('searching', () => {
     )
     const searchTerm = 'clem'
     for (let c = 0; c < searchTerm.length; c++) {
-      userEvent.type(searchInput, searchTerm[c])
+      await userEvent.type(searchInput, searchTerm[c])
       result.rerender(<Table headers={userHeaders} rows={users} search />)
       expect(searchInput.value).toBe(searchTerm.slice(0, c + 1))
     }
     expect(result.container.querySelectorAll('table tbody tr').length).toBe(2)
   })
 
-  test('renders results that are filtered according to the keys that are explicitly passed in the search prop', () => {
+  test('renders results that are filtered according to the keys that are explicitly passed in the search prop', async () => {
     const userHeaders = new Map()
       .set('view', 'View')
       .set('id', 'ID')
@@ -552,7 +552,7 @@ describe('searching', () => {
     )
     const searchTerm = '.biz'
     for (let c = 0; c < searchTerm.length; c++) {
-      userEvent.type(searchInput, searchTerm[c])
+      await userEvent.type(searchInput, searchTerm[c])
       result.rerender(
         <Table headers={userHeaders} rows={users} search={['website']} />
       )
@@ -636,7 +636,7 @@ describe('pagination', () => {
     )
   })
 
-  test('renders correct pages based on page number, and prev/next buttons work correctly', () => {
+  test('renders correct pages based on page number, and prev/next buttons work correctly', async () => {
     const userHeaders = new Map()
       .set('view', 'View')
       .set('id', 'ID')
@@ -667,7 +667,7 @@ describe('pagination', () => {
           rows[r].querySelector(`td.${getRowKeyClassName('id')}`).innerHTML
         ).toBe(String(users.slice(i, i + pagination)[r].id))
       }
-      userEvent.click(navBtns[1])
+      await userEvent.click(navBtns[1])
       rerender()
     }
     for (let i = users.length - 1; i >= 0; i -= pagination) {
@@ -678,12 +678,12 @@ describe('pagination', () => {
           rows[r].querySelector(`td.${getRowKeyClassName('id')}`).innerHTML
         ).toBe(String(users.slice(i, i + pagination)[r].id))
       }
-      userEvent.click(navBtns[0])
+      await userEvent.click(navBtns[0])
       rerender()
     }
   })
 
-  test('renders correct pages based on page number entered in number input', () => {
+  test('renders correct pages based on page number entered in number input', async () => {
     const userHeaders = new Map()
       .set('view', 'View')
       .set('id', 'ID')
@@ -709,9 +709,9 @@ describe('pagination', () => {
       Math.floor(users.length / pagination) +
       (users.length % pagination ? 1 : 0)
     for (let p = 1; p <= numberOfPages; p++) {
-      userEvent.type(numberInput, '{backspace}{backspace}')
+      await userEvent.type(numberInput, '{backspace}{backspace}')
       rerender()
-      userEvent.type(numberInput, String(p))
+      await userEvent.type(numberInput, String(p))
       rerender()
       const rows = tbody.querySelectorAll('tr')
       expect(rows.length).toBe(

@@ -29,7 +29,7 @@ test('NavBar brand', async () => {
     />
   )
   expect(result.getByText('FooNav')).toBeInTheDocument()
-  userEvent.click(result.getByText('FooNav'))
+  await userEvent.click(result.getByText('FooNav'))
   await waitFor(() => expect(x).toBe(1))
 })
 
@@ -76,10 +76,10 @@ test('NavBar menu', async () => {
   expect(result.getAllByText('Bravo').length).toBe(1)
   expect(result.getAllByText('Charlie').length).toBe(1)
   expect(result.getAllByText('Delta').length).toBe(1)
-  userEvent.click(result.container.querySelector('.navbar-toggler'))
-  userEvent.click(result.getAllByText('Delta')[0])
-  userEvent.click(result.getAllByText('Delta-I')[0])
-  userEvent.click(result.getAllByText('Alpha')[0])
+  await userEvent.click(result.container.querySelector('.navbar-toggler'))
+  await userEvent.click(result.getAllByText('Delta')[0])
+  await userEvent.click(result.getAllByText('Delta-I')[0])
+  await userEvent.click(result.getAllByText('Alpha')[0])
   expect(x).toBe('clicked-alpha')
 })
 
