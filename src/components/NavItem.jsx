@@ -14,9 +14,7 @@ if (!ssr) {
  * These are used as children of both [`<Nav>`](#nav) and [`<NavBar>`](#navbar) components
  */
 function NavItem(props) {
-  const linkId = React.useRef(
-    `nav-link-id-${String(Math.random()).replace(/[^\d]/g, '')}`
-  )
+  const linkId = React.useId()
 
   const onClick = event => {
     if (props.onClick) {
@@ -84,14 +82,14 @@ function NavItem(props) {
         className={classNames.a}
         component={props.component}
         onClick={onClick}
-        id={linkId.current}
+        id={linkId}
         data-bs-auto-close={props.autoClose}
         data-bs-toggle={props.subMenu ? 'dropdown' : undefined}
         aria-expanded={props.subMenu ? 'false' : undefined}>
         {props.name}
       </Link>
       {props.subMenu ? (
-        <div className='dropdown-menu' aria-labelledby={linkId.current}>
+        <div className='dropdown-menu' aria-labelledby={linkId}>
           {props.subMenu.map((item, index) => (
             <Link
               className={joinClassNames(

@@ -16,7 +16,7 @@ if (!ssr) {
  */
 function NavBar(props) {
   const collapseId = React.useRef(
-    `navbar-collapse-${String(Math.random()).replace(/[^\d]/g, '')}`
+    `navbar-collapse-${React.useId().replace(/:/g, 'X')}`
   )
 
   const toggleButton = (

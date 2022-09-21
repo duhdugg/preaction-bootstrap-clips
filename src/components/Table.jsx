@@ -29,7 +29,7 @@ function Table(props) {
   const [revSort, setRevSort] = React.useState(props.defaultRevSort || false)
   const [search, setSearch] = React.useState('')
   const [page, setPage] = React.useState(0)
-  const unique = React.useRef(String(Math.random()).split('.')[1])
+  const searchInputId = React.useId()
 
   const headerKeys = React.useMemo(
     () => Array.from(props.headers.keys()),
@@ -284,15 +284,13 @@ function Table(props) {
               <tr className='pxn-table-search'>
                 <th colSpan={headerKeys.length}>
                   <div className='input-group input-group-sm'>
-                    <label
-                      className='input-group-text'
-                      htmlFor={`table-${unique.current}-search`}>
+                    <label className='input-group-text' htmlFor={searchInputId}>
                       Search
                     </label>
                     <input
                       type='text'
                       className='form-control'
-                      id={`table-${unique.current}-search`}
+                      id={searchInputId}
                       value={search}
                       onChange={e => {
                         setPage(0)
