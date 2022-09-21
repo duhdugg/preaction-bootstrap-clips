@@ -15,7 +15,7 @@ module.exports = {
       links: [
         {
           rel: 'stylesheet',
-          href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css'
+          href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css'
         }
       ]
     }
