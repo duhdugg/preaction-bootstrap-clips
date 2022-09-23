@@ -11,6 +11,9 @@
 /dist
 /stats
 
+# Packaging artifacts
+/preaction-bootstrap-clips-*.tgz
+
 # documentation
 /styleguide
 
