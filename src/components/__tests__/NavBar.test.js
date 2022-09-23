@@ -1,6 +1,6 @@
 import React from 'react'
 import '@testing-library/jest-dom'
-import { render, waitFor } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { NavBar } from '../NavBar.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -30,7 +30,7 @@ test('NavBar brand', async () => {
   )
   expect(result.getByText('FooNav')).toBeInTheDocument()
   await userEvent.click(result.getByText('FooNav'))
-  await waitFor(() => expect(x).toBe(1))
+  expect(x).toBe(1)
 })
 
 test('NavBar fixedTo: top', async () => {
