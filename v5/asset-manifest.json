@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.8955b0f0.chunk.css",
-    "main.js": "/build/main.06520b15.js",
-    "runtime-main.js": "/build/bundle.c0e43e4d.js",
-    "build/2.22ccba66.js": "/build/2.22ccba66.js",
-    "build/2.22ccba66.js.LICENSE.txt": "/build/2.22ccba66.js.LICENSE.txt",
+    "main.css": "/static/css/main.cd39ece8.chunk.css",
+    "main.js": "/build/main.ad0e01bb.js",
+    "runtime-main.js": "/build/bundle.ba4241f6.js",
+    "build/2.61db7132.js": "/build/2.61db7132.js",
+    "build/2.61db7132.js.LICENSE.txt": "/build/2.61db7132.js.LICENSE.txt",
     "index.html": "/index.html",
-    "static/css/main.8955b0f0.chunk.css.map": "/static/css/main.8955b0f0.chunk.css.map"
+    "static/css/main.cd39ece8.chunk.css.map": "/static/css/main.cd39ece8.chunk.css.map"
   },
   "entrypoints": [
-    "build/bundle.c0e43e4d.js",
-    "build/2.22ccba66.js",
-    "static/css/main.8955b0f0.chunk.css",
-    "build/main.06520b15.js"
+    "build/bundle.ba4241f6.js",
+    "build/2.61db7132.js",
+    "static/css/main.cd39ece8.chunk.css",
+    "build/main.ad0e01bb.js"
   ]
 }
